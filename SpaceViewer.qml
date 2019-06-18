@@ -39,13 +39,33 @@ Rectangle {
         }
 
         ListView {
+            id: spacesList
             width: 180; height: 600;
             model: spacesModel
-            delegate: Text {
-                        color: "white"
-                        text: "\nname: " + name + "\nnumber: " + number
-                      }
+
+            delegate: Component {
+                Item {
+                    width: 180; height: 40
+                    Column {
+                        Text { text: '<b>Name:</b> ' + name }
+                        Text { text: '<b>Number:</b> ' + number }
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: spacesList.currentIndex = index
+                    }
+                }
+            }
+
+            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+            highlightFollowsCurrentItem: true
+            focus: true
+
+            add: Transition {
+                NumberAnimation { properties: "x,y"; from: 100; duration: 100 }
+            }
         }
+
         RowLayout{
             Button {
                 Text{
