@@ -47,8 +47,8 @@ Rectangle {
                 Item {
                     width: 180; height: 40
                     Column {
-                        Text { text: '<b>Name:</b> ' + name }
-                        Text { text: '<b>Number:</b> ' + number }
+                        Text { color: "white"; text: '<b>Name:</b> ' + name }
+                        Text { color: "white"; text: '<b>Number:</b> ' + number }
                     }
                     MouseArea {
                         anchors.fill: parent
