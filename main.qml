@@ -77,6 +77,7 @@ ApplicationWindow {
     }
 
     RowLayout{
+        Rectangle { width: 5; color: "#393939" }
         SpaceViewer {
             id: mySpace
         }

@@ -21,6 +21,8 @@ Rectangle {
     }
 
     ColumnLayout{
+        spacing: 20
+        Rectangle{ height: 2; color: "#393939" }
         RowLayout{
             Text{
                 text: "   Search: "
@@ -31,9 +33,11 @@ Rectangle {
                 textColor: "#000000"
             }
         }
+
         RowLayout{
+            Rectangle{ width: 10; height: 10; color: "#393939" }
             Text {
-                text: "   -- Spaces "
+                text: " Spaces "
                 color: "white"
             }
         }
@@ -45,10 +49,17 @@ Rectangle {
 
             delegate: Component {
                 Item {
-                    width: 180; height: 40
+                    width: 180; height: 45
                     Column {
-                        Text { color: "white"; text: '<b>Name:</b> ' + name }
-                        Text { color: "white"; text: '<b>Number:</b> ' + number }
+                        RowLayout{
+                            Rectangle{ width: 5; height: 45; color: "#393939" }
+                            spacing: 10
+                            Rectangle{ width: 30; height: 30; color: "white" }
+                            ColumnLayout{
+                                Text { color: "white"; text: '<b>Name:</b> ' + name }
+                                Text { color: "white"; text: '<b>Number:</b> ' + number }
+                            }
+                        }
                     }
                     MouseArea {
                         anchors.fill: parent
