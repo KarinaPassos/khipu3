@@ -5,13 +5,15 @@ import QtQuick.Layouts 1.12
 import QtQml.Models 2.12
 import QtQuick 2.0
 import QtQuick.Controls 1.4
+import QtQuick.Controls.Styles 1.4
+
 
 
 Rectangle {
-    id: background
-    color: "#393939"
-    width: 250; height: parent.height
-
+    id: bg
+    width: 300; height: parent.height
+    color: "#0D1A24"
+    radius: 15
     function insertSpace(type) {
           spacesModel.insert(spacesModel.count, {"name": type + " Space", "number": spacesModel.count})
     }
@@ -22,39 +24,31 @@ Rectangle {
 
     ColumnLayout{
         spacing: 20
-        Rectangle{ height: 2; color: "#393939" }
-        RowLayout{
-            Text{
-                text: "   Search: "
-                color: "#FFFFFF"
-            }
+        Rectangle{color: bg.color; height: 10; width: bg.width; radius: 15}
+        Rectangle{
+            color: bg.color; radius: bg.radius; width: bg.width; height: 30
             TextField {
-                placeholderText: qsTr("Enter space identification")
-                textColor: "#000000"
-            }
-        }
-
-        RowLayout{
-            Rectangle{ width: 10; height: 10; color: "#393939" }
-            Text {
-                text: " Spaces "
-                color: "white"
+                anchors.centerIn: parent
+                height: 35
+                width: bg.width-20
+                placeholderText: qsTr("Search")
+                textColor: "#3982B8"
             }
         }
 
         ListView {
             id: spacesList
-            width: 180; height: 600;
+            width: 300; height: 600;
             model: spacesModel
 
             delegate: Component {
                 Item {
-                    width: 250; height: 60
+                    width: bg.width; height: 60
                     Column {
                         RowLayout{
-                            Rectangle{ width: 5; height: 60; color: "#393939" }
                             spacing: 10
-                            Rectangle{ width: 30; height: 30; color: "white" }
+                            Rectangle{ width: 5; height: 60; color: bg.color}
+                            Rectangle{ width: 40; height: 40; color: "white"; radius: 50}
                             ColumnLayout{
                                 Text { color: "white"; text: '<b>Name:</b> ' + name }
                                 Text { color: "white"; text: '<b>Number:</b> ' + number }
@@ -68,7 +62,7 @@ Rectangle {
                 }
             }
 
-            highlight: Rectangle { color: "lightsteelblue"; radius: 0 }
+            highlight: Rectangle { color: "lightsteelblue"; }
             highlightFollowsCurrentItem: true
             focus: true
 
@@ -77,20 +71,27 @@ Rectangle {
             }
         }
 
-        RowLayout{
-            Button {
-                Text{
-                    text: "     Rename"
-                    color: "#000000"
+
+        Rectangle{
+            color: bg.color
+            width: bg.width; height: 50
+            RowLayout{
+                anchors.centerIn: parent
+                Button {
+                    Text{
+                        text: "Rename"
+                        color: "#000000"
+                        anchors.centerIn: parent
+                    }
                 }
-            }
-            Button {
-                Text{
-                    text: "     Remove"
-                    color: "#000000"
+                Button {
+                    Text{
+                        text: "Remove"
+                        color: "#000000"
+                        anchors.centerIn: parent
+                    }
                 }
             }
         }
     }
-
 }

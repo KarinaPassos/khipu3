@@ -7,13 +7,34 @@ import QtQuick 2.0
 
 
 ApplicationWindow {
-    color: "#393939"
+    id: appwindow
+    color: "#04060E"
     visible: true
     visibility: "Maximized"
     menuBar: MenuBar {
+        background: Rectangle{ color: appwindow.color }
+        delegate: MenuBarItem {
+            id: menuBarItem
+            contentItem: Text {
+                text: menuBarItem.text
+                font: menuBarItem.font
+                opacity: enabled ? 1.0 : 0.3
+                color: menuBarItem.highlighted ? "#000000" : "#FFFFFF"
+                horizontalAlignment: Text.AlignLeft
+                verticalAlignment: Text.AlignVCenter
+                elide: Text.ElideRight
+            }
 
+            background: Rectangle {
+                implicitWidth: 40
+                implicitHeight: 40
+                opacity: enabled ? 1 : 0.3
+                color: menuBarItem.highlighted ? "white" : "#04060E"
+            }
+        }
         Menu {
-          title: qsTr("&File")
+          title: {qsTr("File")}
+
           Action { text: qsTr("&New") }
           Action { text: qsTr("&Open...") }
           Action { text: qsTr("&Open recent") }
@@ -24,7 +45,7 @@ ApplicationWindow {
           Action { text: qsTr("&Quit") }
         }
         Menu {
-          title: qsTr("&Settings")
+          title: qsTr("Settings")
           Action { text: qsTr("&Show menubar") }
           Action { text: qsTr("&Show statusbar") }
           MenuSeparator { }
@@ -34,7 +55,7 @@ ApplicationWindow {
           Action { text: qsTr("&Configure shortcurts") }
         }
         Menu {
-          title: qsTr("&Help")
+          title: qsTr("Help")
           Action { text: qsTr("&Khipu Handbook") }
           Action { text: qsTr("&What's this?") }
           MenuSeparator { }
@@ -49,20 +70,63 @@ ApplicationWindow {
         }
     }
     header: ToolBar {
+        height: 40
+        background: Rectangle {
+              color: appwindow.color
+        }
         RowLayout{
             id: buttons
             Button {
-              text: "Plot dictionaries"
+                id: plotdict
+                text: qsTr(" Plot Dictionaries")
+
+                contentItem: Text {
+                    text: plotdict.text
+                    font: plotdict.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: plotdict.down ? "grey" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+
+                background: Rectangle { color:"#04060E"; height: 40 }
             }
             Button {
-              text: "Add 2D Space"
+                id: add2d
+                text: qsTr("Add 2D Space")
+
+                contentItem: Text {
+                    text: add2d.text
+                    font: add2d.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: add2d.down ? "grey" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+
+                background: Rectangle { color:"#04060E"; height: 40 }
               property var typeSpace: "2D"
               onClicked: {
                 mySpace.insertSpace(typeSpace)
               }
             }
             Button {
-              text: "Add 3D Space"
+                id: add3d
+                text: qsTr("Add 3D Space")
+
+                contentItem: Text {
+                    text: add3d.text
+                    font: add3d.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: add3d.down ? "grey" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+
+                background: Rectangle { color:"#04060E"; height: 40 }
               property var typeSpace: "3D"
               onClicked: {
                 mySpace.insertSpace(typeSpace)
@@ -77,12 +141,16 @@ ApplicationWindow {
     }
 
     RowLayout{
-        Rectangle { width: 5; color: "#393939" }
+        id: blackscreen
+        Rectangle{ color: appwindow.color; height: appwindow.height; width: 3; radius: 15}
         SpaceViewer {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
             id: mySpace
         }
         KhipuScreen {
-            id: screen
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
     }
 

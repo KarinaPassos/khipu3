@@ -8,6 +8,8 @@ import QtQuick.Controls 1.4
 
 
 Rectangle {
-    color: "#000000"
-    Text{ text: "hi" }
+    color: "black"
+    //height: 500 ; width: 500
+    height: maximumHeight ; width: maximumWidth
+    Text{ text: "hi"; color: "white"; anchors.centerIn: parent }
 }
