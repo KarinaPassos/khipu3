@@ -81,9 +81,8 @@ ApplicationWindow {
         SpaceViewer {
             id: mySpace
         }
-        Text {
-            color: "white"
-            text: "screen"
+        KhipuScreen {
+            id: screen
         }
     }
 

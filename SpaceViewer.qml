@@ -49,10 +49,10 @@ Rectangle {
 
             delegate: Component {
                 Item {
-                    width: 180; height: 45
+                    width: 250; height: 60
                     Column {
                         RowLayout{
-                            Rectangle{ width: 5; height: 45; color: "#393939" }
+                            Rectangle{ width: 5; height: 60; color: "#393939" }
                             spacing: 10
                             Rectangle{ width: 30; height: 30; color: "white" }
                             ColumnLayout{
@@ -68,7 +68,7 @@ Rectangle {
                 }
             }
 
-            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+            highlight: Rectangle { color: "lightsteelblue"; radius: 0 }
             highlightFollowsCurrentItem: true
             focus: true
 
