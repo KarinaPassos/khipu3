@@ -57,7 +57,14 @@ Rectangle {
                     }
                     MouseArea {
                         anchors.fill: parent
-                        onClicked: spacesList.currentIndex = index
+                        onClicked: {
+                            spacesList.currentIndex = index
+                            if (name == "2D Space"){
+                                blackscreen.color="red"
+                            } else if (name == "3D Space"){
+                                blackscreen.color="blue"
+                            }
+                        }
                     }
                 }
             }

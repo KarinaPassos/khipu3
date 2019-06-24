@@ -141,7 +141,6 @@ ApplicationWindow {
     }
 
     RowLayout{
-        id: blackscreen
         Rectangle{ color: appwindow.color; height: appwindow.height; width: 3; radius: 15}
         SpaceViewer {
             Layout.fillWidth: true
@@ -149,6 +148,7 @@ ApplicationWindow {
             id: mySpace
         }
         KhipuScreen {
+            id: blackscreen
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
