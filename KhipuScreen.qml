@@ -13,5 +13,4 @@ Rectangle {
     color: "black"
     //height: 500 ; width: 500
     height: maximumHeight ; width: maximumWidth
-    Text{ text: "hi"; color: "white"; anchors.centerIn: parent }
 }

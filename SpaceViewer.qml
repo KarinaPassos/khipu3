@@ -74,11 +74,11 @@ Rectangle {
             highlightFollowsCurrentItem: true
             focus: true
 
-            add: Transition {
+            /*add: Transition {
                 NumberAnimation {
                     properties: "x,y"
-                    from: 100
-                    duration: 1000
+                    from: 1
+                    duration: 10000
                 }
                 ScriptAction {
                     script: {
@@ -86,7 +86,7 @@ Rectangle {
                         changeBlackscreen(spacesModel.get(spacesList.currentIndex))
                     }
                 }
-            }
+            }*/
 
         }
 
