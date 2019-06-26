@@ -5,13 +5,13 @@ import QtQuick.Layouts 1.12
 import QtQml.Models 2.12
 import QtQuick 2.0
 import QtQuick.Controls 1.4
-
+import QtQuick.Controls.Styles 1.4
 
 Rectangle {
-    id: plotscreen
-    color: "black"
-    //height: 500 ; width: 500
-    height: maximumHeight ; width: maximumWidth
-    Text{ text: "hi"; color: "white"; anchors.centerIn: parent }
-
+    id: menu3d
+    height: parent.height; width: 300; color: grey
+    Button {
+        anchors.centerIn: parent
+        text: "plot a surface"
+    }
 }

@@ -3,5 +3,7 @@
         <file>main.qml</file>
         <file>SpaceViewer.qml</file>
         <file>KhipuScreen.qml</file>
+        <file>2DMenu.qml</file>
+        <file>3DMenu.qml</file>
     </qresource>
 </RCC>
