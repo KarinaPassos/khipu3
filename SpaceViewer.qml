@@ -78,10 +78,8 @@ Rectangle {
                 NumberAnimation { properties: "x,y"; from: 100; duration: 100 }
                 ScriptAction {
                     script: {
-                        if (spacesModel.count == 1) {
-                            spacesList.currentIndex = 0
-                            changeBlackscreen(spacesModel.get(spacesList.currentIndex))
-                        }
+                        spacesList.currentIndex = spacesModel.count - 1
+                        changeBlackscreen(spacesModel.get(spacesList.currentIndex))
                     }
                 }
             }
