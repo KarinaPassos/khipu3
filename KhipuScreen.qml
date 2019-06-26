@@ -9,9 +9,9 @@ import QtQuick.Controls 1.4
 
 Rectangle {
     id: plotscreen
+    signal changeScreen(string menu_type)
     color: "black"
     //height: 500 ; width: 500
     height: maximumHeight ; width: maximumWidth
     Text{ text: "hi"; color: "white"; anchors.centerIn: parent }
-
 }

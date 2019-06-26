@@ -9,9 +9,12 @@ import QtQuick.Controls.Styles 1.4
 
 Rectangle {
     id: menu3d
-    height: parent.height; width: 300; color: grey
+    height: parent.height; width: 300; color: "yellow"
     Button {
-        anchors.centerIn: parent
         text: "plot a surface"
+        width: 200
+        height: 100
+        y: 50
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 }

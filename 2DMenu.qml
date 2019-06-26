@@ -9,9 +9,12 @@ import QtQuick.Controls.Styles 1.4
 
 Rectangle {
     id: menu2d
-    height: parent.height; width: 300; color: grey
+    height: parent.height; width: 300; color: "grey"
     Button {
         text: "plot a curve"
-        anchors.centerIn: parent
+        width: 200
+        height: 100
+        y: 50
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 }

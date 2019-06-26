@@ -15,7 +15,11 @@ Rectangle {
     color: "#0D1A24"
     radius: 15
     function insertSpace(type) {
-          spacesModel.insert(spacesModel.count, {"name": type + " Space", "number": spacesModel.count})
+        spacesModel.insert(spacesModel.count, {"name": type + " Space", "number": spacesModel.count})
+    }
+
+    function changeBlackscreen(item) {
+        blackscreen.changeScreen(item.name)
     }
 
     ListModel {
@@ -59,12 +63,9 @@ Rectangle {
                         anchors.fill: parent
                         onClicked: {
                             spacesList.currentIndex = index
-                            if (name == "2D Space"){
-                                blackscreen.color="red"
-                            } else if (name == "3D Space"){
-                                blackscreen.color="blue"
-                            }
+                            changeBlackscreen(spacesModel.get(spacesList.currentIndex))
                         }
+
                     }
                 }
             }
@@ -75,9 +76,17 @@ Rectangle {
 
             add: Transition {
                 NumberAnimation { properties: "x,y"; from: 100; duration: 100 }
+                ScriptAction {
+                    script: {
+                        if (spacesModel.count == 1) {
+                            spacesList.currentIndex = 0
+                            changeBlackscreen(spacesModel.get(spacesList.currentIndex))
+                        }
+                    }
+                }
             }
-        }
 
+        }
 
         Rectangle{
             color: bg.color

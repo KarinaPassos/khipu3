@@ -33,46 +33,46 @@ ApplicationWindow {
             }
         }
         Menu {
-          title: {qsTr("File")}
+            title: {qsTr("File")}
 
-          Action { text: qsTr("&New") }
-          Action { text: qsTr("&Open...") }
-          Action { text: qsTr("&Open recent") }
-          MenuSeparator { }
-          Action { text: qsTr("&Save") }
-          Action { text: qsTr("&Save as...") }
-          MenuSeparator { }
-          Action { text: qsTr("&Quit") }
+            Action { text: qsTr("&New") }
+            Action { text: qsTr("&Open...") }
+            Action { text: qsTr("&Open recent") }
+            MenuSeparator { }
+            Action { text: qsTr("&Save") }
+            Action { text: qsTr("&Save as...") }
+            MenuSeparator { }
+            Action { text: qsTr("&Quit") }
         }
         Menu {
-          title: qsTr("Settings")
-          Action { text: qsTr("&Show menubar") }
-          Action { text: qsTr("&Show statusbar") }
-          MenuSeparator { }
-          Action { text: qsTr("&Theme") }
-          Action { text: qsTr("&Grid") }
-          MenuSeparator { }
-          Action { text: qsTr("&Configure shortcurts") }
+            title: qsTr("Settings")
+            Action { text: qsTr("&Show menubar") }
+            Action { text: qsTr("&Show statusbar") }
+            MenuSeparator { }
+            Action { text: qsTr("&Theme") }
+            Action { text: qsTr("&Grid") }
+            MenuSeparator { }
+            Action { text: qsTr("&Configure shortcurts") }
         }
         Menu {
-          title: qsTr("Help")
-          Action { text: qsTr("&Khipu Handbook") }
-          Action { text: qsTr("&What's this?") }
-          MenuSeparator { }
-          Action { text: qsTr("&Report bug") }
-          MenuSeparator { }
-          Action { text: qsTr("&Donate") }
-          MenuSeparator { }
-          Action { text: qsTr("&Switch application language") }
-          MenuSeparator { }
-          Action { text: qsTr("&About Khipu") }
-          Action { text: qsTr("&About KDE") }
+            title: qsTr("Help")
+            Action { text: qsTr("&Khipu Handbook") }
+            Action { text: qsTr("&What's this?") }
+            MenuSeparator { }
+            Action { text: qsTr("&Report bug") }
+            MenuSeparator { }
+            Action { text: qsTr("&Donate") }
+            MenuSeparator { }
+            Action { text: qsTr("&Switch application language") }
+            MenuSeparator { }
+            Action { text: qsTr("&About Khipu") }
+            Action { text: qsTr("&About KDE") }
         }
     }
     header: ToolBar {
         height: 40
         background: Rectangle {
-              color: appwindow.color
+            color: appwindow.color
         }
         RowLayout{
             id: buttons
@@ -107,10 +107,10 @@ ApplicationWindow {
                 }
 
                 background: Rectangle { color:"#04060E"; height: 40 }
-              property var typeSpace: "2D"
-              onClicked: {
-                mySpace.insertSpace(typeSpace)
-              }
+                property var typeSpace: "2D"
+                onClicked: {
+                    mySpace.insertSpace(typeSpace)
+                }
             }
             Button {
                 id: add3d
@@ -127,16 +127,16 @@ ApplicationWindow {
                 }
 
                 background: Rectangle { color:"#04060E"; height: 40 }
-              property var typeSpace: "3D"
-              onClicked: {
-                mySpace.insertSpace(typeSpace)
-              }
+                property var typeSpace: "3D"
+                onClicked: {
+                    mySpace.insertSpace(typeSpace)
+                }
             }
         }
     }
     footer: TabBar {
         Text {
-           // ...
+            // ...
         }
     }
 
@@ -149,8 +149,26 @@ ApplicationWindow {
         }
         KhipuScreen {
             id: blackscreen
+
+            property var blackscreen_rect
+
             Layout.fillWidth: true
             Layout.fillHeight: true
+            onChangeScreen: {
+                if (blackscreen_rect)
+                    blackscreen_rect.destroy()
+
+                var component
+                if (menu_type == "2D Space")
+                    component = Qt.createComponent("2DMenu.qml")
+                else if (menu_type == "3D Space")
+                    component = Qt.createComponent("3DMenu.qml")
+
+                if (component.status == Component.Ready) {
+                    var new_rect = component.createObject(blackscreen)
+                    blackscreen_rect = new_rect
+                }
+            }
         }
     }
 
