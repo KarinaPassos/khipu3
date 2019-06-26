@@ -75,7 +75,11 @@ Rectangle {
             focus: true
 
             add: Transition {
-                NumberAnimation { properties: "x,y"; from: 100; duration: 100 }
+                NumberAnimation {
+                    properties: "x,y"
+                    from: 100
+                    duration: 1000
+                }
                 ScriptAction {
                     script: {
                         spacesList.currentIndex = spacesModel.count - 1
