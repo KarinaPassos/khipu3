@@ -13,8 +13,10 @@ import QtQuick.Controls 2.1
 Rectangle {
     id: menu2d
     height: parent.height; width: 350; color: "#393939"
-    radius:5
+    radius: 5
+
     ColumnLayout{
+        id: menu2dOptions
         anchors.horizontalCenter: parent.horizontalCenter
         Rectangle{color: menu2d.color; height: 10; width: 30; radius: 15}
         Rectangle {
@@ -80,6 +82,7 @@ Rectangle {
                     elide: Text.ElideRight
                 }
             }
+
             Rectangle{color:menu2d.color; height:100; width:1}
             Button {
                 id: hideshow
@@ -92,6 +95,34 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                     elide: Text.ElideRight
                 }
+
+                NumberAnimation {
+                    id: showAnimation
+                    target: menu2d
+                    property: "width"
+                    duration: 200
+                    from: 50
+                    to: 350
+                    easing.type: Easing.InOutQuad
+                }
+
+                NumberAnimation {
+                    id: hideAnimation
+                    target: menu2d
+                    property: "width"
+                    duration: 200
+                    from: 350
+                    to: 50
+                    easing.type: Easing.InOutQuad
+                }
+
+                onClicked:
+                    if (menu2d.width==50){
+                        showAnimation.start()
+                    }
+                    else if (menu2d.width=350){
+                        hideAnimation.start()
+                    }
             }
 
         }
