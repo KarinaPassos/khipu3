@@ -13,11 +13,13 @@ import QtQuick.Controls 2.1
 Rectangle {
     id: menu3d
     height: parent.height; width: 350; color: "#393939"
-    radius:5
+    radius: 5
+
     ColumnLayout{
         id: menu3dOptions
+        spacing: 30
         anchors.horizontalCenter: parent.horizontalCenter
-        Rectangle{color: menu3d.color; height: 10; width: 30; radius: 15}
+        Rectangle{color: menu3d.color; height: 30; width: 30; radius: 15}
         Rectangle {
             height: 350; width: 305; color: "black"; radius: 3
             Text {
@@ -25,8 +27,6 @@ Rectangle {
                 color: "white"
             }
         }
-
-        spacing: 30
 
         ColumnLayout{
             Text{ color: "white"; text: "\nBuild a cartesian surface" }
@@ -95,47 +95,76 @@ Rectangle {
                 }
             }
             Rectangle{color:menu3d.color; height:100; width:1}
-            Button {
-                id: hideshow
-                text: "Hide/Show menu"
-                contentItem: Text {
-                    text: hideshow.text
-                    font: hideshow.font
-                    color: "#000000"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-                }
 
-                NumberAnimation {
-                    id: showAnimation
-                    target: menu3d
-                    property: "width"
-                    duration: 200
-                    from: 50
-                    to: 350
-                    easing.type: Easing.InOutQuad
-                }
-
-                NumberAnimation {
-                    id: hideAnimation
-                    target: menu3d
-                    property: "width"
-                    duration: 200
-                    from: 350
-                    to: 50
-                    easing.type: Easing.InOutQuad
-                }
-
-                onClicked:
-                    if (menu3d.width==50){
-                        showAnimation.start()
-                    }
-                    else if (menu3d.width=350){
-                        hideAnimation.start()
-                    }
-            }
 
         }
+    }
+    Button {
+        id: hideshow3d
+        text: "≡"
+        x: 305
+        y: 15
+        background: Rectangle {color: "grey"; width: 30; height: 30}
+        contentItem: Text {
+            text: hideshow3d.text
+            font: hideshow3d.font
+            color: "#000000"
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
+        }
+
+        NumberAnimation {
+            id: show3dAnimation
+            target: menu3d
+            property: "width"
+            duration: 200
+            from: 60
+            to: 350
+            easing.type: Easing.InOutQuad
+        }
+
+        NumberAnimation {
+            id: hide3dAnimation
+            target: menu3d
+            property: "width"
+            duration: 200
+            from: 350
+            to: 60
+            easing.type: Easing.InOutQuad
+        }
+
+        NumberAnimation {
+            id: button3dShowAnimation
+            target: hideshow3d
+            property: "x"
+            duration: 200
+            from: 15
+            to: 305
+            easing.type: Easing.InOutQuad
+        }
+
+        NumberAnimation {
+            id: button3dHideAnimation
+            target: hideshow3d
+            property: "x"
+            duration: 200
+            from: 305
+            to: 15
+            easing.type: Easing.InOutQuad
+        }
+
+
+        onClicked:
+            if (menu3d.width==60){
+                button3dShowAnimation.start()
+                show3dAnimation.start()
+                menu3dOptions.visible = true
+            }
+            else if (menu3d.width==350){
+                button3dHideAnimation.start()
+                hide3dAnimation.start()
+                menu3dOptions.visible = false
+            }
     }
 }

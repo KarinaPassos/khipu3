@@ -17,8 +17,9 @@ Rectangle {
 
     ColumnLayout{
         id: menu2dOptions
+        spacing: 30
         anchors.horizontalCenter: parent.horizontalCenter
-        Rectangle{color: menu2d.color; height: 10; width: 30; radius: 15}
+        Rectangle{color: menu2d.color; height: 30; width: 30; radius: 15}
         Rectangle {
             height: 350; width: 305; color: "black"; radius: 3
             Text {
@@ -26,8 +27,6 @@ Rectangle {
                 color: "white"
             }
         }
-
-        spacing: 50
 
         ColumnLayout{
             Text{ color: "white"; text: "\nBuild a cartesian curve" }
@@ -84,47 +83,74 @@ Rectangle {
             }
 
             Rectangle{color:menu2d.color; height:100; width:1}
-            Button {
-                id: hideshow
-                text: "Hide/Show menu"
-                contentItem: Text {
-                    text: hideshow.text
-                    font: hideshow.font
-                    color: "#000000"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-                }
-
-                NumberAnimation {
-                    id: showAnimation
-                    target: menu2d
-                    property: "width"
-                    duration: 200
-                    from: 50
-                    to: 350
-                    easing.type: Easing.InOutQuad
-                }
-
-                NumberAnimation {
-                    id: hideAnimation
-                    target: menu2d
-                    property: "width"
-                    duration: 200
-                    from: 350
-                    to: 50
-                    easing.type: Easing.InOutQuad
-                }
-
-                onClicked:
-                    if (menu2d.width==50){
-                        showAnimation.start()
-                    }
-                    else if (menu2d.width=350){
-                        hideAnimation.start()
-                    }
-            }
-
         }
+    }
+    Button {
+        id: hideshow2d
+        text: "≡"
+        x: 305
+        y: 15
+        background: Rectangle {color: "grey"; width: 30; height: 30}
+        contentItem: Text {
+            text: hideshow2d.text
+            font: hideshow2d.font
+            color: "#000000"
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
+        }
+
+        NumberAnimation {
+            id: show2dAnimation
+            target: menu2d
+            property: "width"
+            duration: 200
+            from: 60
+            to: 350
+            easing.type: Easing.InOutQuad
+        }
+
+        NumberAnimation {
+            id: hide2dAnimation
+            target: menu2d
+            property: "width"
+            duration: 200
+            from: 350
+            to: 60
+            easing.type: Easing.InOutQuad
+        }
+
+        NumberAnimation {
+            id: button2dShowAnimation
+            target: hideshow2d
+            property: "x"
+            duration: 200
+            from: 15
+            to: 305
+            easing.type: Easing.InOutQuad
+        }
+
+        NumberAnimation {
+            id: button2dHideAnimation
+            target: hideshow2d
+            property: "x"
+            duration: 200
+            from: 305
+            to: 15
+            easing.type: Easing.InOutQuad
+        }
+
+
+        onClicked:
+            if (menu2d.width==60){
+                button2dShowAnimation.start()
+                show2dAnimation.start()
+                menu2dOptions.visible = true
+            }
+            else if (menu2d.width==350){
+                button2dHideAnimation.start()
+                hide2dAnimation.start()
+                menu2dOptions.visible = false
+            }
     }
 }
