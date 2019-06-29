@@ -54,7 +54,7 @@ Rectangle {
                             Rectangle{ width: 5; height: 60; color: bg.color}
                             Rectangle{ width: 40; height: 40; color: "white"; radius: 50}
                             ColumnLayout{
-                                Text { color: "white"; text: '<b>Name:</b> ' + name }
+                                Text { color: "white"; text: '<b>Type:</b> ' + name }
                                 Text { color: "white"; text: '<b>Number:</b> ' + number }
                             }
                         }
@@ -95,13 +95,6 @@ Rectangle {
             width: bg.width; height: 50
             RowLayout{
                 anchors.centerIn: parent
-                Button {
-                    Text{
-                        text: "Rename"
-                        color: "#000000"
-                        anchors.centerIn: parent
-                    }
-                }
                 Button {
                     Text{
                         text: "Remove"
