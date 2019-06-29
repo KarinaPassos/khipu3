@@ -101,6 +101,7 @@ Rectangle {
                         color: "#000000"
                         anchors.centerIn: parent
                     }
+                    onClicked: spacesModel.remove(spacesModel.get(spacesList.currentIndex))
                 }
             }
         }
