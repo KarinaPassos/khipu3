@@ -1,10 +1,6 @@
 import QtQuick 2.12
-import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import QtQml.Models 2.12
-import QtQuick 2.0
-
 
 ApplicationWindow {
     id: appwindow
@@ -12,7 +8,9 @@ ApplicationWindow {
     visible: true
     visibility: "Maximized"
     menuBar: MenuBar {
-        background: Rectangle{ color: appwindow.color }
+        background: Rectangle {
+            color: appwindow.color
+        }
         delegate: MenuBarItem {
             id: menuBarItem
             contentItem: Text {
@@ -33,40 +31,86 @@ ApplicationWindow {
             }
         }
         Menu {
-            title: {qsTr("File")}
+            title: {
+                qsTr("File")
+            }
 
-            Action { text: qsTr("&New") }
-            Action { text: qsTr("&Open...") }
-            Action { text: qsTr("&Open recent") }
-            MenuSeparator { }
-            Action { text: qsTr("&Save") }
-            Action { text: qsTr("&Save as...") }
-            MenuSeparator { }
-            Action { text: qsTr("&Quit") }
+            Action {
+                text: qsTr("&New")
+            }
+            Action {
+                text: qsTr("&Open...")
+            }
+            Action {
+                text: qsTr("&Open recent")
+            }
+            MenuSeparator {
+            }
+            Action {
+                text: qsTr("&Save")
+            }
+            Action {
+                text: qsTr("&Save as...")
+            }
+            MenuSeparator {
+            }
+            Action {
+                text: qsTr("&Quit")
+            }
         }
         Menu {
             title: qsTr("Settings")
-            Action { text: qsTr("&Show menubar") }
-            Action { text: qsTr("&Show statusbar") }
-            MenuSeparator { }
-            Action { text: qsTr("&Theme") }
-            Action { text: qsTr("&Grid") }
-            MenuSeparator { }
-            Action { text: qsTr("&Configure shortcurts") }
+            Action {
+                text: qsTr("&Show menubar")
+            }
+            Action {
+                text: qsTr("&Show statusbar")
+            }
+            MenuSeparator {
+            }
+            Action {
+                text: qsTr("&Theme")
+            }
+            Action {
+                text: qsTr("&Grid")
+            }
+            MenuSeparator {
+            }
+            Action {
+                text: qsTr("&Configure shortcurts")
+            }
         }
         Menu {
             title: qsTr("Help")
-            Action { text: qsTr("&Khipu Handbook") }
-            Action { text: qsTr("&What's this?") }
-            MenuSeparator { }
-            Action { text: qsTr("&Report bug") }
-            MenuSeparator { }
-            Action { text: qsTr("&Donate") }
-            MenuSeparator { }
-            Action { text: qsTr("&Switch application language") }
-            MenuSeparator { }
-            Action { text: qsTr("&About Khipu") }
-            Action { text: qsTr("&About KDE") }
+            Action {
+                text: qsTr("&Khipu Handbook")
+            }
+            Action {
+                text: qsTr("&What's this?")
+            }
+            MenuSeparator {
+            }
+            Action {
+                text: qsTr("&Report bug")
+            }
+            MenuSeparator {
+            }
+            Action {
+                text: qsTr("&Donate")
+            }
+            MenuSeparator {
+            }
+            Action {
+                text: qsTr("&Switch application language")
+            }
+            MenuSeparator {
+            }
+            Action {
+                text: qsTr("&About Khipu")
+            }
+            Action {
+                text: qsTr("&About KDE")
+            }
         }
     }
     header: ToolBar {
@@ -74,7 +118,7 @@ ApplicationWindow {
         background: Rectangle {
             color: appwindow.color
         }
-        RowLayout{
+        RowLayout {
             id: buttons
             Button {
                 id: plotdict
@@ -90,7 +134,10 @@ ApplicationWindow {
                     elide: Text.ElideRight
                 }
 
-                background: Rectangle { color:"#04060E"; height: 40 }
+                background: Rectangle {
+                    color: "#04060E"
+                    height: 40
+                }
             }
             Button {
                 id: add2d
@@ -106,8 +153,11 @@ ApplicationWindow {
                     elide: Text.ElideRight
                 }
 
-                background: Rectangle { color:"#04060E"; height: 40 }
-                property var typeSpace: "2D"
+                background: Rectangle {
+                    color: "#04060E"
+                    height: 40
+                }
+                property string typeSpace: "2D"
                 onClicked: {
                     mySpace.insertSpace(typeSpace)
                 }
@@ -126,8 +176,11 @@ ApplicationWindow {
                     elide: Text.ElideRight
                 }
 
-                background: Rectangle { color:"#04060E"; height: 40 }
-                property var typeSpace: "3D"
+                background: Rectangle {
+                    color: "#04060E"
+                    height: 40
+                }
+                property string typeSpace: "3D"
                 onClicked: {
                     mySpace.insertSpace(typeSpace)
                 }
@@ -140,9 +193,14 @@ ApplicationWindow {
         }
     }
 
-    RowLayout{
-        Rectangle{ color: appwindow.color; height: appwindow.height; width: 3; radius: 15}
-        SpaceViewer {
+    RowLayout {
+        Rectangle {
+            color: appwindow.color
+            height: appwindow.height
+            width: 3
+            radius: 15
+        }
+        KhipuSpaceViewer {
             Layout.fillWidth: true
             Layout.fillHeight: true
             id: mySpace
@@ -160,16 +218,22 @@ ApplicationWindow {
 
                 var component
                 if (menu_type == "2D Space")
-                    component = Qt.createComponent("2DMenu.qml")
+                    component = Qt.createComponent("Khipu2DMenu.qml")
                 else if (menu_type == "3D Space")
-                    component = Qt.createComponent("3DMenu.qml")
+                    component = Qt.createComponent("Khipu3DMenu.qml")
 
-                if (component.status == Component.Ready) {
-                    var new_rect = component.createObject(blackscreen)
-                    blackscreen_rect = new_rect
+                function finishMenuCreation() {
+                    if (component.status === Component.Ready) {
+                        var new_rect = component.createObject(blackscreen)
+                        blackscreen_rect = new_rect
+                    }
                 }
+
+                if (component.status === Component.Ready)
+                    finishMenuCreation()
+                else
+                    component.statusChanged.connect(finishMenuCreation)
             }
         }
     }
-
 }

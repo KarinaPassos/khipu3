@@ -1,9 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>SpaceViewer.qml</file>
+        <file>KhipuSpaceViewer.qml</file>
         <file>KhipuScreen.qml</file>
-        <file>2DMenu.qml</file>
-        <file>3DMenu.qml</file>
+        <file>KhipuMenu.qml</file>
+        <file>KhipuMenuOptions.qml</file>
+        <file>Khipu2DMenu.qml</file>
+        <file>Khipu3DMenu.qml</file>
     </qresource>
 </RCC>
