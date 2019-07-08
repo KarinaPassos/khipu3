@@ -1,18 +1,20 @@
 #include "khipuspace.h"
 
-KhipuSpace::KhipuSpace()
+KhipuSpace::KhipuSpace(QString name, QString type, int index) :
+    m_id(index),
+    m_name(name),
+    m_type(type)
 {
-
 }
 
-int KhipuSpace::Id() const
+int KhipuSpace::id() const
 {
-    return m_Id;
+    return m_id;
 }
 
-void KhipuSpace::setId(int Id)
+void KhipuSpace::setId(int id)
 {
-    m_Id = Id;
+    m_id = id;
 }
 
 QString KhipuSpace::name() const

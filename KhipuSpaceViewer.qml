@@ -11,7 +11,7 @@ Rectangle {
 
     function insertSpace(type) {
         spacesModel.insert(spacesModel.count, {
-                               name: type + " Space",
+                               name: "Name: " + name + "\nType:" + type + " id:" + id,
                                number: spacesModel.count
                            })
     }
@@ -50,7 +50,7 @@ Rectangle {
             id: spacesList
             width: 300
             height: 600
-            model: spacesModel
+            model: spaceModel2
 
             delegate: Component {
                 Item {
@@ -73,11 +73,18 @@ Rectangle {
                             ColumnLayout {
                                 Text {
                                     color: "white"
-                                    text: '<b>Type:</b> ' + name
+                                    text: '<b>Name:</b> ' + name
                                 }
-                                Text {
-                                    color: "white"
-                                    text: '<b>Number:</b> ' + number
+                                RowLayout{
+                                    spacing: 10
+                                    Text {
+                                        color: "white"
+                                        text: '<b>Type:</b> ' + type
+                                    }
+                                    Text {
+                                        color: "white"
+                                        text: '  <b>ID:</b> ' + id
+                                    }
                                 }
                             }
                         }

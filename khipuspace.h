@@ -6,9 +6,9 @@
 class KhipuSpace
 {
 public:
-    KhipuSpace();
+    KhipuSpace(QString name, QString type, int index);
 
-    int Id() const;
+    int id() const;
     void setId(int Id);
 
     QString name() const;
@@ -18,7 +18,7 @@ public:
     void setType(const QString &type);
 
 private:
-    int m_Id;
+    int m_id;
     QString m_name;
     QString m_type;
 };
