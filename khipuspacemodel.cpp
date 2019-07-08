@@ -1,4 +1,5 @@
 #include "khipuspacemodel.h"
+#include <QDebug>
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -6,14 +7,26 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
 
 }
 
-QModelIndex KhipuSpaceModel::addSpace(const KhipuSpace &space)
+void KhipuSpaceModel::addSpace(QString name, QString type, int index)
 {
-    m_spaceList.append(space);
+    beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size());
+    m_spaceList.append(KhipuSpace(name,type,index));
+    endInsertRows();
+}
+
+bool KhipuSpaceModel::removeSpace(int row)
+{
+    if (isIndexValid(row)){
+        beginRemoveRows(QModelIndex(), m_spaceList.size(), m_spaceList.size());
+        m_spaceList.removeAt(row);
+        endRemoveRows();
+        return true;
+    } else { return false; }
 }
 
 void KhipuSpaceModel::rename(int row, const QString &name)
 {
-    if (isIndexValid(index(row)))
+    if (isIndexValid(row))
         m_spaceList[row].name() = name;
 }
 
@@ -34,16 +47,6 @@ QVariant KhipuSpaceModel::data(const QModelIndex &index, int role) const
     }
 }
 
-bool KhipuSpaceModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    return false;
-}
-
-bool KhipuSpaceModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-    return false;
-}
-
 QHash<int, QByteArray> KhipuSpaceModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
@@ -53,9 +56,9 @@ QHash<int, QByteArray> KhipuSpaceModel::roleNames() const
     return roles;
 }
 
-bool KhipuSpaceModel::isIndexValid(const QModelIndex &index) const
+bool KhipuSpaceModel::isIndexValid(int id) const
 {
-    if (index.row() >= 0 && index.row() < m_spaceList.size())
+    if (id >= 0 && id < m_spaceList.size())
         return true;
     else
         return false;

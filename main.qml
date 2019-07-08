@@ -217,9 +217,9 @@ ApplicationWindow {
                     blackscreen_rect.destroy()
 
                 var component
-                if (menu_type == "2D Space")
+                if (menu_type == "2D")
                     component = Qt.createComponent("Khipu2DMenu.qml")
-                else if (menu_type == "3D Space")
+                else if (menu_type == "3D")
                     component = Qt.createComponent("Khipu3DMenu.qml")
 
                 function finishMenuCreation() {

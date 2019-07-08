@@ -10,13 +10,13 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     KhipuSpaceModel model;
-    model.addSpace(KhipuSpace("space 1", "2D", 0));
-    model.addSpace(KhipuSpace("space 2", "2D", 1));
-    model.addSpace(KhipuSpace("space 3", "3D", 2));
-    model.addSpace(KhipuSpace("robson", "2D", 3));
+    model.addSpace("space 1", "2D", 0);
+    model.addSpace("space 2", "2D", 1);
+    model.addSpace("space 3", "3D", 2);
+    model.addSpace("parabolitas", "2D", 3);
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("spaceModel2", &model);
+    engine.rootContext()->setContextProperty("khipuModel", &model);
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

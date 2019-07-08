@@ -10,18 +10,11 @@ Rectangle {
     radius: 15
 
     function insertSpace(type) {
-        spacesModel.insert(spacesModel.count, {
-                               name: "Name: " + name + "\nType:" + type + " id:" + id,
-                               number: spacesModel.count
-                           })
+        khipuModel.addSpace(type + " space",type,khipuModel.rowCount())
     }
 
     function changeBlackscreen(item) {
         blackscreen.changeScreen(item.name)
-    }
-
-    ListModel {
-        id: spacesModel
     }
 
     ColumnLayout {
@@ -50,7 +43,7 @@ Rectangle {
             id: spacesList
             width: 300
             height: 600
-            model: spaceModel2
+            model: khipuModel
 
             delegate: Component {
                 Item {
@@ -93,8 +86,7 @@ Rectangle {
                         anchors.fill: parent
                         onClicked: {
                             spacesList.currentIndex = index
-                            changeBlackscreen(spacesModel.get(
-                                                  spacesList.currentIndex))
+                            changeBlackscreen(spacesList.currentIndex)
                         }
                     }
                 }
@@ -105,20 +97,6 @@ Rectangle {
             }
             highlightFollowsCurrentItem: true
             focus: true
-
-            /*add: Transition {
-                NumberAnimation {
-                    properties: "x,y"
-                    from: 1
-                    duration: 10000
-                }
-                ScriptAction {
-                    script: {
-                        spacesList.currentIndex = spacesModel.count - 1
-                        changeBlackscreen(spacesModel.get(spacesList.currentIndex))
-                    }
-                }
-            }*/
         }
 
         Rectangle {
@@ -129,12 +107,18 @@ Rectangle {
                 anchors.centerIn: parent
                 Button {
                     Text {
+                        text: "Rename"
+                        color: "#000000"
+                        anchors.centerIn: parent
+                    }
+                }
+                Button {
+                    Text {
                         text: "Remove"
                         color: "#000000"
                         anchors.centerIn: parent
                     }
-                    onClicked: spacesModel.remove(spacesModel.get(
-                                                      spacesList.currentIndex))
+                    onClicked: khipuModel.removeSpace(spacesList.currentIndex)
                 }
             }
         }
