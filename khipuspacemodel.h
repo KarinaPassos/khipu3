@@ -19,7 +19,7 @@ public:
 
     KhipuSpaceModel(QObject *parent = nullptr);
 
-    Q_INVOKABLE void addSpace(QString name, QString type, int index);
+    Q_INVOKABLE void addSpace(QString name, QString type);
     Q_INVOKABLE bool removeSpace(int row);
     Q_INVOKABLE void rename(int row, const QString& name);
 
@@ -29,7 +29,7 @@ public:
 
 private:
     bool isIndexValid(int id) const;
-
+    int getAvailableIndex();
     QList<KhipuSpace> m_spaceList;
 };
 

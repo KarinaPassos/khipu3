@@ -10,7 +10,7 @@ Rectangle {
     radius: 15
 
     function insertSpace(type) {
-        khipuModel.addSpace(type + " space",type,khipuModel.rowCount())
+        khipuModel.addSpace(type + " space",type)
     }
 
     function changeBlackscreen(item) {

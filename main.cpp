@@ -10,10 +10,6 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     KhipuSpaceModel model;
-    model.addSpace("space 1", "2D", 0);
-    model.addSpace("space 2", "2D", 1);
-    model.addSpace("space 3", "3D", 2);
-    model.addSpace("parabolitas", "2D", 3);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("khipuModel", &model);
