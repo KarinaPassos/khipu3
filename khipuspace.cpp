@@ -36,3 +36,23 @@ void KhipuSpace::setType(const QString &type)
 {
     m_type = type;
 }
+
+QVector<QString> KhipuSpace::elements() const
+{
+    return m_elements;
+}
+
+void KhipuSpace::addElement(QString expression)
+{
+    m_elements.append(expression);
+}
+
+void KhipuSpace::editElement(QString expression, int index)
+{
+    m_elements[index] = expression;
+}
+
+void KhipuSpace::removeElement(int index)
+{
+    m_elements.removeAt(index);
+}
