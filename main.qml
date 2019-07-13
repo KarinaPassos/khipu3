@@ -198,7 +198,7 @@ ApplicationWindow {
             color: appwindow.color
             height: appwindow.height
             width: 3
-            radius: 15
+            radius: 15 // nao usa isso pra fazer rounded rects. gasta bastante processamento.
         }
         KhipuSpaceViewer {
             Layout.fillWidth: true
@@ -229,6 +229,7 @@ ApplicationWindow {
                     }
                 }
 
+                console.log(component)
                 if (component.status === Component.Ready)
                     finishMenuCreation()
                 else

@@ -14,6 +14,18 @@ Rectangle {
     }
 
     function changeBlackscreen(item) {
+        // Nao chame as coisas assim, fica *muito* dificil de descobrir onde elas estao.
+        // voce pode conectar elas no main.cpp, esse daqui pode emitir um sinal e voce pode conectar
+        // o sinal no KhipuScreen.
+        /* imagina +- isso aqui no main.cpp
+
+        KhipuScreen {
+           id: blackscreen
+           activeScreen : spaceViewer.selectedScreen
+        }
+
+        Muito mais facil de ler e entender o que ta acontecendo.
+        */
         blackscreen.changeScreen(item.name)
     }
 

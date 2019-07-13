@@ -10,7 +10,7 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
 void KhipuSpaceModel::addSpace(QString name, QString type)
 {
     beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size());
-    m_spaceList.append(KhipuSpace(name,type,getAvailableIndex()));
+    m_spaceList.append(KhipuSpace(name, type, getAvailableIndex()));
     endInsertRows();
 }
 
@@ -21,17 +21,20 @@ bool KhipuSpaceModel::removeSpace(int row)
         m_spaceList.removeAt(row);
         endRemoveRows();
         return true;
-    } else { return false; }
+    }
+    return false;
 }
 
 void KhipuSpaceModel::rename(int row, const QString &name)
 {
-    if (isIndexValid(row))
-        m_spaceList[row].name() = name;
+    if (isIndexValid(row)) {
+        m_spaceList[row].setName(name);
+    }
 }
 
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return m_spaceList.size();
 }
 
@@ -45,23 +48,21 @@ QVariant KhipuSpaceModel::data(const QModelIndex &index, int role) const
         case Roles::TypeRole:
             return m_spaceList[index.row()].type();
     }
+    return {};
 }
 
 QHash<int, QByteArray> KhipuSpaceModel::roleNames() const
 {
-    QHash<int, QByteArray> roles;
-    roles[Roles::IdRole] = "id";
-    roles[Roles::NameRole] = "name";
-    roles[Roles::TypeRole] = "type";
-    return roles;
+    return {
+        {Roles::IdRole, "id"},
+        {Roles::NameRole, "name"},
+        {Roles::TypeRole, "type"}
+    };
 }
 
 bool KhipuSpaceModel::isIndexValid(int id) const
 {
-    if (id >= 0 && id < m_spaceList.size())
-        return true;
-    else
-        return false;
+    return (id >= 0 && id < m_spaceList.size());
 }
 
 int KhipuSpaceModel::getAvailableIndex()
