@@ -1,6 +1,7 @@
-import QtQuick 2.12
+
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtQuick 2.13
 
 ApplicationWindow {
     id: appwindow
@@ -201,25 +202,24 @@ ApplicationWindow {
             radius: 15 // nao usa isso pra fazer rounded rects. gasta bastante processamento.
         }
         KhipuSpaceViewer {
+            id: mySpace
             Layout.fillWidth: true
             Layout.fillHeight: true
-            id: mySpace
         }
         KhipuScreen {
             id: blackscreen
-
-            property var blackscreen_rect
-
             Layout.fillWidth: true
             Layout.fillHeight: true
+
+            property var blackscreen_rect
             onChangeScreen: {
                 if (blackscreen_rect)
                     blackscreen_rect.destroy()
 
                 var component
-                if (menu_type == "2D")
+                if (khipuModel.getType(mySpace.currentIndex) === "2D")
                     component = Qt.createComponent("Khipu2DMenu.qml")
-                else if (menu_type == "3D")
+                else if (khipuModel.getType(mySpace.currentIndex) === "3D")
                     component = Qt.createComponent("Khipu3DMenu.qml")
 
                 function finishMenuCreation() {
@@ -234,7 +234,9 @@ ApplicationWindow {
                     finishMenuCreation()
                 else
                     component.statusChanged.connect(finishMenuCreation)
+
             }
+
         }
     }
 }

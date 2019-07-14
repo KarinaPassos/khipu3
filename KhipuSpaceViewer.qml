@@ -8,25 +8,13 @@ Rectangle {
     height: parent.height
     color: "#0D1A24"
     radius: 15
+    property var currentIndex: spacesList.currentIndex
 
     function insertSpace(type) {
         khipuModel.addSpace(type + " space",type)
-    }
-
-    function changeBlackscreen(item) {
-        // Nao chame as coisas assim, fica *muito* dificil de descobrir onde elas estao.
-        // voce pode conectar elas no main.cpp, esse daqui pode emitir um sinal e voce pode conectar
-        // o sinal no KhipuScreen.
-        /* imagina +- isso aqui no main.cpp
-
-        KhipuScreen {
-           id: blackscreen
-           activeScreen : spaceViewer.selectedScreen
+        if (currentIndex == 0){
+            blackscreen.changeScreen()
         }
-
-        Muito mais facil de ler e entender o que ta acontecendo.
-        */
-        blackscreen.changeScreen(item.name)
     }
 
     ColumnLayout {
@@ -56,6 +44,7 @@ Rectangle {
             width: 300
             height: 600
             model: khipuModel
+            currentIndex: 0
 
             delegate: Component {
                 Item {
@@ -98,7 +87,7 @@ Rectangle {
                         anchors.fill: parent
                         onClicked: {
                             spacesList.currentIndex = index
-                            changeBlackscreen(spacesList.currentIndex)
+                            blackscreen.changeScreen()
                         }
                     }
                 }
@@ -130,7 +119,11 @@ Rectangle {
                         color: "#000000"
                         anchors.centerIn: parent
                     }
-                    onClicked: khipuModel.removeSpace(spacesList.currentIndex)
+                    onClicked: {
+                        khipuModel.removeSpace(spacesList.currentIndex)
+                        currentIndex=currentIndex-1
+                        //blackscreen.changeScreen()
+                    }
                 }
             }
         }

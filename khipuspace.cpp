@@ -12,11 +12,6 @@ int KhipuSpace::id() const
     return m_id;
 }
 
-void KhipuSpace::setId(int id)
-{
-    m_id = id;
-}
-
 QString KhipuSpace::name() const
 {
     return m_name;
@@ -30,11 +25,6 @@ void KhipuSpace::setName(const QString &name)
 QString KhipuSpace::type() const
 {
     return m_type;
-}
-
-void KhipuSpace::setType(const QString &type)
-{
-    m_type = type;
 }
 
 QVector<QString> KhipuSpace::elements() const

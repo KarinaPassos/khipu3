@@ -6,7 +6,6 @@ Rectangle {
     height: parent.height
     width: 350
     color: "#393939"
-    radius: 5
 
     Button {
         id: hideshow

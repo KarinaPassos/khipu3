@@ -32,6 +32,11 @@ void KhipuSpaceModel::rename(int row, const QString &name)
     }
 }
 
+QString KhipuSpaceModel::getType(int row)
+{
+    return m_spaceList[row].type();
+}
+
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
