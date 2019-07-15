@@ -27,7 +27,7 @@ QString KhipuSpace::type() const
     return m_type;
 }
 
-QVector<QString> KhipuSpace::elements() const
+/*QVector<QString> KhipuSpace::elements() const
 {
     return m_elements;
 }
@@ -45,4 +45,4 @@ void KhipuSpace::editElement(QString expression, int index)
 void KhipuSpace::removeElement(int index)
 {
     m_elements.removeAt(index);
-}
+}*/

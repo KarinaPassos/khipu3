@@ -15,16 +15,16 @@ public:
 
     QString type() const;
 
-    QVector<QString> elements() const;
+    /*QVector<QString> elements() const;
     void addElement(QString expression);
     void editElement(QString expression, int index);
-    void removeElement(int index);
+    void removeElement(int index);*/
 
 private:
     int m_id;
     QString m_name;
     QString m_type;
-    QVector<QString> m_elements;
+    //QVector<QString> m_elements;
 };
 
 #endif // KHIPUSPACE_H

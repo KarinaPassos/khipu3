@@ -1,6 +1,5 @@
 #ifndef KHIPUSPACEMODEL_H
 #define KHIPUSPACEMODEL_H
-
 #include <QAbstractListModel>
 #include <QHash>
 #include <khipuspace.h>

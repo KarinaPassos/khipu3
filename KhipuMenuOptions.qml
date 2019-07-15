@@ -17,10 +17,5 @@ ColumnLayout {
         width: 305
         color: "black"
         radius: 3
-
-        Text {
-            text: qsTr(" Current plots")
-            color: "white"
-        }
     }
 }

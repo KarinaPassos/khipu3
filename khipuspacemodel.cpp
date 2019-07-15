@@ -1,5 +1,4 @@
 #include "khipuspacemodel.h"
-#include <QDebug>
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     QAbstractListModel(parent)
