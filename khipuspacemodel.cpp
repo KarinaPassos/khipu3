@@ -36,6 +36,11 @@ QString KhipuSpaceModel::getType(int row)
     return m_spaceList[row].type();
 }
 
+KhipuSpace KhipuSpaceModel::spaceAt(int row)
+{
+    return m_spaceList.at(row);
+}
+
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)

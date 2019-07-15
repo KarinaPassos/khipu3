@@ -49,3 +49,8 @@ QHash<int, QByteArray> KhipuPlotModel::roleNames() const
         {PlotRoles::IdRole, "id"}
     };
 }
+
+void KhipuPlotModel::setPlotList(const KhipuSpace &currentSpace)
+{
+    m_plotList = currentSpace.elements();
+}

@@ -27,6 +27,11 @@ QString KhipuSpace::type() const
     return m_type;
 }
 
+QList<KhipuPlot> KhipuSpace::elements() const
+{
+    return m_elements;
+}
+
 /*QVector<QString> KhipuSpace::elements() const
 {
     return m_elements;

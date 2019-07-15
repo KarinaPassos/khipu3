@@ -9,6 +9,7 @@ Rectangle {
     color: "#0D1A24"
     radius: 15
     property var currentIndex: spacesList.currentIndex
+    property QtObject currentSpace
 
     function insertSpace(type) {
         khipuModel.addSpace(type + " space",type)
@@ -55,6 +56,7 @@ Rectangle {
             currentIndex: 0
             onCurrentIndexChanged: {
                 currentSpace = khipuModel.spaceAt(currentIndex)
+                plotModel.setPlotList(currentSpace)
             }
             delegate: Component {
                 Item {

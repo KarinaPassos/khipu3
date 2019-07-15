@@ -1,7 +1,8 @@
 #ifndef KHIPUSPACE_H
 #define KHIPUSPACE_H
-#include <QVector>
+#include <QList>
 #include <QString>
+#include <khipuplot.h>
 
 class KhipuSpace
 {
@@ -15,8 +16,8 @@ public:
 
     QString type() const;
 
-    /*QVector<QString> elements() const;
-    void addElement(QString expression);
+    QList<KhipuPlot> elements() const;
+    /*void addElement(QString expression);
     void editElement(QString expression, int index);
     void removeElement(int index);*/
 
@@ -24,7 +25,7 @@ private:
     int m_id;
     QString m_name;
     QString m_type;
-    //QVector<QString> m_elements;
+    QList<KhipuPlot> m_elements;
 };
 
 #endif // KHIPUSPACE_H

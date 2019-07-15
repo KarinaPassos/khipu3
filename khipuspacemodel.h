@@ -22,6 +22,7 @@ public:
     Q_INVOKABLE bool removeSpace(int row);
     Q_INVOKABLE void rename(int row, const QString& name);
     Q_INVOKABLE QString getType(int row);
+    Q_INVOKABLE KhipuSpace spaceAt(int row);
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
