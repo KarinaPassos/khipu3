@@ -17,5 +17,11 @@ ColumnLayout {
         width: 305
         color: "black"
         radius: 3
+        ListView{
+            width: parent.width
+            height: parent.height
+            model: plotModel
+            delegate: Text{color: "white"; text: "expression: " + expression}
+        }
     }
 }

@@ -17,6 +17,14 @@ Rectangle {
         }
     }
 
+    function getCurrentIndex() {
+        return currentIndex
+    }
+
+    function getCurrentSpace() {
+        return currentSpace
+    }
+
     ColumnLayout {
         spacing: 20
         Rectangle {
@@ -45,7 +53,9 @@ Rectangle {
             height: 600
             model: khipuModel
             currentIndex: 0
-
+            onCurrentIndexChanged: {
+                currentSpace = khipuModel.spaceAt(currentIndex)
+            }
             delegate: Component {
                 Item {
                     width: bg.width
