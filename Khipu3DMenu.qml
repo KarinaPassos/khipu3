@@ -2,12 +2,13 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-KhipuMenu {
+ColumnLayout {
     id: menu3d
 
     KhipuMenuOptions {
         id: menuOptions
-
+        Layout.fillWidth: true
+        Layout.fillHeight: true
         ColumnLayout {
             Text {
                 color: "white"

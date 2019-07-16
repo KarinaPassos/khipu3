@@ -3,7 +3,6 @@ import QtQuick.Controls 2.12
 
 Rectangle {
     id: menu
-    height: parent.height
     color: "#393939"
 
     Button {

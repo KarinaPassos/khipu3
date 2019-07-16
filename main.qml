@@ -209,20 +209,16 @@ ApplicationWindow {
 
         Khipu2DMenu {
             Layout.minimumWidth: 400
+            Layout.maximumWidth: 400
             Layout.fillHeight: true
             visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
-            onVisibleChanged: {
-                console.log("Khipu2dMenu is visible" + visible)
-            }
         }
 
         Khipu3DMenu {
             Layout.minimumWidth: 400
+            Layout.maximumWidth: 400
             Layout.fillHeight: true
             visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
-            onVisibleChanged: {
-                console.log("Khipu2dMenu is visible" + visible)
-            }
         }
 
         Rectangle {
