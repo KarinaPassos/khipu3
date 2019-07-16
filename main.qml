@@ -207,11 +207,11 @@ ApplicationWindow {
         }
 
         Khipu2DMenu {
-            visible: khipuModel.currentSpaceIs2d
+            visible: false // khipuModel.currentSpaceIs2d
         }
 
         Khipu3DMenu {
-            visible: khipuModel.currentSpaceIs2d
+            visible: false // khipuModel.currentSpaceIs2d
         }
 
         KhipuScreen {
