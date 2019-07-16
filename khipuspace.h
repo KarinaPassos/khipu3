@@ -8,6 +8,7 @@ class KhipuSpace : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString type READ type CONSTANT)
 
 public:
     KhipuSpace(const QString& name, const QString& type, int index);

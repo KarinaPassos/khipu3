@@ -27,7 +27,6 @@ ColumnLayout {
 
         onCurrentIndexChanged: {
             khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
-            console.log("Bleeeh")
         }
 
         delegate: KhipuSpaceDelegate {

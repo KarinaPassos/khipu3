@@ -202,28 +202,34 @@ ApplicationWindow {
 
         KhipuSpaceViewer {
             id: mySpace
-            Layout.fillWidth: true
             Layout.fillHeight: true
+            Layout.maximumWidth: 300
             model: khipuModel
         }
 
         Khipu2DMenu {
-            Layout.minimumWidth: 300
+            Layout.minimumWidth: 400
             Layout.fillHeight: true
             visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
+            onVisibleChanged: {
+                console.log("Khipu2dMenu is visible" + visible)
+            }
         }
 
         Khipu3DMenu {
-            Layout.minimumWidth: 300
+            Layout.minimumWidth: 400
             Layout.fillHeight: true
-            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
+            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
+            onVisibleChanged: {
+                console.log("Khipu2dMenu is visible" + visible)
+            }
         }
 
-        KhipuScreen {
+        Rectangle {
             id: blackscreen
+            color: "black"
             Layout.fillWidth: true
             Layout.fillHeight: true
-
         }
     }
 }

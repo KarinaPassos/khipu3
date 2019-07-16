@@ -45,7 +45,6 @@ Item {
         anchors.fill: parent
         onClicked: {
             spacesList.currentIndex = index
-            blackscreen.changeScreen()
         }
     }
 }
