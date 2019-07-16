@@ -15,7 +15,7 @@ ColumnLayout {
     Rectangle {
         Layout.fillHeight: true
         Layout.fillWidth: true
-        color: black
+        color: "black"
         ListView{
             anchors.fill: parent
             model: plotModel
