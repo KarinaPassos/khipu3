@@ -10,12 +10,11 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     KhipuSpaceModel spaceModel;
-    KhipuPlotModel plotModel;
 
     QQmlApplicationEngine engine;
 
     qmlRegisterType<KhipuSpace>();
-    qmlRegisterType<KhipuPlot>();
+    qmlRegisterType<KhipuPlot>(); //aqui que tá dando problema
 
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
 
