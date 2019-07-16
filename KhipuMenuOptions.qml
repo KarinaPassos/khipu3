@@ -7,12 +7,6 @@ ColumnLayout {
     anchors.horizontalCenter: parent.horizontalCenter
 
     Rectangle {
-        color: "pink"
-        Layout.minimumHeight: 10
-        Layout.fillWidth: true
-    }
-
-    Rectangle {
         Layout.fillHeight: true
         Layout.fillWidth: true
         color: "black"

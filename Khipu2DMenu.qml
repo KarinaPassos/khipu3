@@ -2,12 +2,15 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-Item {
+ColumnLayout {
     id: menu2d
 
     KhipuMenu {}
+
     KhipuMenuOptions {
         id: menuOptions
+        Layout.fillWidth: true
+        Layout.fillHeight: true
 
         ColumnLayout {
             Text {

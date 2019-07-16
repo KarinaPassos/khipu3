@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.12
 ColumnLayout {
     id: menu3d
 
+    KhipuMenu {}
+
     KhipuMenuOptions {
         id: menuOptions
         Layout.fillWidth: true
