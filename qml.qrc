@@ -7,5 +7,6 @@
         <file>KhipuMenuOptions.qml</file>
         <file>Khipu2DMenu.qml</file>
         <file>Khipu3DMenu.qml</file>
+        <file>KhipuSpaceDelegate.qml</file>
     </qresource>
 </RCC>

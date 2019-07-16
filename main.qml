@@ -195,47 +195,30 @@ ApplicationWindow {
     }
 
     RowLayout {
+        anchors.fill: parent
         Rectangle {
             color: appwindow.color
-            height: appwindow.height
-            width: 3
-            radius: 15 // nao usa isso pra fazer rounded rects. gasta bastante processamento.
         }
+
         KhipuSpaceViewer {
             id: mySpace
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
+
+        Khipu2DMenu {
+            visible: khipuModel.currentSpaceIs2d
+        }
+
+        Khipu3DMenu {
+            visible: khipuModel.currentSpaceIs2d
+        }
+
         KhipuScreen {
             id: blackscreen
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            property var blackscreen_rect
-            onChangeScreen: {
-                if (blackscreen_rect)
-                    blackscreen_rect.destroy()
-
-                var component
-                if (khipuModel.getType(mySpace.currentIndex) === "2D")
-                    component = Qt.createComponent("Khipu2DMenu.qml")
-                else if (khipuModel.getType(mySpace.currentIndex) === "3D")
-                    component = Qt.createComponent("Khipu3DMenu.qml")
-
-                function finishMenuCreation() {
-                    if (component.status === Component.Ready) {
-                        var new_rect = component.createObject(blackscreen)
-                        blackscreen_rect = new_rect
-                    }
-                }
-
-                console.log(component)
-                if (component.status === Component.Ready)
-                    finishMenuCreation()
-                else
-                    component.statusChanged.connect(finishMenuCreation)
-
-            }
         }
     }
 }

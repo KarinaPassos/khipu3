@@ -4,19 +4,14 @@ import QtQuick.Controls 2.12
 Rectangle {
     id: menu
     height: parent.height
-    width: 350
     color: "#393939"
 
     Button {
         id: hideshow
         text: "≡"
-        x: 305
-        y: 15
 
         background: Rectangle {
             color: "grey"
-            width: 30
-            height: 30
         }
 
         contentItem: Text {
