@@ -7,11 +7,12 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
     QGuiApplication app(argc, argv);
 
     KhipuSpaceModel spaceModel;
     KhipuPlotModel plotModel;
+
+    qmlRegisterType<KhipuSpace>();
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);

@@ -1,6 +1,6 @@
 #include "khipuspace.h"
 
-KhipuSpace::KhipuSpace(QString name, QString type, int index) :
+KhipuSpace::KhipuSpace(const QString& name, const QString& type, int index) :
     m_id(index),
     m_name(name),
     m_type(type)

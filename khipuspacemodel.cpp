@@ -9,7 +9,7 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
 void KhipuSpaceModel::addSpace(QString name, QString type)
 {
     beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size());
-    m_spaceList.append(KhipuSpace(name, type, getAvailableIndex()));
+    m_spaceList.append(new KhipuSpace(name, type, getAvailableIndex()));
     endInsertRows();
 }
 
@@ -27,16 +27,16 @@ bool KhipuSpaceModel::removeSpace(int row)
 void KhipuSpaceModel::rename(int row, const QString &name)
 {
     if (isIndexValid(row)) {
-        m_spaceList[row].setName(name);
+        m_spaceList[row]->setName(name);
     }
 }
 
 QString KhipuSpaceModel::getType(int row)
 {
-    return m_spaceList[row].type();
+    return m_spaceList[row]->type();
 }
 
-KhipuSpace KhipuSpaceModel::spaceAt(int row)
+KhipuSpace* KhipuSpaceModel::spaceAt(int row)
 {
     return m_spaceList.at(row);
 }
@@ -51,11 +51,11 @@ QVariant KhipuSpaceModel::data(const QModelIndex &index, int role) const
 {
     switch(role){
         case Roles::IdRole:
-            return m_spaceList[index.row()].id();
+            return m_spaceList[index.row()]->id();
         case Roles::NameRole:
-            return m_spaceList[index.row()].name();
+            return m_spaceList[index.row()]->name();
         case Roles::TypeRole:
-            return m_spaceList[index.row()].type();
+            return m_spaceList[index.row()]->type();
     }
     return {};
 }
@@ -74,12 +74,22 @@ bool KhipuSpaceModel::isIndexValid(int id) const
     return (id >= 0 && id < m_spaceList.size());
 }
 
+KhipuSpace* KhipuSpaceModel::currentSpace() const {
+    return m_currentSpace;
+}
+
+void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
+    m_currentSpace = space;
+    emit currentSpaceChanged(space);
+}
+
+/* o que essa funcao faz? nao consegui entender */
 int KhipuSpaceModel::getAvailableIndex()
 {
     for(int i=0;;i++){
         int count = 0;
         for(int j=0;j<m_spaceList.size();j++){
-            if (m_spaceList[j].id() == i)
+            if (m_spaceList[j]->id() == i)
                 count++;
         }
         if (count == 0){

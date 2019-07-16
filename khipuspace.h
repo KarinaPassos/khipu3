@@ -4,10 +4,13 @@
 #include <QString>
 #include <khipuplot.h>
 
-class KhipuSpace
+class KhipuSpace : public QObject
 {
+    Q_OBJECT
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+
 public:
-    KhipuSpace(QString name, QString type, int index);
+    KhipuSpace(const QString& name, const QString& type, int index);
 
     int id() const;
 
@@ -20,6 +23,9 @@ public:
     /*void addElement(QString expression);
     void editElement(QString expression, int index);
     void removeElement(int index);*/
+
+signals:
+    void nameChanged(const QString& name);
 
 private:
     int m_id;
