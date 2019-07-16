@@ -11,6 +11,7 @@ class KhipuSpace : public QObject
     Q_PROPERTY(QString type READ type CONSTANT)
 
 public:
+    KhipuSpace();
     KhipuSpace(const QString& name, const QString& type, int index);
 
     int id() const;
@@ -20,10 +21,10 @@ public:
 
     QString type() const;
 
-    QList<KhipuPlot> elements() const;
-    /*void addElement(QString expression);
-    void editElement(QString expression, int index);
-    void removeElement(int index);*/
+    Q_INVOKABLE QList<KhipuPlot*> plots() const;
+    void addPlots(QString expression);
+    /*void editPlots(QString expression, int index);
+    void removePlots(int index);*/
 
 signals:
     void nameChanged(const QString& name);
@@ -32,7 +33,7 @@ private:
     int m_id;
     QString m_name;
     QString m_type;
-    QList<KhipuPlot> m_elements;
+    QList<KhipuPlot*> m_plots;
 };
 
 #endif // KHIPUSPACE_H

@@ -210,7 +210,6 @@ ApplicationWindow {
         Khipu2DMenu {
             Layout.fillHeight: true
             visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
-
         }
 
         Khipu3DMenu {

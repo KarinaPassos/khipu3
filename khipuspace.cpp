@@ -1,5 +1,9 @@
 #include "khipuspace.h"
 
+KhipuSpace::KhipuSpace()
+{
+}
+
 KhipuSpace::KhipuSpace(const QString& name, const QString& type, int index) :
     m_id(index),
     m_name(name),
@@ -27,27 +31,22 @@ QString KhipuSpace::type() const
     return m_type;
 }
 
-QList<KhipuPlot> KhipuSpace::elements() const
+QList<KhipuPlot*> KhipuSpace::plots() const
 {
-    return m_elements;
+    return m_plots;
 }
 
-/*QVector<QString> KhipuSpace::elements() const
+void KhipuSpace::addPlots(QString expression)
 {
-    return m_elements;
+    m_plots.append(new KhipuPlot(expression));
 }
 
-void KhipuSpace::addElement(QString expression)
+/*void KhipuSpace::editPlots(QString expression, int index)
 {
-    m_elements.append(expression);
+    m_plots[index] = KhipuPlot(expression);
 }
 
-void KhipuSpace::editElement(QString expression, int index)
+void KhipuSpace::removePlots(int index)
 {
-    m_elements[index] = expression;
-}
-
-void KhipuSpace::removeElement(int index)
-{
-    m_elements.removeAt(index);
+    m_plots.removeAt(index);
 }*/

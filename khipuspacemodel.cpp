@@ -42,6 +42,11 @@ KhipuSpace* KhipuSpaceModel::spaceAt(int row)
     return m_spaceList.at(row);
 }
 
+void KhipuSpaceModel::addPlots(QString expression, int row)
+{
+    m_spaceList[row]->addPlots(expression);
+}
+
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)

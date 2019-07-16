@@ -13,7 +13,7 @@ Item {
         Rectangle {
             width: 5
             height: 60
-            color: "white"
+            color: "#04060E"
         }
 
         Rectangle {

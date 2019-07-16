@@ -29,7 +29,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
-    QList<KhipuPlot> m_plotList;
+    QList<KhipuPlot*> m_plotList;
 };
 
 #endif // KHIPUPLOTMODEL_H

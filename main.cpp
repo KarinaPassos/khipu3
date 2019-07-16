@@ -13,14 +13,13 @@ int main(int argc, char *argv[])
     KhipuPlotModel plotModel;
 
     qmlRegisterType<KhipuSpace>();
+    qmlRegisterType<KhipuPlot>();
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
-    engine.rootContext()->setContextProperty("plotModel", &plotModel);
 
-    plotModel.addPlot("z = x**2",0);
-    plotModel.addPlot("z = y**3 + sin(x)",1);
-    plotModel.addPlot("1 = x**2 + y**2 + z**2",2);
+    spaceModel.addSpace("space de teste","2D");
+    spaceModel.addPlots("z = x**2",0);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

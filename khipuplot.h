@@ -1,12 +1,15 @@
 #ifndef KHIPUPLOT_H
 #define KHIPUPLOT_H
 #include <QString>
+#include <QObject>
 
-
-class KhipuPlot
+class KhipuPlot : public QObject
 {
+    Q_OBJECT
+
 public:
     KhipuPlot();
+    KhipuPlot(QString expression);
     KhipuPlot(QString expression, int spaceID);
 
     QString expression() const;

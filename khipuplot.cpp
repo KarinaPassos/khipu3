@@ -4,6 +4,11 @@ KhipuPlot::KhipuPlot()
 {
 }
 
+KhipuPlot::KhipuPlot(QString expression):
+m_expression(expression)
+{
+}
+
 KhipuPlot::KhipuPlot(QString expression, int spaceID):
 m_expression(expression),
 m_spaceID(spaceID)
