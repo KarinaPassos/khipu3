@@ -1,7 +1,8 @@
 #include "khipuspacemodel.h"
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractListModel(parent),
+    m_currentSpace(nullptr)
 {
 
 }

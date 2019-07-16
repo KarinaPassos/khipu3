@@ -6,22 +6,11 @@ ColumnLayout {
     id: bg
     spacing: 20
 
-    property var currentIndex: spacesList.currentIndex
-    property QtObject currentSpace
+    property alias currentIndex: spacesList.currentIndex
+    property alias model : spacesList.model
 
     function insertSpace(type) {
         khipuModel.addSpace(type + " space",type)
-        if (currentIndex == 0){
-            blackscreen.changeScreen()
-        }
-    }
-
-    function getCurrentIndex() {
-        return currentIndex
-    }
-
-    function getCurrentSpace() {
-        return currentSpace
     }
 
     TextField {
@@ -31,15 +20,14 @@ ColumnLayout {
 
     ListView {
         id: spacesList
-        model: khipuModel
         currentIndex: 0
 
         Layout.fillHeight: true
         Layout.fillWidth: true
 
         onCurrentIndexChanged: {
-            currentSpace = khipuModel.spaceAt(currentIndex)
-            plotModel.setPlotList(currentSpace)
+            khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
+            console.log("Bleeeh")
         }
 
         delegate: KhipuSpaceDelegate {

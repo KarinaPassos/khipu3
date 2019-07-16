@@ -204,14 +204,19 @@ ApplicationWindow {
             id: mySpace
             Layout.fillWidth: true
             Layout.fillHeight: true
+            model: khipuModel
         }
 
         Khipu2DMenu {
-            visible: false // khipuModel.currentSpaceIs2d
+            Layout.minimumWidth: 300
+            Layout.fillHeight: true
+            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
         }
 
         Khipu3DMenu {
-            visible: false // khipuModel.currentSpaceIs2d
+            Layout.minimumWidth: 300
+            Layout.fillHeight: true
+            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
         }
 
         KhipuScreen {
