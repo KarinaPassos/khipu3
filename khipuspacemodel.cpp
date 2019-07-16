@@ -16,7 +16,7 @@ void KhipuSpaceModel::addSpace(QString name, QString type)
 
 bool KhipuSpaceModel::removeSpace(int row)
 {
-    if (isIndexValid(row)){
+    if (isIndexValid(row) && m_spaceList.size()>1){
         beginRemoveRows(QModelIndex(), row, row);
         m_spaceList.removeAt(row);
         endRemoveRows();

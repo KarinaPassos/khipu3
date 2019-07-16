@@ -12,14 +12,15 @@ int main(int argc, char *argv[])
     KhipuSpaceModel spaceModel;
     KhipuPlotModel plotModel;
 
+    QQmlApplicationEngine engine;
+
     qmlRegisterType<KhipuSpace>();
     qmlRegisterType<KhipuPlot>();
 
-    QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
 
-    spaceModel.addSpace("space de teste","2D");
-    spaceModel.addPlots("z = x**2",0);
+    //spaceModel.addSpace("space de teste","2D");
+    //spaceModel.addPlots("z = x**2",0);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
