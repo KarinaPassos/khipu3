@@ -7,19 +7,22 @@ KhipuPlotModel::KhipuPlotModel(QObject *parent) :
 
 void KhipuPlotModel::addPlot(QString expression, int spaceID)
 {
+    beginInsertRows(QModelIndex(), m_plotList.size(), m_plotList.size());
     m_plotList.append(new KhipuPlot(expression,spaceID));
-}
-
-bool KhipuPlotModel::removePlot(QString expression, int row)
-{
-    Q_UNUSED(expression)
-    m_plotList.removeAt(row);
-    return true;
+    endInsertRows();
 }
 
 void KhipuPlotModel::setPlot(QString expression, int row)
 {
     m_plotList[row]->setExpression(expression);
+}
+
+bool KhipuPlotModel::removePlot(int row)
+{
+    beginRemoveRows(QModelIndex(), row, row);
+    m_plotList.removeAt(row);
+    endRemoveRows();
+    return true;
 }
 
 int KhipuPlotModel::rowCount(const QModelIndex &parent) const
@@ -57,11 +60,8 @@ QList<KhipuPlot *> KhipuPlotModel::plotList() const
 
 void KhipuPlotModel::setSpace(KhipuSpace *space)
 {
-    currentSpace = space;
-    setPlotList(currentSpace);
-}
-
-void KhipuPlotModel::setPlotList(const KhipuSpace* currentSpace)
-{
-    m_plotList = currentSpace->plots();
+    beginResetModel();
+    m_currentSpace = space;
+    m_plotList = m_currentSpace->plots();
+    endResetModel();
 }

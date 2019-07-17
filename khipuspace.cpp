@@ -40,13 +40,3 @@ void KhipuSpace::addPlots(QString expression)
 {
     m_plots.append(new KhipuPlot(expression));
 }
-
-/*void KhipuSpace::editPlots(QString expression, int index)
-{
-    m_plots[index] = KhipuPlot(expression);
-}
-
-void KhipuSpace::removePlots(int index)
-{
-    m_plots.removeAt(index);
-}*/

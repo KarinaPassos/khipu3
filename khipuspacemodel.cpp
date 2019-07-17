@@ -42,11 +42,6 @@ KhipuSpace* KhipuSpaceModel::spaceAt(int row)
     return m_spaceList.at(row);
 }
 
-void KhipuSpaceModel::addPlots(QString expression, int row)
-{
-    m_spaceList[row]->addPlots(expression);
-}
-
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -89,7 +84,6 @@ void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
     emit currentSpaceChanged(space);
 }
 
-/* o que essa funcao faz? nao consegui entender */
 int KhipuSpaceModel::getAvailableIndex()
 {
     for(int i=0;;i++){

@@ -24,10 +24,6 @@ public:
     Q_INVOKABLE void rename(int row, const QString& name);
     Q_INVOKABLE QString getType(int row);
     Q_INVOKABLE KhipuSpace *spaceAt(int row);
-    Q_INVOKABLE void addPlots(QString expression, int row);
-    /*Q_INVOKABLE void editPlots(QString expression, int row, int column);
-    Q_INVOKABLE void removePlots(QString expression, int row, int column);*/
-
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -42,7 +38,7 @@ private:
     bool isIndexValid(int id) const;
     int getAvailableIndex();
     QList<KhipuSpace*> m_spaceList;
-    KhipuSpace *m_currentSpace;
+    KhipuSpace *m_currentSpace = nullptr;
 };
 
 #endif // KHIPUSPACEMODEL_H
