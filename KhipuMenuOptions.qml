@@ -10,7 +10,7 @@ ColumnLayout {
         color: "black"
         ListView{
             anchors.fill: parent
-            model: khipuModel.currentSpace ? khipuModel.currentSpace.plots() : null
+            model: plotModel
             delegate: Text{ color: "white"; text: "expression: " + expression }
         }
     }

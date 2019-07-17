@@ -50,7 +50,18 @@ QHash<int, QByteArray> KhipuPlotModel::roleNames() const
     };
 }
 
-void KhipuPlotModel::setPlotList(const KhipuSpace &currentSpace)
+QList<KhipuPlot *> KhipuPlotModel::plotList() const
 {
-    m_plotList = currentSpace.plots();
+    return m_plotList;
+}
+
+void KhipuPlotModel::setSpace(KhipuSpace *space)
+{
+    currentSpace = space;
+    setPlotList(currentSpace);
+}
+
+void KhipuPlotModel::setPlotList(const KhipuSpace* currentSpace)
+{
+    m_plotList = currentSpace->plots();
 }

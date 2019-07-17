@@ -14,6 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         khipuplot.cpp \
+        khipuplotmodel.cpp \
         khipuspace.cpp \
         khipuspacemodel.cpp \
         main.cpp
@@ -33,5 +34,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     khipuplot.h \
+    khipuplotmodel.h \
     khipuspace.h \
     khipuspacemodel.h

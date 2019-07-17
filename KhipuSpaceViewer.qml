@@ -28,6 +28,7 @@ ColumnLayout {
 
         onCurrentIndexChanged: {
             khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
+            plotModel.setSpace(khipuModel.currentSpace)
         }
 
         delegate: KhipuSpaceDelegate {

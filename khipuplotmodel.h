@@ -22,7 +22,11 @@ public:
     Q_INVOKABLE void addPlot(QString expression, int spaceID);
     Q_INVOKABLE bool removePlot(QString expression, int row);
     Q_INVOKABLE void setPlot(QString expression, int row);
-    Q_INVOKABLE void setPlotList(const KhipuSpace &currentSpace);
+    Q_INVOKABLE void setPlotList(const KhipuSpace* currentSpace);
+    Q_INVOKABLE QList<KhipuPlot*> plotList() const;
+    Q_INVOKABLE void setSpace(KhipuSpace* space);
+
+    void plotListChanged();
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -30,6 +34,7 @@ public:
 
 private:
     QList<KhipuPlot*> m_plotList;
+    KhipuSpace* currentSpace;
 };
 
 #endif // KHIPUPLOTMODEL_H
