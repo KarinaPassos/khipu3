@@ -5,10 +5,10 @@ KhipuPlotModel::KhipuPlotModel(QObject *parent) :
 {
 }
 
-void KhipuPlotModel::addPlot(QString expression, int spaceID)
+void KhipuPlotModel::addPlot(QString expression)
 {
     beginInsertRows(QModelIndex(), m_plotList.size(), m_plotList.size());
-    m_plotList.append(new KhipuPlot(expression,spaceID));
+    m_plotList.append(new KhipuPlot(Analitza::Expression(expression,false)));
     endInsertRows();
 }
 
@@ -35,9 +35,7 @@ QVariant KhipuPlotModel::data(const QModelIndex &index, int role) const
 {
     switch(role){
         case PlotRoles::ExpressionRole:
-            return m_plotList[index.row()]->expression();
-        case PlotRoles::SpaceIdRole:
-            return m_plotList[index.row()]->spaceID();
+            return m_plotList[index.row()]->strExpression();
         case PlotRoles::IdRole:
             return m_plotList[index.row()]->id();
     }
@@ -48,7 +46,6 @@ QHash<int, QByteArray> KhipuPlotModel::roleNames() const
 {
     return {
         {PlotRoles::ExpressionRole, "expression"},
-        {PlotRoles::SpaceIdRole, "spaceID"},
         {PlotRoles::IdRole, "id"}
     };
 }

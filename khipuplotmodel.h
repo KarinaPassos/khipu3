@@ -13,15 +13,14 @@ class KhipuPlotModel : public QAbstractListModel
 public:
     enum PlotRoles {
         ExpressionRole = Qt::UserRole + 1,
-        SpaceIdRole,
         IdRole
     };
 
     KhipuPlotModel(QObject *parent = nullptr);
 
-    Q_INVOKABLE void addPlot(QString expression, int spaceID);
-    Q_INVOKABLE bool removePlot(int row);
+    Q_INVOKABLE void addPlot(QString expression);
     Q_INVOKABLE void setPlot(QString expression, int row);
+    Q_INVOKABLE bool removePlot(int row);
     Q_INVOKABLE QList<KhipuPlot*> plotList() const;
     Q_INVOKABLE void setSpace(KhipuSpace* space);
 
