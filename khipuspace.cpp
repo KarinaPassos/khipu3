@@ -38,5 +38,5 @@ QList<KhipuPlot*> KhipuSpace::plots() const
 
 void KhipuSpace::addPlots(QString expression)
 {
-    m_plots.append(new KhipuPlot(expression));
+    m_plots.append(new KhipuPlot(Analitza::Expression(expression,false)));
 }

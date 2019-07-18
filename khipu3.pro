@@ -32,6 +32,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+LIBS += /home/karina/projetos/install/lib64/libAnalitza.so -lAnalitza
+
 HEADERS += \
     khipuplot.h \
     khipuplotmodel.h \

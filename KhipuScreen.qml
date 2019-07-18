@@ -4,6 +4,4 @@ Rectangle {
     id: plotscreen
     signal changeScreen()
     color: "black"
-    height: maximumHeight
-    width: maximumWidth
 }

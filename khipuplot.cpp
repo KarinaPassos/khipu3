@@ -4,30 +4,24 @@ KhipuPlot::KhipuPlot()
 {
 }
 
-KhipuPlot::KhipuPlot(QString expression):
+KhipuPlot::KhipuPlot(Analitza::Expression expression):
 m_expression(expression)
 {
 }
 
-KhipuPlot::KhipuPlot(QString expression, int spaceID):
-m_expression(expression),
-m_spaceID(spaceID)
-{
-}
-
-QString KhipuPlot::expression() const
+Analitza::Expression KhipuPlot::expression()
 {
     return m_expression;
 }
 
-void KhipuPlot::setExpression(const QString &expression)
+QString KhipuPlot::strExpression() const
 {
-    m_expression = expression;
+    return m_expression.toString();
 }
 
-int KhipuPlot::spaceID() const
+void KhipuPlot::setExpression(const QString &expression)
 {
-    return m_spaceID;
+    m_expression = Analitza::Expression(expression,false);
 }
 
 int KhipuPlot::id() const

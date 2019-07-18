@@ -2,6 +2,7 @@
 #define KHIPUPLOT_H
 #include <QString>
 #include <QObject>
+#include <Analitza5/analitza/expression.h>
 
 class KhipuPlot : public QObject
 {
@@ -9,19 +10,17 @@ class KhipuPlot : public QObject
 
 public:
     KhipuPlot();
-    KhipuPlot(QString expression);
-    KhipuPlot(QString expression, int spaceID);
+    KhipuPlot(Analitza::Expression expression);
 
-    QString expression() const;
+    Analitza::Expression expression();
+    QString strExpression() const;
+
     void setExpression(const QString &value);
-
-    int spaceID() const;
 
     int id() const;
 
 private:
-    QString m_expression;
-    int m_spaceID;
+    Analitza::Expression m_expression;
     int m_id;
 };
 
