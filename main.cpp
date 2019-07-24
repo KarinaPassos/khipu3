@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include <khipuspacemodel.h>
 #include <khipuplotmodel.h>
+#include <khipufunction.h>
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +12,7 @@ int main(int argc, char *argv[])
 
     KhipuSpaceModel spaceModel;
     KhipuPlotModel plotModel;
+    KhipuFunction widget;
 
     QQmlApplicationEngine engine;
 
@@ -19,16 +21,17 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
     engine.rootContext()->setContextProperty("plotModel", &plotModel);
+    engine.rootContext()->setContextProperty("functionModel", &widget);
 
-    /*spaceModel.addSpace("space de teste 1","2D");
+    spaceModel.addSpace("space de teste 1","2D");
     spaceModel.addSpace("space de teste 2","3D");
     spaceModel.addSpace("space de teste 3","2D");
 
-    spaceModel.setCurrentSpace(spaceModel.spaceAt(2));
+    spaceModel.setCurrentSpace(spaceModel.spaceAt(0));
 
     spaceModel.currentSpace()->addPlots("y = x**2");
-    spaceModel.currentSpace()->addPlots("z = x**3 + sin(y)");
-    spaceModel.currentSpace()->addPlots("y = log(x)");*/
+    //spaceModel.currentSpace()->addPlots("z = x**3 + sin(y)");
+    spaceModel.currentSpace()->addPlots("y = sin(x)");
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
