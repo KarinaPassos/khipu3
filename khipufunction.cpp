@@ -64,6 +64,18 @@ void KhipuFunction::functionInserted(const QModelIndex& parent, int start, int e
     }
 }
 
+QString KhipuFunction::functionFixing(QString str)
+{
+    if (str.contains("x") == false) {
+        str = str + " + 0*x";
+    }
+    if (str.contains("y") == false) {
+        str = str + " + 0*y";
+    }
+    qDebug() << str;
+    return str;
+}
+
 
 QSharedPointer<Variables> KhipuFunction::variables() const
 {

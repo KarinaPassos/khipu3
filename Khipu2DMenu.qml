@@ -7,7 +7,7 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        color: "gray"
+        color: "#393939"
     }
 
     ColumnLayout {
@@ -29,7 +29,7 @@ Item {
 
             Layout.fillHeight: true
 
-            ColumnLayout {
+            /*ColumnLayout {
                 Text {
                     color: "white"
                     text: "\nBuild a cartesian curve"
@@ -97,7 +97,7 @@ Item {
                     height: 100
                     width: 1
                 }
-            }
+            }*/
         }
 
         Item {

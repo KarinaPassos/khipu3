@@ -7,13 +7,12 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        color: "gray"
+        color: "#393939"
     }
 
     ColumnLayout {
         id: menu3d
         anchors.fill: parent
-
         KhipuMenu {
             id: hideMenu
             Layout.alignment: Qt.AlignRight
@@ -27,7 +26,7 @@ Item {
             Layout.minimumWidth: 350
             Layout.maximumWidth: 350
             Layout.fillHeight: true
-            ColumnLayout {
+            /*ColumnLayout {
                 Text {
                     color: "white"
                     text: "\nBuild a cartesian surface"
@@ -115,7 +114,7 @@ Item {
                     height: 100
                     width: 1
                 }
-            }
+            }*/
         }
         Item {
             Layout.fillHeight: true

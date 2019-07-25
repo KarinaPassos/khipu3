@@ -7,7 +7,7 @@ Button {
     text: "≡"
 
     background: Rectangle {
-        color: "grey"
+        color: "#393939"
     }
 
     contentItem: Text {

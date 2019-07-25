@@ -66,7 +66,6 @@ ColumnLayout {
                 khipuModel.removeSpace(spacesList.currentIndex)
                 if (currentIndex>0)
                     currentIndex=currentIndex-1
-                //só crasha quando voce só tem um espaço e remove ele
             }
         }
     }

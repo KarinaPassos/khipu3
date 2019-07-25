@@ -23,6 +23,7 @@ class KhipuFunction : public QObject
 
         static KhipuFunction* self();
         void notifyVariablesChanged() { variablesChanged(); }
+        Q_INVOKABLE QString functionFixing(QString str);
 
     public Q_SLOTS:
         Analitza::PlotsModel* functionsModel();
