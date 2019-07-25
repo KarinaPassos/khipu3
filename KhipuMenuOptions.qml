@@ -6,7 +6,7 @@ ColumnLayout {
     spacing: 30
 
     RowLayout {
-        anchors.horizontalCenter: parent.horizontalCenter
+        Layout.alignment : Qt.AlignHCenter
         Text {
             text: qsTr("Add a function: ")
             color: "white"
@@ -16,6 +16,7 @@ ColumnLayout {
             textColor: "#393939"
             onAccepted: {
                 blackscreen.addFunction(text)
+                consoleInput.text = ""
             }
         }
     }
@@ -31,9 +32,12 @@ ColumnLayout {
             currentIndex: 0
             delegate:
                 Item{
-                    height: 30
+                    height: 20
                     width: parent.width
-                    Text{ color: "white"; text: "  " + expression }
+                    RowLayout {
+                        //CheckBox { }
+                        Text{ color: "white"; text: "  " + expression }
+                    }
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
@@ -42,7 +46,7 @@ ColumnLayout {
                     }
                 }
             highlight: Rectangle {
-                width: maximumWidth
+                width: parent.width
                 color: "lightsteelblue"
             }
             highlightFollowsCurrentItem: true
@@ -51,7 +55,7 @@ ColumnLayout {
     }
 
     RowLayout {
-        anchors.horizontalCenter: parent.horizontalCenter
+        Layout.alignment : Qt.AlignHCenter
         Button{
             Text{
                 anchors.centerIn: parent

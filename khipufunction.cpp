@@ -13,13 +13,7 @@ KhipuFunction::KhipuFunction(QObject* parent)
     Q_ASSERT(s_self==nullptr);
     s_self=this;
 
-    /*const auto uri = "org.kde.kalgebra.mobile";
-    qmlRegisterType<PluginsModel>("org.kde.kalgebra.mobile", 1, 0, "PluginsModel");
-    qmlRegisterType<ConsoleModel>("org.kde.kalgebra.mobile", 1, 0, "ConsoleModel");
-    qmlRegisterType<Clipboard>(uri, 1, 0, "Clipboard");*/
-    qmlRegisterType<QSortFilterProxyModel>("org.kde.kalgebra.mobile", 1, 0, "QSortFilterProxyModel");
     qmlRegisterType<QAbstractItemModel>();
-    qmlRegisterUncreatableType<Analitza::Expression>("org.kde.kalgebra.mobile", 1, 0, "Expression", QStringLiteral("because"));
     qRegisterMetaType<QSharedPointer<Analitza::Variables>>("QSharedPointer<Analitza::Variables>");
 }
 
@@ -72,7 +66,6 @@ QString KhipuFunction::functionFixing(QString str)
     if (str.contains("y") == false) {
         str = str + " + 0*y";
     }
-    qDebug() << str;
     return str;
 }
 
