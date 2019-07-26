@@ -15,7 +15,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         khipufunction.cpp \
         khipuplot.cpp \
-        khipuplotmodel.cpp \
         khipuspace.cpp \
         khipuspacemodel.cpp \
         main.cpp
@@ -41,6 +40,5 @@ INCLUDEPATH += /home/karina/projetos/install/include/
 HEADERS += \
     khipufunction.h \
     khipuplot.h \
-    khipuplotmodel.h \
     khipuspace.h \
     khipuspacemodel.h

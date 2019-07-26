@@ -28,13 +28,13 @@ ColumnLayout {
         ListView{
             id: plotView
             anchors.fill: parent
-            model: plotModel
+            model: khipuModel.currentSpace.model()
             currentIndex: 0
             delegate:
                 Item{
                     height: 20
                     width: parent.width
-                    Text{ color: "white"; text: "  " + expression }
+                    Text{ color: "white"; text: "  " + description }
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {

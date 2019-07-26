@@ -2,7 +2,6 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <khipuspacemodel.h>
-#include <khipuplotmodel.h>
 #include <khipufunction.h>
 
 int main(int argc, char *argv[])
@@ -11,7 +10,6 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     KhipuSpaceModel spaceModel;
-    KhipuPlotModel plotModel;
     KhipuFunction widget;
 
     QQmlApplicationEngine engine;
@@ -20,7 +18,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<KhipuPlot>();
 
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
-    engine.rootContext()->setContextProperty("plotModel", &plotModel);
     engine.rootContext()->setContextProperty("functionModel", &widget);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

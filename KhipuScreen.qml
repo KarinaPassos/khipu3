@@ -14,7 +14,6 @@ Rectangle {
         if (khipuModel.currentSpace.type === "3D"){
             space3d.addFunction(functionModel.functionFixing(str), functionModel.variables)
         }
-        plotModel.addPlot(str)
     }
 
     Graph2D{

@@ -13,7 +13,6 @@ ColumnLayout {
         khipuModel.addSpace(type + " space",type)
         if (khipuModel.rowCount() === 1) {
             khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
-            plotModel.setSpace(khipuModel.currentSpace)
         }
     }
 
@@ -32,7 +31,6 @@ ColumnLayout {
 
         onCurrentIndexChanged: {
             khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
-            plotModel.setSpace(khipuModel.currentSpace)
         }
 
         delegate: KhipuSpaceDelegate {
