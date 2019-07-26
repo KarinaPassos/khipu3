@@ -62,5 +62,4 @@ void KhipuPlotModel::setSpace(KhipuSpace *space)
     m_currentSpace = space;
     m_plotList = m_currentSpace->plots();
     endResetModel();
-    qDebug() << "oi";
 }

@@ -28,5 +28,6 @@ Rectangle {
         anchors.fill: parent
         model: khipuModel.currentSpace.model()
         visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
+        onModelChanged: resetViewport()
     }
 }
