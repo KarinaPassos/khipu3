@@ -1,4 +1,5 @@
 #include "khipuplotmodel.h"
+#include "qdebug.h"
 
 KhipuPlotModel::KhipuPlotModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -61,4 +62,5 @@ void KhipuPlotModel::setSpace(KhipuSpace *space)
     m_currentSpace = space;
     m_plotList = m_currentSpace->plots();
     endResetModel();
+    qDebug() << "oi";
 }

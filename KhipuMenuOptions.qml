@@ -34,10 +34,7 @@ ColumnLayout {
                 Item{
                     height: 20
                     width: parent.width
-                    RowLayout {
-                        //CheckBox { }
-                        Text{ color: "white"; text: "  " + expression }
-                    }
+                    Text{ color: "white"; text: "  " + expression }
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
@@ -46,7 +43,6 @@ ColumnLayout {
                     }
                 }
             highlight: Rectangle {
-                width: parent.width
                 color: "lightsteelblue"
             }
             highlightFollowsCurrentItem: true

@@ -20,13 +20,13 @@ Rectangle {
     Graph2D{
         id: space2d
         anchors.fill: parent
-        model: functionModel.functionsModel()
+        model: khipuModel.currentSpace.model()
         visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
     }
     Graph3D{
         id: space3d
         anchors.fill: parent
-        model: functionModel.functionsModel()
+        model: khipuModel.currentSpace.model()
         visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
     }
 }

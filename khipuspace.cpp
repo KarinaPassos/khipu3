@@ -40,3 +40,8 @@ void KhipuSpace::addPlots(QString expression)
 {
     m_plots.append(new KhipuPlot(Analitza::Expression(expression,false)));
 }
+
+Analitza::PlotsModel *KhipuSpace::model()
+{
+    return m_model;
+}

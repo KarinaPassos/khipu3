@@ -3,6 +3,7 @@
 #include <QList>
 #include <QString>
 #include <khipuplot.h>
+#include <Analitza5/analitzaplot/plotsmodel.h>
 
 class KhipuSpace : public QObject
 {
@@ -26,6 +27,9 @@ public:
     /*void editPlots(QString expression, int index);
     void removePlots(int index);*/
 
+public Q_SLOTS:
+    Analitza::PlotsModel* model();
+
 signals:
     void nameChanged(const QString& name);
 
@@ -34,6 +38,8 @@ private:
     QString m_name;
     QString m_type;
     QList<KhipuPlot*> m_plots;
+    Analitza::PlotsModel* m_model = new Analitza::PlotsModel;
+
 };
 
 #endif // KHIPUSPACE_H
