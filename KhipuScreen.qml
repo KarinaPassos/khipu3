@@ -9,10 +9,10 @@ Rectangle {
 
     function addFunction(str){
         if (khipuModel.currentSpace.type === "2D"){
-            space2d.addFunction(str, functionModel.variables)
+            space2d.addFunction(khipuModel.functionFixing(str), khipuModel.variables)
         }
         if (khipuModel.currentSpace.type === "3D"){
-            space3d.addFunction(functionModel.functionFixing(str), functionModel.variables)
+            space3d.addFunction(khipuModel.functionFixing(str), khipuModel.variables)
         }
     }
 

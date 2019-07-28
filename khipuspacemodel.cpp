@@ -2,9 +2,11 @@
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     QAbstractListModel(parent),
-    m_currentSpace(nullptr)
+    m_currentSpace(nullptr),
+    m_vars(new Analitza::Variables)
 {
-
+    qmlRegisterType<QAbstractItemModel>();
+    qRegisterMetaType<QSharedPointer<Analitza::Variables>>("QSharedPointer<Analitza::Variables>");
 }
 
 void KhipuSpaceModel::addSpace(QString name, QString type)
@@ -112,4 +114,9 @@ int KhipuSpaceModel::getAvailableIndex()
             return i;
         }
     }
+}
+
+QSharedPointer<Analitza::Variables> KhipuSpaceModel::variables() const
+{
+    return m_vars;
 }

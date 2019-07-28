@@ -1,14 +1,17 @@
 #ifndef KHIPUSPACEMODEL_H
 #define KHIPUSPACEMODEL_H
 #include <Analitza5/analitzaplot/plotsmodel.h>
+#include <Analitza5/analitza/variables.h>
 #include <QAbstractListModel>
 #include <QHash>
+#include <qqml.h>
 #include <khipuspace.h>
 #include <QList>
 
 class KhipuSpaceModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(QSharedPointer<Analitza::Variables> variables READ variables NOTIFY variablesChanged)
     Q_PROPERTY(KhipuSpace* currentSpace READ currentSpace WRITE setCurrentSpace NOTIFY currentSpaceChanged)
 
 public:
@@ -33,15 +36,20 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     KhipuSpace *currentSpace() const;
     void setCurrentSpace(KhipuSpace *space);
+    QSharedPointer<Analitza::Variables> variables() const;
+    void notifyVariablesChanged() { variablesChanged(); }
 
 signals:
     void currentSpaceChanged(KhipuSpace *space);
+Q_SIGNALS:
+    void variablesChanged();
 
 private:
     bool isIndexValid(int id) const;
     int getAvailableIndex();
     QList<KhipuSpace*> m_spaceList;
     KhipuSpace *m_currentSpace = nullptr;
+    QSharedPointer<Analitza::Variables> m_vars;
 };
 
 #endif // KHIPUSPACEMODEL_H
