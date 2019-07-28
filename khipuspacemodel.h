@@ -1,5 +1,6 @@
 #ifndef KHIPUSPACEMODEL_H
 #define KHIPUSPACEMODEL_H
+#include <Analitza5/analitzaplot/plotsmodel.h>
 #include <QAbstractListModel>
 #include <QHash>
 #include <khipuspace.h>
@@ -24,6 +25,8 @@ public:
     Q_INVOKABLE void rename(int row, const QString& name);
     Q_INVOKABLE QString getType(int row);
     Q_INVOKABLE KhipuSpace *spaceAt(int row);
+    Q_INVOKABLE void *removeFunction(int row);
+    Q_INVOKABLE QString functionFixing(QString str);
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;

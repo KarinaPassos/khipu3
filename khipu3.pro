@@ -36,6 +36,7 @@ LIBS += /home/karina/projetos/install/lib64/libAnalitza.so -lAnalitza
 LIBS += /home/karina/projetos/install/lib64/libAnalitzaPlot.so -lAnalitzaPlot
 
 INCLUDEPATH += /home/karina/projetos/install/include/
+INCLUDEPATH += /home/karina/projetos/analitza/
 
 HEADERS += \
     khipufunction.h \

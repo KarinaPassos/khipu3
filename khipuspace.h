@@ -23,9 +23,8 @@ public:
     QString type() const;
 
     Q_INVOKABLE QList<KhipuPlot*> plots() const;
+    Q_INVOKABLE
     void addPlots(QString expression);
-    /*void editPlots(QString expression, int index);
-    void removePlots(int index);*/
 
 public Q_SLOTS:
     Analitza::PlotsModel* model();

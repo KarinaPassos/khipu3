@@ -65,6 +65,7 @@ ColumnLayout {
                 text: "Remove"
                 color: "#000000"
             }
+            onClicked: khipuModel.removeFunction(plotView.currentIndex);
         }
     }
 }

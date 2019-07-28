@@ -42,6 +42,22 @@ KhipuSpace* KhipuSpaceModel::spaceAt(int row)
     return m_spaceList.at(row);
 }
 
+void *KhipuSpaceModel::removeFunction(int row)
+{
+    m_currentSpace->model()->removeRow(row);
+}
+
+QString KhipuSpaceModel::functionFixing(QString str)
+{
+    if (str.contains("x") == false) {
+        str = str + " + 0*x";
+    }
+    if (str.contains("y") == false) {
+        str = str + " + 0*y";
+    }
+    return str;
+}
+
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
