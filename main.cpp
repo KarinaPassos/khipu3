@@ -9,13 +9,18 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     KhipuSpaceModel spaceModel;
+    KhipuSpaceModel plotDict;
 
     QQmlApplicationEngine engine;
 
     qmlRegisterType<KhipuSpace>();
     qmlRegisterType<KhipuPlot>();
 
+    plotDict.addSpace("2D examples","2D");
+    plotDict.addSpace("3D examples","3D");
+
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
+    engine.rootContext()->setContextProperty("dictModel", &plotDict);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

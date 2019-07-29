@@ -23,7 +23,6 @@ public:
     QString type() const;
 
     Q_INVOKABLE QList<KhipuPlot*> plots() const;
-    Q_INVOKABLE
     void addPlots(QString expression);
 
 public Q_SLOTS:

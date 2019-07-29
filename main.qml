@@ -1,4 +1,3 @@
-
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtQuick 2.12
@@ -139,6 +138,10 @@ ApplicationWindow {
                     color: "#04060E"
                     height: 40
                 }
+
+                onClicked: {
+                    plotDictionaries.visible = true
+                }
             }
             Button {
                 id: add2d
@@ -223,5 +226,9 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
+    }
+    KhipuPlotDictionaries{
+        id: plotDictionaries
+        visible: false
     }
 }
