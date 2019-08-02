@@ -1,4 +1,4 @@
-#ifndef KHIPUSPACE_H
+﻿#ifndef KHIPUSPACE_H
 #define KHIPUSPACE_H
 #include <QList>
 #include <QString>
@@ -22,9 +22,6 @@ public:
 
     QString type() const;
 
-    Q_INVOKABLE QList<KhipuPlot*> plots() const;
-    void addPlots(QString expression);
-
 public Q_SLOTS:
     Analitza::PlotsModel* model();
 
@@ -35,7 +32,6 @@ private:
     int m_id;
     QString m_name;
     QString m_type;
-    QList<KhipuPlot*> m_plots;
     Analitza::PlotsModel* m_model = new Analitza::PlotsModel;
 
 };

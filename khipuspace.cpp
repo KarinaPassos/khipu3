@@ -31,15 +31,10 @@ QString KhipuSpace::type() const
     return m_type;
 }
 
-QList<KhipuPlot*> KhipuSpace::plots() const
+/*QList<KhipuPlot*> KhipuSpace::plots() const
 {
-    return m_plots;
-}
-
-void KhipuSpace::addPlots(QString expression)
-{
-    m_plots.append(new KhipuPlot(Analitza::Expression(expression,false)));
-}
+    return m_model.;
+}*/
 
 Analitza::PlotsModel *KhipuSpace::model()
 {

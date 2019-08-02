@@ -1,5 +1,6 @@
 #include "khipuspacemodel.h"
 #include "qdebug.h"
+#include <khipudata.h>
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     QAbstractListModel(parent),
@@ -59,6 +60,12 @@ QString KhipuSpaceModel::functionFixing(QString str)
         str = str + " + 0*y";
     }
     return str;
+}
+
+void KhipuSpaceModel::save()
+{
+    KhipuData data;
+    data.saveData(m_spaceList,"testejson");
 }
 
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
