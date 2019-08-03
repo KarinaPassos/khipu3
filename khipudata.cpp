@@ -16,7 +16,7 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
         return false;
     }
 
-    QJsonObject spaces;
+    QJsonArray spaces;
     for (int i = 0; i < spaceList.size(); i++){
         QJsonObject space;
         space["name"] = spaceList[i]->name();
@@ -25,19 +25,28 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
 
         qDebug() << spaceList[i]->model()->rowCount();
 
-        QJsonObject plots;
+        QJsonArray plots;
+
+        auto *plotsModel = spaceList[i]->model();
+
         for (int j = 0; j < spaceList[i]->model()->rowCount(); j++){
             QJsonObject plot;
-            //plot["expression"] = spaceList[i]->model()->data(QModelIndex(), Analitza::PlotsModel::DescriptionRole);
+            auto plotIndex = plotsModel->index(j, 0);
+            auto data = plotsModel->data(plotIndex, Analitza::PlotsModel::DescriptionRole);
+
+            plot["expression"] = data.toString();
             //qDebug() << spaceList[i]->plots().at(j)->strExpression();*/
-            plots.insert(QString::number(j),plot);
+            plots.append(plot);
         }
         space["plots"] = plots;
 
-        spaces.insert(QString::number(i),space);
+        spaces.append(space);
     }
 
-    QJsonDocument doc(spaces);
+    QJsonObject document;
+    document.insert(QString::number(0),spaces);
+
+    QJsonDocument doc(document);
     file.write(doc.toJson());
     file.close();
 
