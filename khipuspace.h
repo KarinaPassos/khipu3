@@ -22,6 +22,8 @@ public:
 
     QString type() const;
 
+    void addPlot(QString expression);
+
 public Q_SLOTS:
     Analitza::PlotsModel* model();
 

@@ -1,5 +1,6 @@
 #include "khipudata.h"
 #include "QModelIndex"
+#include <qjsondocument.h>
 
 KhipuData::KhipuData()
 {
@@ -35,7 +36,6 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
             auto data = plotsModel->data(plotIndex, Analitza::PlotsModel::DescriptionRole);
 
             plot["expression"] = data.toString();
-            //qDebug() << spaceList[i]->plots().at(j)->strExpression();*/
             plots.append(plot);
         }
         space["plots"] = plots;
@@ -53,8 +53,32 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
     return true;
 }
 
-bool KhipuData::loadData(QString fileName)
+bool KhipuData::loadData(QList<KhipuSpace*> spaceList, QString fileName)
 {
-    Q_UNUSED(fileName)
+    fileName = fileName + ".json";
+    QFile loadFile(fileName);
+
+    if (!loadFile.open(QIODevice::ReadOnly)) {
+        qDebug() << "Não foi possível abrir o arquivo";
+        return false;
+    }
+
+    QByteArray data = loadFile.readAll();
+    QJsonDocument loadDoc(QJsonDocument::fromJson(data));
+    QJsonArray spaces = loadDoc["spaces"].toArray();
+
+    for (int i = 0; i < spaces.size(); i++){
+        QJsonObject spaceObj = spaces[i].toObject();
+        KhipuSpace* space = new KhipuSpace(spaceObj["name"].toString(),spaceObj["type"].toString(),spaceList.size());
+
+        QJsonArray plots = spaceObj["plots"].toArray();
+
+        for (int j = 0; j < plots.size(); j++){
+            space->addPlot(plots[i].toString());
+        }
+
+        spaceList.append(space);
+    }
+
     return true;
 }

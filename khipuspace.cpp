@@ -31,6 +31,11 @@ QString KhipuSpace::type() const
     return m_type;
 }
 
+void KhipuSpace::addPlot(QString expression)
+{
+    //m_model->addFunction(expression,,m_vars);
+}
+
 /*QList<KhipuPlot*> KhipuSpace::plots() const
 {
     return m_model.;

@@ -68,6 +68,11 @@ void KhipuSpaceModel::save()
     data.saveData(m_spaceList,"testejson");
 }
 
+void KhipuSpaceModel::addPlot(QString expression)
+{
+
+}
+
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
