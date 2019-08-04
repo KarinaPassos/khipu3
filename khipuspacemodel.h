@@ -31,6 +31,7 @@ public:
     Q_INVOKABLE void *removeFunction(int row);
     Q_INVOKABLE QString functionFixing(QString str);
     Q_INVOKABLE void save();
+    Q_INVOKABLE void load();
     Q_INVOKABLE void addPlot(QString expression);
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;

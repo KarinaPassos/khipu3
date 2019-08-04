@@ -24,8 +24,6 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
         space["id"] = spaceList[i]->id();
         space["type"] = spaceList[i]->type();
 
-        qDebug() << spaceList[i]->model()->rowCount();
-
         QJsonArray plots;
 
         auto *plotsModel = spaceList[i]->model();
@@ -56,26 +54,28 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
 bool KhipuData::loadData(QList<KhipuSpace*> spaceList, QString fileName)
 {
     fileName = fileName + ".json";
-    QFile loadFile(fileName);
+    QFile file(fileName);
 
-    if (!loadFile.open(QIODevice::ReadOnly)) {
+    if (!file.open(QIODevice::ReadOnly)) {
         qDebug() << "Não foi possível abrir o arquivo";
         return false;
     }
 
-    QByteArray data = loadFile.readAll();
+    QByteArray data = file.readAll();
     QJsonDocument loadDoc(QJsonDocument::fromJson(data));
     QJsonArray spaces = loadDoc["spaces"].toArray();
 
+    qDebug() << spaces.size();
+
     for (int i = 0; i < spaces.size(); i++){
+        qDebug() << "se chegar aqui é pq o bug foi resolvido... ou nao";
         QJsonObject spaceObj = spaces[i].toObject();
         KhipuSpace* space = new KhipuSpace(spaceObj["name"].toString(),spaceObj["type"].toString(),spaceList.size());
-
         QJsonArray plots = spaceObj["plots"].toArray();
 
-        for (int j = 0; j < plots.size(); j++){
+        /*for (int j = 0; j < plots.size(); j++){
             space->addPlot(plots[i].toString());
-        }
+        }*/
 
         spaceList.append(space);
     }
