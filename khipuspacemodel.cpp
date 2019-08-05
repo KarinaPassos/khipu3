@@ -71,7 +71,7 @@ void KhipuSpaceModel::save()
 void KhipuSpaceModel::load()
 {
     KhipuData data;
-    data.loadData(&m_spaceList,"testejson");
+    m_spaceList = data.loadData(m_spaceList,"testejson");
 }
 
 void KhipuSpaceModel::addPlot(QString expression)

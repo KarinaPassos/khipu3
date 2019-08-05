@@ -11,7 +11,7 @@ class KhipuData
 public:
     KhipuData();
     bool saveData(QList<KhipuSpace*> spaceList, QString fileName);
-    bool loadData(QList<KhipuSpace*>* spaceList, QString fileName);
+    QList<KhipuSpace*> loadData(QList<KhipuSpace*> spaceList, QString fileName);
 };
 
 #endif // KHIPUDATA_H

@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
     KhipuSpaceModel spaceModel;
     KhipuSpaceModel plotDict;
 
+    //spaceModel.load();
+
     QQmlApplicationEngine engine;
 
     qmlRegisterType<KhipuSpace>();
