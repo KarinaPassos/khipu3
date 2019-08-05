@@ -42,7 +42,7 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
     }
 
     QJsonObject document;
-    document.insert(QString::number(0),spaces);
+    document.insert("spaces",spaces);
 
     QJsonDocument doc(document);
     file.write(doc.toJson());
@@ -51,7 +51,7 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
     return true;
 }
 
-bool KhipuData::loadData(QList<KhipuSpace*> spaceList, QString fileName)
+bool KhipuData::loadData(QList<KhipuSpace*>* spaceList, QString fileName)
 {
     fileName = fileName + ".json";
     QFile file(fileName);
@@ -65,19 +65,17 @@ bool KhipuData::loadData(QList<KhipuSpace*> spaceList, QString fileName)
     QJsonDocument loadDoc(QJsonDocument::fromJson(data));
     QJsonArray spaces = loadDoc["spaces"].toArray();
 
-    qDebug() << spaces.size();
-
     for (int i = 0; i < spaces.size(); i++){
-        qDebug() << "se chegar aqui é pq o bug foi resolvido... ou nao";
         QJsonObject spaceObj = spaces[i].toObject();
-        KhipuSpace* space = new KhipuSpace(spaceObj["name"].toString(),spaceObj["type"].toString(),spaceList.size());
+        KhipuSpace* space = new KhipuSpace(spaceObj["name"].toString(),spaceObj["type"].toString(),spaceList->size());
         QJsonArray plots = spaceObj["plots"].toArray();
 
         /*for (int j = 0; j < plots.size(); j++){
             space->addPlot(plots[i].toString());
         }*/
 
-        spaceList.append(space);
+        spaceList->append(space);
+        qDebug() << i << spaceList->size();
     }
 
     return true;
