@@ -1,5 +1,8 @@
 #include "khipudata.h"
-#include "QModelIndex"
+
+#include "khipuspace.h"
+
+#include <QModelIndex>
 #include <qjsondocument.h>
 
 KhipuData::KhipuData()
@@ -51,30 +54,33 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
     return true;
 }
 
-QList<KhipuSpace*> KhipuData::loadData(QList<KhipuSpace*> spaceList, QString fileName)
+QList<KhipuSpace*> KhipuData::loadData(QString fileName)
 {
     fileName = fileName + ".json";
     QFile file(fileName);
 
     if (!file.open(QIODevice::ReadOnly)) {
         qDebug() << "Não foi possível abrir o arquivo";
+        return QList<KhipuSpace*>();
     }
 
     QByteArray data = file.readAll();
     QJsonDocument loadDoc(QJsonDocument::fromJson(data));
     QJsonArray spaces = loadDoc["spaces"].toArray();
 
-    for (int i = 0; i < spaces.size(); i++){
+    QList<KhipuSpace*> spaceList;
+
+    for (int i = 0; i < spaces.size(); ++i) {
         QJsonObject spaceObj = spaces[i].toObject();
-        KhipuSpace* space = new KhipuSpace(spaceObj["name"].toString(),spaceObj["type"].toString(),spaceList.size());
+        KhipuSpace* space = new KhipuSpace(spaceObj["name"].toString(),spaceObj["type"].toString(), 0);
         QJsonArray plots = spaceObj["plots"].toArray();
 
-        /*for (int j = 0; j < plots.size(); j++){
-            space->addPlot(plots[i].toString());
-        }*/
+        for (int j = 0; j < plots.size(); ++j) {
+            QJsonObject plotObj = plots[i].toObject();
+            space->addPlot(plotObj["expression"].toString());
+        }
 
         spaceList.append(space);
-        qDebug() << i << spaceList.size();
     }
 
     return spaceList;

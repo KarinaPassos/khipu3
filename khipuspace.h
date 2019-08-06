@@ -34,7 +34,7 @@ private:
     int m_id;
     QString m_name;
     QString m_type;
-    Analitza::PlotsModel* m_model = new Analitza::PlotsModel;
+    Analitza::PlotsModel* m_model = new Analitza::PlotsModel();
 
 };
 

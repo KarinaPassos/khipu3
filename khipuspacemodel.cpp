@@ -1,6 +1,8 @@
 #include "khipuspacemodel.h"
-#include "qdebug.h"
-#include <khipudata.h>
+
+#include "khipudata.h"
+
+#include <QDebug>
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     QAbstractListModel(parent),
@@ -64,14 +66,16 @@ QString KhipuSpaceModel::functionFixing(QString str)
 
 void KhipuSpaceModel::save()
 {
-    KhipuData data;
-    data.saveData(m_spaceList,"testejson");
+    KhipuData::saveData(m_spaceList,"testejson");
 }
 
 void KhipuSpaceModel::load()
 {
-    KhipuData data;
-    m_spaceList = data.loadData(m_spaceList,"testejson");
+    QList<KhipuSpace*> newSpaces = KhipuData::loadData("testejson");
+    qDebug() << "O arquivo continha " << newSpaces.size() << " espaços.";
+    beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size() + newSpaces.size() - 1);
+    m_spaceList.append(newSpaces);
+    endInsertRows();
 }
 
 void KhipuSpaceModel::addPlot(QString expression)
