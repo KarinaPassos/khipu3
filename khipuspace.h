@@ -4,12 +4,14 @@
 #include <QString>
 #include <khipuplot.h>
 #include <Analitza5/analitzaplot/plotsmodel.h>
+#include <Analitza5/analitza/variables.h>
 
 class KhipuSpace : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString type READ type CONSTANT)
+    Q_PROPERTY(QSharedPointer<Analitza::Variables> variables READ variables NOTIFY variablesChanged)
 
 public:
     KhipuSpace();
@@ -20,18 +22,24 @@ public:
 
     QString type() const;
 
-    void addPlot(QString expression);
+    void addPlot(QString expression, QString type);
+
+    Q_INVOKABLE QSharedPointer<Analitza::Variables> variables() const;
+    void notifyVariablesChanged() { variablesChanged(); }
 
 public Q_SLOTS:
     Analitza::PlotsModel* model();
 
 signals:
     void nameChanged(const QString& name);
+Q_SIGNALS:
+    void variablesChanged();
 
 private:
     QString m_name;
     QString m_type;
     Analitza::PlotsModel* m_model = new Analitza::PlotsModel();
+    QSharedPointer<Analitza::Variables> m_vars;
 
 };
 

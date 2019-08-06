@@ -11,13 +11,11 @@
 class KhipuSpaceModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QSharedPointer<Analitza::Variables> variables READ variables NOTIFY variablesChanged)
     Q_PROPERTY(KhipuSpace* currentSpace READ currentSpace WRITE setCurrentSpace NOTIFY currentSpaceChanged)
 
 public:
     enum Roles {
-        IdRole = Qt::UserRole + 1,
-        NameRole,
+        NameRole = Qt::UserRole + 1,
         TypeRole
     };
 
@@ -39,13 +37,9 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     KhipuSpace *currentSpace() const;
     void setCurrentSpace(KhipuSpace *space);
-    QSharedPointer<Analitza::Variables> variables() const;
-    void notifyVariablesChanged() { variablesChanged(); }
 
 signals:
     void currentSpaceChanged(KhipuSpace *space);
-Q_SIGNALS:
-    void variablesChanged();
 
 private:
     bool isIndexValid(int id) const;

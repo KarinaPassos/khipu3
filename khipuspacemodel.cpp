@@ -6,8 +6,7 @@
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     QAbstractListModel(parent),
-    m_currentSpace(nullptr),
-    m_vars(new Analitza::Variables)
+    m_currentSpace(nullptr)
 {
     qmlRegisterType<QAbstractItemModel>();
     qRegisterMetaType<QSharedPointer<Analitza::Variables>>("QSharedPointer<Analitza::Variables>");
@@ -134,9 +133,4 @@ int KhipuSpaceModel::getAvailableIndex()
             return i;
         }
     }*/
-}
-
-QSharedPointer<Analitza::Variables> KhipuSpaceModel::variables() const
-{
-    return m_vars;
 }

@@ -76,7 +76,7 @@ QList<KhipuSpace*> KhipuData::loadData(QString fileName)
 
         for (int j = 0; j < plots.size(); ++j) {
             QJsonObject plotObj = plots[i].toObject();
-            space->addPlot(plotObj["expression"].toString());
+            space->addPlot(plotObj["expression"].toString(),spaceObj["type"].toString());
         }
 
         spaceList.append(space);
