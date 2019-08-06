@@ -16,7 +16,7 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
 void KhipuSpaceModel::addSpace(QString name, QString type)
 {
     beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size());
-    m_spaceList.append(new KhipuSpace(name, type, getAvailableIndex()));
+    m_spaceList.append(new KhipuSpace(name, type));
     endInsertRows();
 }
 
@@ -92,8 +92,6 @@ int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 QVariant KhipuSpaceModel::data(const QModelIndex &index, int role) const
 {
     switch(role){
-        case Roles::IdRole:
-            return m_spaceList[index.row()]->id();
         case Roles::NameRole:
             return m_spaceList[index.row()]->name();
         case Roles::TypeRole:
@@ -105,7 +103,6 @@ QVariant KhipuSpaceModel::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> KhipuSpaceModel::roleNames() const
 {
     return {
-        {Roles::IdRole, "id"},
         {Roles::NameRole, "name"},
         {Roles::TypeRole, "type"}
     };
@@ -127,7 +124,7 @@ void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
 
 int KhipuSpaceModel::getAvailableIndex()
 {
-    for(int i=0;;i++){
+    /*for(int i=0;;i++){
         int count = 0;
         for(int j=0;j<m_spaceList.size();j++){
             if (m_spaceList[j]->id() == i)
@@ -136,7 +133,7 @@ int KhipuSpaceModel::getAvailableIndex()
         if (count == 0){
             return i;
         }
-    }
+    }*/
 }
 
 QSharedPointer<Analitza::Variables> KhipuSpaceModel::variables() const

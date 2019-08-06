@@ -33,10 +33,6 @@ Item {
                     color: "white"
                     text: '<b>Type:</b> ' + type
                 }
-                Text {
-                    color: "white"
-                    text: '  <b>ID:</b> ' + id
-                }
             }
         }
     }

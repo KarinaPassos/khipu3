@@ -13,9 +13,7 @@ class KhipuSpace : public QObject
 
 public:
     KhipuSpace();
-    KhipuSpace(const QString& name, const QString& type, int index);
-
-    int id() const;
+    KhipuSpace(const QString& name, const QString& type);
 
     QString name() const;
     void setName(const QString &name);
@@ -31,7 +29,6 @@ signals:
     void nameChanged(const QString& name);
 
 private:
-    int m_id;
     QString m_name;
     QString m_type;
     Analitza::PlotsModel* m_model = new Analitza::PlotsModel();

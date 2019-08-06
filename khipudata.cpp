@@ -24,7 +24,6 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
     for (int i = 0; i < spaceList.size(); i++){
         QJsonObject space;
         space["name"] = spaceList[i]->name();
-        space["id"] = spaceList[i]->id();
         space["type"] = spaceList[i]->type();
 
         QJsonArray plots;
@@ -72,7 +71,7 @@ QList<KhipuSpace*> KhipuData::loadData(QString fileName)
 
     for (int i = 0; i < spaces.size(); ++i) {
         QJsonObject spaceObj = spaces[i].toObject();
-        KhipuSpace* space = new KhipuSpace(spaceObj["name"].toString(),spaceObj["type"].toString(), 0);
+        KhipuSpace* space = new KhipuSpace(spaceObj["name"].toString(),spaceObj["type"].toString());
         QJsonArray plots = spaceObj["plots"].toArray();
 
         for (int j = 0; j < plots.size(); ++j) {

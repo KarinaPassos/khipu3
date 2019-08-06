@@ -8,16 +8,10 @@ KhipuSpace::KhipuSpace()
 {
 }
 
-KhipuSpace::KhipuSpace(const QString& name, const QString& type, int index) :
-    m_id(index),
+KhipuSpace::KhipuSpace(const QString& name, const QString& type) :
     m_name(name),
     m_type(type)
 {
-}
-
-int KhipuSpace::id() const
-{
-    return m_id;
 }
 
 QString KhipuSpace::name() const
