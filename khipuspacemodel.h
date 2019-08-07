@@ -30,7 +30,6 @@ public:
     Q_INVOKABLE QString functionFixing(QString str);
     Q_INVOKABLE void save();
     Q_INVOKABLE void load();
-    Q_INVOKABLE void addPlot(QString expression);
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -42,8 +41,6 @@ signals:
     void currentSpaceChanged(KhipuSpace *space);
 
 private:
-    bool isIndexValid(int id) const;
-    int getAvailableIndex();
     QList<KhipuSpace*> m_spaceList;
     KhipuSpace *m_currentSpace = nullptr;
     QSharedPointer<Analitza::Variables> m_vars;

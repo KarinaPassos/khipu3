@@ -21,7 +21,7 @@ void KhipuSpaceModel::addSpace(QString name, QString type)
 
 bool KhipuSpaceModel::removeSpace(int row)
 {
-    if (isIndexValid(row) && m_spaceList.size()>1){
+    if (m_spaceList.size()>1){
         beginRemoveRows(QModelIndex(), row, row);
         m_spaceList.removeAt(row);
         endRemoveRows();
@@ -32,9 +32,7 @@ bool KhipuSpaceModel::removeSpace(int row)
 
 void KhipuSpaceModel::rename(int row, const QString &name)
 {
-    if (isIndexValid(row)) {
-        m_spaceList[row]->setName(name);
-    }
+    m_spaceList[row]->setName(name);
 }
 
 QString KhipuSpaceModel::getType(int row)
@@ -77,11 +75,6 @@ void KhipuSpaceModel::load()
     endInsertRows();
 }
 
-void KhipuSpaceModel::addPlot(QString expression)
-{
-
-}
-
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -107,11 +100,6 @@ QHash<int, QByteArray> KhipuSpaceModel::roleNames() const
     };
 }
 
-bool KhipuSpaceModel::isIndexValid(int id) const
-{
-    return (id >= 0 && id < m_spaceList.size());
-}
-
 KhipuSpace* KhipuSpaceModel::currentSpace() const {
     return m_currentSpace;
 }
@@ -119,18 +107,4 @@ KhipuSpace* KhipuSpaceModel::currentSpace() const {
 void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
     m_currentSpace = space;
     emit currentSpaceChanged(space);
-}
-
-int KhipuSpaceModel::getAvailableIndex()
-{
-    /*for(int i=0;;i++){
-        int count = 0;
-        for(int j=0;j<m_spaceList.size();j++){
-            if (m_spaceList[j]->id() == i)
-                count++;
-        }
-        if (count == 0){
-            return i;
-        }
-    }*/
 }
