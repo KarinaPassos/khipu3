@@ -58,15 +58,13 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Quit")
+                onTriggered: close()
             }
         }
         Menu {
             title: qsTr("Settings")
             Action {
                 text: qsTr("&Show menubar")
-            }
-            Action {
-                text: qsTr("&Show statusbar")
             }
             MenuSeparator {
             }
@@ -75,11 +73,6 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Grid")
-            }
-            MenuSeparator {
-            }
-            Action {
-                text: qsTr("&Configure shortcurts")
             }
         }
         Menu {
