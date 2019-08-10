@@ -18,15 +18,6 @@ ColumnLayout {
         }
     }
 
-    Button{
-        text: "save"
-        onClicked: khipuModel.save()
-    }
-    Button{
-        text: "load"
-        onClicked: khipuModel.load()
-    }
-
     TextField {
         Layout.fillWidth: true
         placeholderText: qsTr("Search")

@@ -22,7 +22,7 @@ public:
 
     QString type() const;
 
-    void addPlot(QString expression, QString type);
+    Q_INVOKABLE void addPlot(QString expression);
 
     Q_INVOKABLE QSharedPointer<Analitza::Variables> variables() const;
     void notifyVariablesChanged() { variablesChanged(); }
