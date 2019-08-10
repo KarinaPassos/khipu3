@@ -29,12 +29,12 @@ QString KhipuSpace::type() const
     return m_type;
 }
 
-void KhipuSpace::addPlot(QString expression, QString type)
+void KhipuSpace::addPlot(QString expression)
 {
-    if (type == "2D"){
+    if (m_type == "2D"){
         m_model->addFunction(expression, Analitza::Dim2D, m_vars);
     }
-    else if (type == "3D"){
+    else if (m_type == "3D"){
         m_model->addFunction(expression, Analitza::Dim3D, m_vars);
     }
 }

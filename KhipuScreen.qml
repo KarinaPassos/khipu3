@@ -8,12 +8,7 @@ Rectangle {
     color: "black"
 
     function addFunction(str){
-        if (khipuModel.currentSpace.type === "2D"){
-            space2d.addFunction(khipuModel.functionFixing(str), khipuModel.currentSpace.variables)
-        }
-        if (khipuModel.currentSpace.type === "3D"){
-            space3d.addFunction(khipuModel.functionFixing(str), khipuModel.currentSpace.variables)
-        }
+            khipuModel.currentSpace.addPlot(khipuModel.functionFixing(str))
     }
 
     Graph2D{
