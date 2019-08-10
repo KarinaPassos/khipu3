@@ -40,6 +40,7 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Open...")
+                onTriggered: khipuModel.load()
             }
             Action {
                 text: qsTr("&Open recent")
@@ -48,6 +49,7 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Save")
+                onTriggered: khipuModel.save()
             }
             Action {
                 text: qsTr("&Save as...")
