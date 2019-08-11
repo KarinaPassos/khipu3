@@ -2,7 +2,6 @@
 #define KHIPUSPACE_H
 #include <QList>
 #include <QString>
-#include <khipuplot.h>
 #include <Analitza5/analitzaplot/plotsmodel.h>
 #include <Analitza5/analitza/variables.h>
 

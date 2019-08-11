@@ -1,7 +1,6 @@
 #ifndef KHIPUSPACEMODEL_H
 #define KHIPUSPACEMODEL_H
 #include <Analitza5/analitzaplot/plotsmodel.h>
-#include <Analitza5/analitza/variables.h>
 #include <QAbstractListModel>
 #include <QHash>
 #include <qqml.h>
@@ -47,7 +46,6 @@ private:
     void addSpace(KhipuSpace* space);
     QList<KhipuSpace*> m_spaceList;
     KhipuSpace *m_currentSpace = nullptr;
-    QSharedPointer<Analitza::Variables> m_vars;
 };
 
 #endif // KHIPUSPACEMODEL_H
