@@ -14,6 +14,14 @@ KhipuSpace::KhipuSpace(const QString& name, const QString& type) :
 {
 }
 
+KhipuSpace::KhipuSpace(const QString &name, const QString &type, Analitza::PlotsModel *model) :
+    m_name(name),
+    m_type(type),
+    m_vars(new Analitza::Variables),
+    m_model(model)
+{
+}
+
 QString KhipuSpace::name() const
 {
     return m_name;

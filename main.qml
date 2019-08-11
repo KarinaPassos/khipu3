@@ -1,6 +1,7 @@
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import QtQuick 2.12
+import QtQuick 2.2
+import QtQuick.Dialogs 1.0
 
 ApplicationWindow {
     id: appwindow
@@ -40,7 +41,7 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Open...")
-                onTriggered: khipuModel.load()
+                onTriggered: fileDialog.visible = true
             }
             Action {
                 text: qsTr("&Open recent")
@@ -58,15 +59,13 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Quit")
+                onTriggered: close()
             }
         }
         Menu {
             title: qsTr("Settings")
             Action {
                 text: qsTr("&Show menubar")
-            }
-            Action {
-                text: qsTr("&Show statusbar")
             }
             MenuSeparator {
             }
@@ -75,11 +74,6 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Grid")
-            }
-            MenuSeparator {
-            }
-            Action {
-                text: qsTr("&Configure shortcurts")
             }
         }
         Menu {
@@ -115,6 +109,18 @@ ApplicationWindow {
             }
         }
     }
+    FileDialog {
+        id: fileDialog
+        title: "Please choose a .json file"
+        onAccepted: {
+            console.log("You chose: " + fileDialog.fileUrl)
+            khipuModel.load(fileUrl)
+        }
+        onRejected: {
+            console.log("Canceled")
+            fileDialog.close()
+        }
+    }
     header: ToolBar {
         height: 40
         background: Rectangle {
@@ -142,7 +148,7 @@ ApplicationWindow {
                 }
 
                 onClicked: {
-                    plotDictionaries.visible = true
+                    khipuModel.plotDict()
                 }
             }
             Button {
@@ -228,9 +234,5 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
-    }
-    KhipuPlotDictionaries{
-        id: plotDictionaries
-        visible: false
     }
 }

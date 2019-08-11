@@ -29,7 +29,8 @@ public:
     Q_INVOKABLE void *removeFunction(int row);
     Q_INVOKABLE QString functionFixing(QString str);
     Q_INVOKABLE void save();
-    Q_INVOKABLE void load();
+    Q_INVOKABLE void load(QString path);
+    Q_INVOKABLE void plotDict();
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -41,6 +42,7 @@ signals:
     void currentSpaceChanged(KhipuSpace *space);
 
 private:
+    void addSpace(KhipuSpace* space);
     QList<KhipuSpace*> m_spaceList;
     KhipuSpace *m_currentSpace = nullptr;
     QSharedPointer<Analitza::Variables> m_vars;
