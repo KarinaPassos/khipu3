@@ -42,6 +42,8 @@ signals:
     void currentSpaceChanged(KhipuSpace *space);
 
 private:
+    int strCheckDim(QString dim);
+    QString intCheckDim(int dim);
     void addSpace(KhipuSpace* space);
     QList<KhipuSpace*> m_spaceList;
     KhipuSpace *m_currentSpace = nullptr;
