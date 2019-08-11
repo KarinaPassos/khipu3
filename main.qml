@@ -111,7 +111,7 @@ ApplicationWindow {
     }
     FileDialog {
         id: fileDialog
-        title: "Please choose a file"
+        title: "Please choose a .json file"
         onAccepted: {
             console.log("You chose: " + fileDialog.fileUrl)
             khipuModel.load(fileUrl)
@@ -148,7 +148,7 @@ ApplicationWindow {
                 }
 
                 onClicked: {
-                    plotDictionaries.visible = true
+                    khipuModel.plotDict()
                 }
             }
             Button {
@@ -234,9 +234,5 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
-    }
-    KhipuPlotDictionaries{
-        id: plotDictionaries
-        visible: false
     }
 }
