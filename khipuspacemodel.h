@@ -29,7 +29,7 @@ public:
     Q_INVOKABLE void *removeFunction(int row);
     Q_INVOKABLE QString functionFixing(QString str);
     Q_INVOKABLE void save();
-    Q_INVOKABLE void load();
+    Q_INVOKABLE void load(QString path);
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;

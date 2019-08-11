@@ -66,13 +66,14 @@ void KhipuSpaceModel::save()
     KhipuData::saveData(m_spaceList,"testejson");
 }
 
-void KhipuSpaceModel::load()
+void KhipuSpaceModel::load(QString path)
 {
-    QList<KhipuSpace*> newSpaces = KhipuData::loadData("testejson");
-    qDebug() << "O arquivo continha " << newSpaces.size() << " espaços.";
-    beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size() + newSpaces.size() - 1);
-    m_spaceList.append(newSpaces);
-    endInsertRows();
+    if (path.contains(".json")){
+        QList<KhipuSpace*> newSpaces = KhipuData::loadData("testejson");
+        beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size() + newSpaces.size() - 1);
+        m_spaceList.append(newSpaces);
+        endInsertRows();
+    }
 }
 
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
