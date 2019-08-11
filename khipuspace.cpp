@@ -7,14 +7,14 @@ KhipuSpace::KhipuSpace()
 {
 }
 
-KhipuSpace::KhipuSpace(const QString& name, const QString& type) :
+KhipuSpace::KhipuSpace(const QString& name, const int type) :
     m_name(name),
     m_type(type),
     m_vars(new Analitza::Variables)
 {
 }
 
-KhipuSpace::KhipuSpace(const QString &name, const QString &type, Analitza::PlotsModel *model) :
+KhipuSpace::KhipuSpace(const QString &name, const int type, Analitza::PlotsModel *model) :
     m_name(name),
     m_type(type),
     m_vars(new Analitza::Variables),
@@ -32,17 +32,25 @@ void KhipuSpace::setName(const QString &name)
     m_name = name;
 }
 
-QString KhipuSpace::type() const
+int KhipuSpace::type() const
 {
     return m_type;
 }
 
+QString KhipuSpace::strType() const
+{
+    if (m_type == Analitza::Dim2D)
+        return "2D";
+    else if (m_type == Analitza::Dim3D)
+        return "3D";
+}
+
 void KhipuSpace::addPlot(QString expression)
 {
-    if (m_type == "2D"){
+    if (m_type == Analitza::Dim2D){
         m_model->addFunction(expression, Analitza::Dim2D, m_vars);
     }
-    else if (m_type == "3D"){
+    else if (m_type == Analitza::Dim3D){
         m_model->addFunction(expression, Analitza::Dim3D, m_vars);
     }
 }
