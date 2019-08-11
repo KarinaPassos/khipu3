@@ -1,7 +1,5 @@
 #include "khipuspacemodel.h"
-
 #include "khipudata.h"
-
 #include <QDebug>
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :

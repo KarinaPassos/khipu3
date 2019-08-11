@@ -62,7 +62,6 @@ Button {
     */
 
     onClicked: {
-        console.log("Clicked")
         /* Temporariamente retirando esse codigo de deixar o menu pequeno
         if (menu.width == 60) {
             buttonShowAnimation.start()

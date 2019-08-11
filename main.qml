@@ -130,7 +130,7 @@ ApplicationWindow {
             id: buttons
             Button {
                 id: plotdict
-                text: qsTr(" Plot Dictionaries")
+                text: qsTr(" Plot Examples")
 
                 contentItem: Text {
                     text: plotdict.text
@@ -152,14 +152,14 @@ ApplicationWindow {
                 }
             }
             Button {
-                id: add2d
-                text: qsTr("Add 2D Space")
+                id: addSpace
+                text: qsTr("Add Space")
 
                 contentItem: Text {
-                    text: add2d.text
-                    font: add2d.font
+                    text: addSpace.text
+                    font: addSpace.font
                     opacity: enabled ? 1.0 : 0.3
-                    color: add2d.down ? "grey" : "#FFFFFF"
+                    color: addSpace.down ? "grey" : "#FFFFFF"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     elide: Text.ElideRight
@@ -171,33 +171,14 @@ ApplicationWindow {
                 }
                 property string typeSpace: "2D"
                 onClicked: {
-                    mySpace.insertSpace(typeSpace)
-                }
-            }
-            Button {
-                id: add3d
-                text: qsTr("Add 3D Space")
-
-                contentItem: Text {
-                    text: add3d.text
-                    font: add3d.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: add3d.down ? "grey" : "#FFFFFF"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-                }
-
-                background: Rectangle {
-                    color: "#04060E"
-                    height: 40
-                }
-                property string typeSpace: "3D"
-                onClicked: {
-                    mySpace.insertSpace(typeSpace)
+                    addWindow.visible = true
                 }
             }
         }
+    }
+    KhipuAddPlot{
+        id: addWindow
+        color: appwindow.color
     }
     footer: TabBar {
         Text {
