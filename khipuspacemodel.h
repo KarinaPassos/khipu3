@@ -27,7 +27,7 @@ public:
     Q_INVOKABLE KhipuSpace *spaceAt(int row);
     Q_INVOKABLE void *removeFunction(int row);
     Q_INVOKABLE QString functionFixing(QString str);
-    Q_INVOKABLE void save();
+    Q_INVOKABLE void save(QString name);
     Q_INVOKABLE void load(QString path);
     Q_INVOKABLE void plotDict();
 

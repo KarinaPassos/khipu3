@@ -28,7 +28,7 @@ ColumnLayout {
         ListView{
             id: plotView
             anchors.fill: parent
-            model: khipuModel.currentSpace.model()
+            model: khipuModel.currentSpace ? khipuModel.currentSpace.model() : null
             currentIndex: 0
             delegate:
                 Item{
