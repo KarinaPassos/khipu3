@@ -22,6 +22,9 @@ ColumnLayout {
         Layout.fillWidth: true
         placeholderText: qsTr("Search")
         textColor: "#3982B8"
+        onTextChanged: {
+            khipuModel.search("text")
+        }
     }
 
     ListView {
