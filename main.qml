@@ -50,7 +50,7 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Save")
-                onTriggered: khipuModel.save()
+                onTriggered: khipuModel.save("testejson")
             }
             Action {
                 text: qsTr("&Save as...")
@@ -121,6 +121,14 @@ ApplicationWindow {
             fileDialog.close()
         }
     }
+    /*FileDialog {
+        id: saveDialog
+        title: "Please choose a .json file"
+        onAccepted: {
+        }
+        onRejected: {
+        }
+    }*/
     header: ToolBar {
         height: 40
         background: Rectangle {

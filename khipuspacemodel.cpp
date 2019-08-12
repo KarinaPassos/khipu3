@@ -60,9 +60,9 @@ QString KhipuSpaceModel::functionFixing(QString str)
     return str;
 }
 
-void KhipuSpaceModel::save()
+void KhipuSpaceModel::save(QString name)
 {
-    KhipuData::saveData(m_spaceList,"testejson");
+    KhipuData::saveData(m_spaceList,name);
 }
 
 void KhipuSpaceModel::load(QString path)

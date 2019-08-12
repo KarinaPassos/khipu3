@@ -4,6 +4,7 @@
 #include <QString>
 #include <Analitza5/analitzaplot/plotsmodel.h>
 #include <Analitza5/analitza/variables.h>
+#include <QSharedPointer>
 
 class KhipuSpace : public QObject
 {

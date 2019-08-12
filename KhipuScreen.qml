@@ -14,7 +14,7 @@ Rectangle {
     Graph2D{
         id: space2d
         anchors.fill: parent
-        model: khipuModel.currentSpace.model()
+        model: khipuModel.currentSpace ? khipuModel.currentSpace.model() : null
         visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
     }
     Graph3D{

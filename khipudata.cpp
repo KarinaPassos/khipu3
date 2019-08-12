@@ -1,9 +1,9 @@
 #include "khipudata.h"
-
 #include "khipuspace.h"
 
 #include <QModelIndex>
-#include <qjsondocument.h>
+#include <QDebug>
+#include <QJsonDocument>
 
 KhipuData::KhipuData()
 {
