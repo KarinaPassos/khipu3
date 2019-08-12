@@ -184,7 +184,7 @@ ApplicationWindow {
             }
         }
     }
-    KhipuAddPlot{
+    KhipuAddSpace{
         id: addWindow
         color: appwindow.color
     }

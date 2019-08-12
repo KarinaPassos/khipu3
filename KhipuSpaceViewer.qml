@@ -51,12 +51,17 @@ ColumnLayout {
     }
 
     RowLayout {
+        anchors.horizontalCenter: parent.horizontalCenter
         Layout.fillWidth: true
         Button {
             Text {
                 text: "Rename"
                 color: "#000000"
                 anchors.centerIn: parent
+            }
+            onClicked: {
+                if (khipuModel.rowCount() > 0)
+                    renameWindow.visible = true
             }
         }
         Button {
@@ -71,5 +76,9 @@ ColumnLayout {
                     currentIndex=currentIndex-1
             }
         }
+    }
+    KhipuRenameSpace{
+        id: renameWindow
+        color: "#04060E"
     }
 }
