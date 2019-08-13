@@ -11,13 +11,6 @@ ColumnLayout {
     property alias currentIndex: spacesList.currentIndex
     property alias model : spacesList.model
 
-    function insertSpace(type) {
-        khipuModel.addSpace(type + " space",type)
-        if (khipuModel.rowCount() === 1) {
-            khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
-        }
-    }
-
     TextField {
         Layout.fillWidth: true
         placeholderText: qsTr("Search")

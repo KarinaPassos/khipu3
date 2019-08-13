@@ -32,6 +32,8 @@ bool KhipuSpaceModel::removeSpace(int row)
 void KhipuSpaceModel::rename(const QString &name)
 {
     currentSpace()->setName(name);
+    qDebug() << name;
+    qDebug() << currentSpace()->name();
 }
 
 QString KhipuSpaceModel::getType(int row) const

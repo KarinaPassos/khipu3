@@ -19,10 +19,6 @@ Window {
             }
             TextField {
                 id: spaceName
-                onAccepted: {
-                    khipuModel.addSpace(text,"2D")
-                    close()
-                }
             }
         }
         ColumnLayout{
@@ -42,6 +38,7 @@ Window {
             }
             onClicked: {
                 khipuModel.addSpace(spaceName.text,dimension.currentText)
+                khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
                 addWindow.close()
             }
         }
