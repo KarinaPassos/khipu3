@@ -1,7 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.13
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.13
 
 Window {
     id: renameWindow
@@ -12,20 +12,17 @@ Window {
     ColumnLayout{
         anchors.centerIn: parent
         spacing: 20
-        Text { text: "Edit selected space name"; color: "white" }
+        Text { text: "Edit selected space name" }
         ColumnLayout{
             Text {
-                color: "#FFFFFF"
                 text: "Space name:"
             }
             TextField {
                 id: spaceName
-                textColor: "#000000"
             }
         }
         Button {
             Text{
-                color: "black"
                 text: "Save"
                 anchors.centerIn: parent
             }

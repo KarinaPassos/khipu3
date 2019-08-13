@@ -97,7 +97,7 @@ void KhipuSpaceModel::plotDict()
         setCurrentSpace(spaceAt(0));
 }
 
-void KhipuSpaceModel::search(QString text)
+void KhipuSpaceModel::searchSpace(QString text)
 {
     for (int i = 0; i < m_spaceList.size(); i++) {
         if (m_spaceList[i]->name().contains(text))

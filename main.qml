@@ -1,16 +1,14 @@
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.13
 import QtQuick.Layouts 1.12
 import QtQuick 2.2
 import QtQuick.Dialogs 1.0
 
 ApplicationWindow {
     id: appwindow
-    color: "#04060E"
     visible: true
     visibility: "Maximized"
     menuBar: MenuBar {
         background: Rectangle {
-            color: appwindow.color
         }
         delegate: MenuBarItem {
             id: menuBarItem
@@ -18,7 +16,6 @@ ApplicationWindow {
                 text: menuBarItem.text
                 font: menuBarItem.font
                 opacity: enabled ? 1.0 : 0.3
-                color: menuBarItem.highlighted ? "#000000" : "#FFFFFF"
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
@@ -28,7 +25,6 @@ ApplicationWindow {
                 implicitWidth: 40
                 implicitHeight: 40
                 opacity: enabled ? 1 : 0.3
-                color: menuBarItem.highlighted ? "white" : "#04060E"
             }
         }
         Menu {
@@ -132,7 +128,6 @@ ApplicationWindow {
     header: ToolBar {
         height: 40
         background: Rectangle {
-            color: appwindow.color
         }
         RowLayout {
             id: buttons
@@ -144,14 +139,12 @@ ApplicationWindow {
                     text: plotdict.text
                     font: plotdict.font
                     opacity: enabled ? 1.0 : 0.3
-                    color: plotdict.down ? "grey" : "#FFFFFF"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     elide: Text.ElideRight
                 }
 
                 background: Rectangle {
-                    color: "#04060E"
                     height: 40
                 }
 
@@ -167,14 +160,12 @@ ApplicationWindow {
                     text: addSpace.text
                     font: addSpace.font
                     opacity: enabled ? 1.0 : 0.3
-                    color: addSpace.down ? "grey" : "#FFFFFF"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     elide: Text.ElideRight
                 }
 
                 background: Rectangle {
-                    color: "#04060E"
                     height: 40
                 }
                 property string typeSpace: "2D"
@@ -186,7 +177,6 @@ ApplicationWindow {
     }
     KhipuAddSpace{
         id: addWindow
-        color: appwindow.color
     }
     footer: TabBar {
         Text {
@@ -197,7 +187,6 @@ ApplicationWindow {
     RowLayout {
         anchors.fill: parent
         Rectangle {
-            color: appwindow.color
         }
 
         KhipuSpaceViewer {
@@ -219,7 +208,6 @@ ApplicationWindow {
 
         KhipuScreen {
             id: blackscreen
-            color: "black"
             Layout.fillWidth: true
             Layout.fillHeight: true
         }

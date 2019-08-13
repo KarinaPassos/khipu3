@@ -30,7 +30,7 @@ public:
     Q_INVOKABLE void save(QString name);
     Q_INVOKABLE void load(QString path);
     Q_INVOKABLE void plotDict();
-    Q_INVOKABLE void search(QString text);
+    Q_INVOKABLE void searchSpace(QString text);
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;

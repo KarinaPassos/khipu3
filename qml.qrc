@@ -8,6 +8,7 @@
         <file>Khipu2DMenu.qml</file>
         <file>Khipu3DMenu.qml</file>
         <file>KhipuSpaceDelegate.qml</file>
-        <file>KhipuAddPlot.qml</file>
+        <file>KhipuAddSpace.qml</file>
+        <file>KhipuRenameSpace.qml</file>
     </qresource>
 </RCC>

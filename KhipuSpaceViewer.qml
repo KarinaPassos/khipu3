@@ -1,6 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.13
 import QtQuick.Dialogs 1.0
 
 
@@ -21,9 +21,8 @@ ColumnLayout {
     TextField {
         Layout.fillWidth: true
         placeholderText: qsTr("Search")
-        textColor: "#3982B8"
         onTextChanged: {
-            khipuModel.search("text")
+            khipuModel.searchSpace("text")
         }
     }
 
@@ -43,7 +42,6 @@ ColumnLayout {
         }
 
         highlight: Rectangle {
-            color: "lightsteelblue"
         }
 
         highlightFollowsCurrentItem: true
@@ -56,7 +54,6 @@ ColumnLayout {
         Button {
             Text {
                 text: "Rename"
-                color: "#000000"
                 anchors.centerIn: parent
             }
             onClicked: {
@@ -67,7 +64,6 @@ ColumnLayout {
         Button {
             Text {
                 text: "Remove"
-                color: "#000000"
                 anchors.centerIn: parent
             }
             onClicked: {
@@ -79,6 +75,5 @@ ColumnLayout {
     }
     KhipuRenameSpace{
         id: renameWindow
-        color: "#04060E"
     }
 }
