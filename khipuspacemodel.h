@@ -23,11 +23,11 @@ public:
     Q_INVOKABLE void addSpace(QString name, QString type);
     Q_INVOKABLE bool removeSpace(int row);
     Q_INVOKABLE void rename(const QString& name);
-    Q_INVOKABLE QString getType(int row);
-    Q_INVOKABLE KhipuSpace *spaceAt(int row);
+    Q_INVOKABLE QString getType(int row) const;
+    Q_INVOKABLE KhipuSpace *spaceAt(int row) const;
     Q_INVOKABLE void *removeFunction(int row);
-    Q_INVOKABLE QString functionFixing(QString str);
-    Q_INVOKABLE void save(QString name);
+    Q_INVOKABLE QString functionFixing(QString str) const;
+    Q_INVOKABLE void save(QString name) const;
     Q_INVOKABLE void load(QString path);
     Q_INVOKABLE void plotDict();
     Q_INVOKABLE void searchSpace(QString text);
@@ -42,8 +42,8 @@ signals:
     void currentSpaceChanged(KhipuSpace *space);
 
 private:
-    int strCheckDim(QString dim);
-    QString intCheckDim(int dim);
+    int strCheckDim(QString dim) const;
+    QString intCheckDim(int dim) const;
     void addSpace(KhipuSpace* space);
     QList<KhipuSpace*> m_spaceList;
     QList<KhipuSpace*> searchResult;
