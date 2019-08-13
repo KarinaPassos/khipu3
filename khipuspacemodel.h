@@ -22,7 +22,7 @@ public:
 
     Q_INVOKABLE void addSpace(QString name, QString type);
     Q_INVOKABLE bool removeSpace(int row);
-    Q_INVOKABLE void rename(int row, const QString& name);
+    Q_INVOKABLE void rename(const QString& name);
     Q_INVOKABLE QString getType(int row);
     Q_INVOKABLE KhipuSpace *spaceAt(int row);
     Q_INVOKABLE void *removeFunction(int row);
@@ -30,6 +30,7 @@ public:
     Q_INVOKABLE void save(QString name);
     Q_INVOKABLE void load(QString path);
     Q_INVOKABLE void plotDict();
+    Q_INVOKABLE void search(QString text);
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -45,6 +46,7 @@ private:
     QString intCheckDim(int dim);
     void addSpace(KhipuSpace* space);
     QList<KhipuSpace*> m_spaceList;
+    QList<KhipuSpace*> searchResult;
     KhipuSpace *m_currentSpace = nullptr;
 };
 

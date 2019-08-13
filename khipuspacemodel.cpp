@@ -29,9 +29,9 @@ bool KhipuSpaceModel::removeSpace(int row)
     return false;
 }
 
-void KhipuSpaceModel::rename(int row, const QString &name)
+void KhipuSpaceModel::rename(const QString &name)
 {
-    m_spaceList[row]->setName(name);
+    currentSpace()->setName(name);
 }
 
 QString KhipuSpaceModel::getType(int row)
@@ -95,6 +95,15 @@ void KhipuSpaceModel::plotDict()
 
     if (m_spaceList.size() == 2)
         setCurrentSpace(spaceAt(0));
+}
+
+void KhipuSpaceModel::search(QString text)
+{
+    for (int i = 0; i < m_spaceList.size(); i++) {
+        if (m_spaceList[i]->name().contains(text))
+            searchResult.append(m_spaceList[i]);
+    }
+    //falta retornar esse searchresult pro model, mas ainda nao sei como faz
 }
 
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
