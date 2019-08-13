@@ -20,17 +20,17 @@ public:
 
     KhipuSpaceModel(QObject *parent = nullptr);
 
-    Q_INVOKABLE void addSpace(QString name, QString type);
-    Q_INVOKABLE bool removeSpace(int row);
-    Q_INVOKABLE void rename(const QString& name);
-    Q_INVOKABLE QString getType(int row);
-    Q_INVOKABLE KhipuSpace *spaceAt(int row);
-    Q_INVOKABLE void *removeFunction(int row);
-    Q_INVOKABLE QString functionFixing(QString str);
-    Q_INVOKABLE void save(QString name);
-    Q_INVOKABLE void load(QString path);
-    Q_INVOKABLE void plotDict();
-    Q_INVOKABLE void search(QString text);
+    Q_INVOKABLE void addSpace(QString name, QString type); //creates a new space
+    Q_INVOKABLE bool removeSpace(int row); //removes spaces of the list
+    Q_INVOKABLE void rename(const QString& name); //renames current space
+    Q_INVOKABLE QString getType(int row) const; //returns current space type
+    Q_INVOKABLE KhipuSpace *spaceAt(int row) const; //returns the space at the given position
+    Q_INVOKABLE void *removeFunction(int row); //removes a function
+    Q_INVOKABLE QString functionFixing(QString str) const; //corrects the input to fix plotting errors of functions like z=x**2
+    Q_INVOKABLE void save(QString name) const; //saves the current spacelist in a json file
+    Q_INVOKABLE void load(QString path); //loads a given file
+    Q_INVOKABLE void plotDict(); //creates two spaces with examples to the user
+    Q_INVOKABLE void searchSpace(QString text); //function to be used by the search bar
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -42,9 +42,9 @@ signals:
     void currentSpaceChanged(KhipuSpace *space);
 
 private:
-    int strCheckDim(QString dim);
-    QString intCheckDim(int dim);
-    void addSpace(KhipuSpace* space);
+    int strCheckDim(QString dim) const; //converts the type from str to int to be easier to use in c++
+    QString intCheckDim(int dim) const; //converts the type from int to str to be easier to use in qml
+    void addSpace(KhipuSpace* space); //creates a new space
     QList<KhipuSpace*> m_spaceList;
     QList<KhipuSpace*> searchResult;
     KhipuSpace *m_currentSpace = nullptr;

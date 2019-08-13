@@ -34,12 +34,12 @@ void KhipuSpaceModel::rename(const QString &name)
     currentSpace()->setName(name);
 }
 
-QString KhipuSpaceModel::getType(int row)
+QString KhipuSpaceModel::getType(int row) const
 {
     return intCheckDim(m_spaceList[row]->type());
 }
 
-KhipuSpace* KhipuSpaceModel::spaceAt(int row)
+KhipuSpace* KhipuSpaceModel::spaceAt(int row) const
 {
     return m_spaceList.at(row);
 }
@@ -49,7 +49,7 @@ void *KhipuSpaceModel::removeFunction(int row)
     m_currentSpace->model()->removeRow(row);
 }
 
-QString KhipuSpaceModel::functionFixing(QString str)
+QString KhipuSpaceModel::functionFixing(QString str) const
 {
     if (str.contains("x") == false) {
         str = str + " + 0x";
@@ -60,7 +60,7 @@ QString KhipuSpaceModel::functionFixing(QString str)
     return str;
 }
 
-void KhipuSpaceModel::save(QString name)
+void KhipuSpaceModel::save(QString name) const
 {
     KhipuData::saveData(m_spaceList,name);
 }
@@ -97,7 +97,7 @@ void KhipuSpaceModel::plotDict()
         setCurrentSpace(spaceAt(0));
 }
 
-void KhipuSpaceModel::search(QString text)
+void KhipuSpaceModel::searchSpace(QString text)
 {
     for (int i = 0; i < m_spaceList.size(); i++) {
         if (m_spaceList[i]->name().contains(text))
@@ -140,7 +140,7 @@ void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
     emit currentSpaceChanged(space);
 }
 
-int KhipuSpaceModel::strCheckDim(QString dim)
+int KhipuSpaceModel::strCheckDim(QString dim) const
 {
     if (dim == "2D")
         return Analitza::Dim2D;
@@ -148,7 +148,7 @@ int KhipuSpaceModel::strCheckDim(QString dim)
         return Analitza::Dim3D;
 }
 
-QString KhipuSpaceModel::intCheckDim(int dim)
+QString KhipuSpaceModel::intCheckDim(int dim) const
 {
     if (dim == Analitza::Dim2D)
         return "2D";

@@ -1,6 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.13
 
 ColumnLayout {
     spacing: 30
@@ -9,11 +9,9 @@ ColumnLayout {
         Layout.alignment : Qt.AlignHCenter
         Text {
             text: qsTr("Add a function: ")
-            color: "white"
         }
         TextField {
             id: consoleInput
-            textColor: "#393939"
             onAccepted: {
                 blackscreen.addFunction(text)
                 consoleInput.text = ""
@@ -24,7 +22,6 @@ ColumnLayout {
     Rectangle {
         Layout.fillHeight: true
         Layout.fillWidth: true
-        color: "black"
         ListView{
             id: plotView
             anchors.fill: parent
@@ -34,7 +31,7 @@ ColumnLayout {
                 Item{
                     height: 20
                     width: parent.width
-                    Text{ color: "white"; text: "  " + description }
+                    Text{ text: "  " + description }
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
@@ -43,7 +40,6 @@ ColumnLayout {
                     }
                 }
             highlight: Rectangle {
-                color: "lightsteelblue"
             }
             highlightFollowsCurrentItem: true
             focus: true
@@ -56,14 +52,12 @@ ColumnLayout {
             Text{
                 anchors.centerIn: parent
                 text: "Edit"
-                color: "#000000"
             }
         }
         Button{
             Text{
                 anchors.centerIn: parent
                 text: "Remove"
-                color: "#000000"
             }
             onClicked: khipuModel.removeFunction(plotView.currentIndex);
         }

@@ -1,5 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.13
 
 
 Button {
@@ -7,13 +7,12 @@ Button {
     text: "≡"
 
     background: Rectangle {
-        color: "#393939"
+
     }
 
     contentItem: Text {
         text: hideshow.text
         font: hideshow.font
-        color: "#000000"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         elide: Text.ElideRight

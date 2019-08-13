@@ -1,5 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.13
 import QtQuick.Layouts 1.12
 Item {
     Layout.minimumWidth: menuOptions.visible ? 350 : hideMenu.width
@@ -7,7 +7,6 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        color: "#393939"
     }
 
     ColumnLayout {

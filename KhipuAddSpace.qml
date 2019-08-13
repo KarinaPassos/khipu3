@@ -1,7 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.13
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.13
 
 Window {
     id: addWindow
@@ -12,15 +12,13 @@ Window {
     ColumnLayout{
         anchors.centerIn: parent
         spacing: 20
-        Text { text: "Add a space"; color: "white" }
+        Text { text: "Add a space" }
         ColumnLayout{
             Text {
-                color: "#FFFFFF"
                 text: "Space name:"
             }
             TextField {
                 id: spaceName
-                textColor: "#000000"
                 onAccepted: {
                     khipuModel.addSpace(text,"2D")
                     close()
@@ -29,7 +27,6 @@ Window {
         }
         ColumnLayout{
             Text {
-                color: "#FFFFFF"
                 text: "Dimension:"
             }
             ComboBox {
@@ -40,7 +37,6 @@ Window {
         }
         Button {
             Text{
-                color: "black"
                 text: "Add"
                 anchors.centerIn: parent
             }
