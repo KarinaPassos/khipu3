@@ -148,12 +148,12 @@ ApplicationWindow {
                 }
             }
             Button {
-                id: addSpace
-                text: qsTr("Add Space")
+                id: add2DSpace
+                text: qsTr("Add 2D Space")
 
                 contentItem: Text {
-                    text: addSpace.text
-                    font: addSpace.font
+                    text: add2DSpace.text
+                    font: add2DSpace.font
                     opacity: enabled ? 1.0 : 0.3
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -163,9 +163,30 @@ ApplicationWindow {
                 background: Rectangle {
                     height: 40
                 }
-                property string typeSpace: "2D"
                 onClicked: {
-                    addWindow.visible = true
+                    khipuModel.addSpace("2D Space","2D")
+                    khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
+                }
+            }
+            Button {
+                id: add3DSpace
+                text: qsTr("Add 3D Space")
+
+                contentItem: Text {
+                    text: add3DSpace.text
+                    font: add3DSpace.font
+                    opacity: enabled ? 1.0 : 0.3
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+
+                background: Rectangle {
+                    height: 40
+                }
+                onClicked: {
+                    khipuModel.addSpace("3D Space","3D")
+                    khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
                 }
             }
         }
