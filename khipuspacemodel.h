@@ -22,7 +22,7 @@ public:
 
     Q_INVOKABLE void addSpace(QString name, QString type); //creates a new space
     Q_INVOKABLE bool removeSpace(int row); //removes spaces of the list
-    Q_INVOKABLE void rename(const QString& name); //renames current space
+    Q_INVOKABLE void rename(const QString& name, const int row); //renames current space
     Q_INVOKABLE QString getType(int row) const; //returns current space type
     Q_INVOKABLE KhipuSpace *spaceAt(int row) const; //returns the space at the given position
     Q_INVOKABLE void *removeFunction(int row); //removes a function

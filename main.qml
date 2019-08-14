@@ -191,9 +191,6 @@ ApplicationWindow {
             }
         }
     }
-    KhipuAddSpace{
-        id: addWindow
-    }
     footer: TabBar {
         Text {
             // ...

@@ -27,7 +27,7 @@ Window {
                 anchors.centerIn: parent
             }
             onClicked: {
-                khipuModel.rename(spaceName.text)
+                khipuModel.rename(spaceName.text,currentIndex)
                 renameWindow.close()
             }
         }

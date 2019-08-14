@@ -29,12 +29,10 @@ bool KhipuSpaceModel::removeSpace(int row)
     return false;
 }
 
-void KhipuSpaceModel::rename(const QString &name)
+void KhipuSpaceModel::rename(const QString &name, const int row)
 {
     currentSpace()->setName(name);
-    /*qDebug() << name;
-    qDebug() << currentSpace()->name();*/
-    //falta atualizar na view, na spacelist tá atualizando, quando salvo o espaço e carrego de novo, carrega com o nome certo
+    dataChanged(index(0),index(row));
 }
 
 QString KhipuSpaceModel::getType(int row) const
