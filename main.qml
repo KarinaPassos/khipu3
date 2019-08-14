@@ -33,23 +33,18 @@ ApplicationWindow {
             }
 
             Action {
-                text: qsTr("&New")
-            }
-            Action {
                 text: qsTr("&Open...")
                 onTriggered: fileDialog.visible = true
-            }
-            Action {
-                text: qsTr("&Open recent")
             }
             MenuSeparator {
             }
             Action {
                 text: qsTr("&Save")
-                onTriggered: khipuModel.save("testejson")
+                onTriggered: khipuModel.save("testejson") //deveria estar abrindo um dialog
             }
             Action {
                 text: qsTr("&Save as...")
+                onTriggered: khipuModel.save("testejson2") //deveria estar abrindo um dialog
             }
             MenuSeparator {
             }

@@ -32,8 +32,9 @@ bool KhipuSpaceModel::removeSpace(int row)
 void KhipuSpaceModel::rename(const QString &name)
 {
     currentSpace()->setName(name);
-    qDebug() << name;
-    qDebug() << currentSpace()->name();
+    /*qDebug() << name;
+    qDebug() << currentSpace()->name();*/
+    //falta atualizar na view, na spacelist tá atualizando, quando salvo o espaço e carrego de novo, carrega com o nome certo
 }
 
 QString KhipuSpaceModel::getType(int row) const
@@ -53,10 +54,16 @@ void *KhipuSpaceModel::removeFunction(int row)
 
 QString KhipuSpaceModel::functionFixing(QString str) const
 {
-    if (str.contains("x") == false) {
+    if (m_currentSpace->type() == Analitza::Dim3D) {
+        if ((str.contains("x") == false || str.contains("y") == false)
+                && str.contains("z") == false && str.contains("=")) {
+            str = str + " + 0z";
+        }
+    }
+    if (str.contains("x") == false && str.contains("=") == true) {
         str = str + " + 0x";
     }
-    if (str.contains("y") == false) {
+    if (str.contains("y") == false && str.contains("=") == true) {
         str = str + " + 0y";
     }
     return str;
