@@ -10,7 +10,6 @@ SET(CMAKE_AUTOMOC ON)
 
 add_executable(khipu3
 	khipudata.cpp  
-	khipuplot.cpp  
 	khipuspace.cpp  
 	khipuspacemodel.cpp  
 	main.cpp
