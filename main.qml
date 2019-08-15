@@ -61,10 +61,8 @@ ApplicationWindow {
             MenuSeparator {
             }
             Action {
-                text: qsTr("&Theme")
-            }
-            Action {
-                text: qsTr("&Grid")
+                text: qsTr("&Grid settings")
+                onTriggered: gridSettings.visible = true
             }
         }
         Menu {
@@ -120,6 +118,10 @@ ApplicationWindow {
         onRejected: {
         }
     }*/
+    Khipu2DGridSettings {
+        id: gridSettings
+        visible: false
+    }
     header: ToolBar {
         height: 40
         background: Rectangle {

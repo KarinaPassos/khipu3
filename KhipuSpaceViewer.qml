@@ -42,6 +42,7 @@ ColumnLayout {
     }
 
     Button {
+        anchors.horizontalCenter: parent.horizontalCenter
         Text {
             text: "Remove"
             anchors.centerIn: parent
