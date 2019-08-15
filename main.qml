@@ -1,5 +1,6 @@
 import QtQuick.Controls 2.13
 import QtQuick.Layouts 1.12
+import QtQuick.Window 2.13
 import QtQuick 2.2
 import QtQuick.Dialogs 1.0
 
@@ -8,6 +9,7 @@ ApplicationWindow {
     visible: true
     visibility: "Maximized"
     menuBar: MenuBar {
+        id: khipuMenuBar
         background: Rectangle {
         }
         delegate: MenuBarItem {
@@ -56,7 +58,11 @@ ApplicationWindow {
         Menu {
             title: qsTr("Settings")
             Action {
-                text: qsTr("&Show menubar")
+                text: qsTr("&Hide menubar")
+                onTriggered: {
+                    khipuMenuBar.visible = false
+                    menuBarAlert.visible = true
+                }
             }
             MenuSeparator {
             }
@@ -97,6 +103,19 @@ ApplicationWindow {
                 text: qsTr("&About KDE")
             }
         }
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_F1) {
+            console.log("entrou aqui")
+            khipuMenuBar.visible = true
+        }
+    }
+    Window{
+        id: menuBarAlert
+        visible: false
+        minimumHeight: 50
+        minimumWidth: 300
+        Text{ anchors.centerIn: parent; text: "press F1 to show Menu Bar again" }
     }
     FileDialog {
         id: fileDialog
