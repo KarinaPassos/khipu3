@@ -33,23 +33,18 @@ ApplicationWindow {
             }
 
             Action {
-                text: qsTr("&New")
-            }
-            Action {
                 text: qsTr("&Open...")
                 onTriggered: fileDialog.visible = true
-            }
-            Action {
-                text: qsTr("&Open recent")
             }
             MenuSeparator {
             }
             Action {
                 text: qsTr("&Save")
-                onTriggered: khipuModel.save("testejson")
+                onTriggered: khipuModel.save("testejson") //deveria estar abrindo um dialog
             }
             Action {
                 text: qsTr("&Save as...")
+                onTriggered: khipuModel.save("testejson2") //deveria estar abrindo um dialog
             }
             MenuSeparator {
             }
@@ -153,12 +148,12 @@ ApplicationWindow {
                 }
             }
             Button {
-                id: addSpace
-                text: qsTr("Add Space")
+                id: add2DSpace
+                text: qsTr("Add 2D Space")
 
                 contentItem: Text {
-                    text: addSpace.text
-                    font: addSpace.font
+                    text: add2DSpace.text
+                    font: add2DSpace.font
                     opacity: enabled ? 1.0 : 0.3
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -168,15 +163,33 @@ ApplicationWindow {
                 background: Rectangle {
                     height: 40
                 }
-                property string typeSpace: "2D"
                 onClicked: {
-                    addWindow.visible = true
+                    khipuModel.addSpace("2D Space","2D")
+                    khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
+                }
+            }
+            Button {
+                id: add3DSpace
+                text: qsTr("Add 3D Space")
+
+                contentItem: Text {
+                    text: add3DSpace.text
+                    font: add3DSpace.font
+                    opacity: enabled ? 1.0 : 0.3
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+
+                background: Rectangle {
+                    height: 40
+                }
+                onClicked: {
+                    khipuModel.addSpace("3D Space","3D")
+                    khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
                 }
             }
         }
-    }
-    KhipuAddSpace{
-        id: addWindow
     }
     footer: TabBar {
         Text {

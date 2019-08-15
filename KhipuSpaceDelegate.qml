@@ -23,6 +23,13 @@ Item {
         ColumnLayout {
             Text {
                 text: '<b>Name:</b> ' + name
+                TextField{
+                    id: renameSpace
+                    visible: false
+                    onAccepted: { khipuModel.rename(renameSpace.text); renameSpace.visible = false }
+                    text: "new space name"
+                    //height: 27
+                }
             }
             RowLayout{
                 spacing: 10
@@ -36,6 +43,9 @@ Item {
         anchors.fill: parent
         onClicked: {
             spacesList.currentIndex = index
+        }
+        onDoubleClicked: {
+            renameSpace.visible = true
         }
     }
 }

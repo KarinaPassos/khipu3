@@ -29,9 +29,10 @@ bool KhipuSpaceModel::removeSpace(int row)
     return false;
 }
 
-void KhipuSpaceModel::rename(const QString &name)
+void KhipuSpaceModel::rename(const QString &name, const int row)
 {
     currentSpace()->setName(name);
+    dataChanged(index(0),index(row));
 }
 
 QString KhipuSpaceModel::getType(int row) const
@@ -51,10 +52,16 @@ void *KhipuSpaceModel::removeFunction(int row)
 
 QString KhipuSpaceModel::functionFixing(QString str) const
 {
-    if (str.contains("x") == false) {
+    if (m_currentSpace->type() == Analitza::Dim3D) {
+        if ((str.contains("x") == false || str.contains("y") == false)
+                && str.contains("z") == false && str.contains("=")) {
+            str = str + " + 0z";
+        }
+    }
+    if (str.contains("x") == false && str.contains("=") == true) {
         str = str + " + 0x";
     }
-    if (str.contains("y") == false) {
+    if (str.contains("y") == false && str.contains("=") == true) {
         str = str + " + 0y";
     }
     return str;

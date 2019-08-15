@@ -11,13 +11,6 @@ ColumnLayout {
     property alias currentIndex: spacesList.currentIndex
     property alias model : spacesList.model
 
-    function insertSpace(type) {
-        khipuModel.addSpace(type + " space",type)
-        if (khipuModel.rowCount() === 1) {
-            khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
-        }
-    }
-
     TextField {
         Layout.fillWidth: true
         placeholderText: qsTr("Search")
@@ -45,35 +38,18 @@ ColumnLayout {
         }
 
         highlightFollowsCurrentItem: true
-        focus: true
+        //focus: true
     }
 
-    RowLayout {
-        anchors.horizontalCenter: parent.horizontalCenter
-        Layout.fillWidth: true
-        Button {
-            Text {
-                text: "Rename"
-                anchors.centerIn: parent
-            }
-            onClicked: {
-                if (khipuModel.rowCount() > 0)
-                    renameWindow.visible = true
-            }
+    Button {
+        Text {
+            text: "Remove"
+            anchors.centerIn: parent
         }
-        Button {
-            Text {
-                text: "Remove"
-                anchors.centerIn: parent
-            }
-            onClicked: {
-                khipuModel.removeSpace(spacesList.currentIndex)
-                if (currentIndex>0)
-                    currentIndex=currentIndex-1
-            }
+        onClicked: {
+            khipuModel.removeSpace(spacesList.currentIndex)
+            if (currentIndex>0)
+                currentIndex=currentIndex-1
         }
-    }
-    KhipuRenameSpace{
-        id: renameWindow
     }
 }
