@@ -1,5 +1,6 @@
 import QtQuick.Controls 2.13
 import QtQuick.Layouts 1.12
+import QtQuick.Window 2.13
 import QtQuick 2.2
 import QtQuick.Dialogs 1.0
 
@@ -8,6 +9,7 @@ ApplicationWindow {
     visible: true
     visibility: "Maximized"
     menuBar: MenuBar {
+        id: khipuMenuBar
         background: Rectangle {
         }
         delegate: MenuBarItem {
@@ -56,15 +58,17 @@ ApplicationWindow {
         Menu {
             title: qsTr("Settings")
             Action {
-                text: qsTr("&Show menubar")
+                text: qsTr("&Hide menubar")
+                onTriggered: {
+                    khipuMenuBar.visible = false
+                    menuBarAlert.visible = true
+                }
             }
             MenuSeparator {
             }
             Action {
-                text: qsTr("&Theme")
-            }
-            Action {
-                text: qsTr("&Grid")
+                text: qsTr("&Grid settings")
+                onTriggered: gridSettings.visible = true
             }
         }
         Menu {
@@ -100,6 +104,19 @@ ApplicationWindow {
             }
         }
     }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_F1) {
+            console.log("entrou aqui")
+            khipuMenuBar.visible = true
+        }
+    }
+    Window{
+        id: menuBarAlert
+        visible: false
+        minimumHeight: 50
+        minimumWidth: 300
+        Text{ anchors.centerIn: parent; text: "press F1 to show Menu Bar again" }
+    }
     FileDialog {
         id: fileDialog
         title: "Please choose a .json file"
@@ -120,6 +137,10 @@ ApplicationWindow {
         onRejected: {
         }
     }*/
+    Khipu2DGridSettings {
+        id: gridSettings
+        visible: false
+    }
     header: ToolBar {
         height: 40
         background: Rectangle {
