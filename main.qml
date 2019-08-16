@@ -231,14 +231,8 @@ ApplicationWindow {
             model: khipuModel
         }
 
-        Khipu2DMenu {
+        KhipuMenu {
             Layout.fillHeight: true
-            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
-        }
-
-        Khipu3DMenu {
-            Layout.fillHeight: true
-            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
         }
 
         KhipuScreen {

@@ -25,9 +25,6 @@ Item {
             Layout.minimumWidth: 350
             Layout.maximumWidth: 350
             Layout.fillHeight: true
-            /*
-              2D Options
-            */
         }
     }
 }

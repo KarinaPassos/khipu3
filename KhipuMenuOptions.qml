@@ -62,4 +62,15 @@ ColumnLayout {
             onClicked: khipuModel.removeFunction(plotView.currentIndex);
         }
     }
+
+    /* you can put here future dimensional options, like:
+        item2d{
+            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
+            (...)
+        }
+        item3d{
+            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
+            (...)
+        }
+    */
 }
