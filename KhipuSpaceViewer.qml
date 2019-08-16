@@ -48,8 +48,9 @@ ColumnLayout {
         }
         onClicked: {
             khipuModel.removeSpace(spacesList.currentIndex)
-            if (currentIndex>0)
+            if (currentIndex>0){
                 currentIndex=currentIndex-1
+            }
         }
     }
 }

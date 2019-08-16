@@ -100,15 +100,17 @@ void KhipuSpaceModel::plotDict()
     addSpace(space2D);
     addSpace(space3D);
 
-    if (m_spaceList.size() == 2)
+    if (m_spaceList.size() == 2){
         setCurrentSpace(spaceAt(0));
+    }
 }
 
 void KhipuSpaceModel::searchSpace(QString text)
 {
     for (int i = 0; i < m_spaceList.size(); i++) {
-        if (m_spaceList[i]->name().contains(text))
+        if (m_spaceList[i]->name().contains(text)){
             searchResult.append(m_spaceList[i]);
+        }
     }
     //falta retornar esse searchresult pro model, mas ainda nao sei como faz
 }
@@ -149,18 +151,22 @@ void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
 
 int KhipuSpaceModel::strCheckDim(QString dim) const
 {
-    if (dim == "2D")
+    if (dim == "2D"){
         return Analitza::Dim2D;
-    else if (dim == "3D")
+    }
+    else if (dim == "3D"){
         return Analitza::Dim3D;
+    }
 }
 
 QString KhipuSpaceModel::intCheckDim(int dim) const
 {
-    if (dim == Analitza::Dim2D)
+    if (dim == Analitza::Dim2D){
         return "2D";
-    else if (dim == Analitza::Dim3D)
+    }
+    else if (dim == Analitza::Dim3D){
         return "3D";
+    }
 }
 
 void KhipuSpaceModel::addSpace(KhipuSpace *space)

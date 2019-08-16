@@ -20,7 +20,6 @@ Item {
             }
         }
 
-
         KhipuMenuOptions {
             id: menuOptions
             Layout.minimumWidth: 350
