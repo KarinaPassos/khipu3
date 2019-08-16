@@ -3,7 +3,7 @@
         <file>main.qml</file>
         <file>KhipuSpaceViewer.qml</file>
         <file>KhipuScreen.qml</file>
-        <file>KhipuMenu.qml</file>
+        <file>KhipuHideMenuButton.qml</file>
         <file>KhipuMenuOptions.qml</file>
         <file>Khipu2DMenu.qml</file>
         <file>Khipu3DMenu.qml</file>
