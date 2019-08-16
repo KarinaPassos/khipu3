@@ -1,6 +1,11 @@
 import QtQuick 2.2
 import QtQuick.Controls 2.13
 import QtQuick.Layouts 1.12
+
+/*
+    This file represents the menu available in each space
+*/
+
 Item {
     Layout.minimumWidth: menuOptions.visible ? 350 : hideMenu.width
 

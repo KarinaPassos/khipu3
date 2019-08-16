@@ -2,6 +2,10 @@ import QtQuick.Controls 2.13
 import QtQuick.Layouts 1.12
 import QtQuick 2.2
 
+/*
+    This file represents the informations that will appear in the list view when you create a space
+*/
+
 Item {
     width: parent.width
     height: 60
