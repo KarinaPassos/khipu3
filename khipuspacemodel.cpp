@@ -10,12 +10,14 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     qRegisterMetaType<QSharedPointer<Analitza::Variables>>("QSharedPointer<Analitza::Variables>");
 }
 
-void KhipuSpaceModel::addSpace(QString name, QString type)
+KhipuSpace* KhipuSpaceModel::addSpace(QString name, QString type)
 {
     int dim = strCheckDim(type);
+    auto space = new KhipuSpace(name, dim);
     beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size());
-    m_spaceList.append(new KhipuSpace(name, dim));
+    m_spaceList.append(space);
     endInsertRows();
+    return space;
 }
 
 bool KhipuSpaceModel::removeSpace(int row)
