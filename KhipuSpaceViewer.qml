@@ -31,7 +31,6 @@ ColumnLayout {
         }
 
         delegate: KhipuSpaceDelegate {
-
         }
 
         highlight: Rectangle {

@@ -4,31 +4,13 @@ import QtQuick.Window 2.13
 import QtQuick 2.2
 import QtQuick.Dialogs 1.0
 
+
 ApplicationWindow {
     id: appwindow
     visible: true
     visibility: "Maximized"
     menuBar: MenuBar {
         id: khipuMenuBar
-        background: Rectangle {
-        }
-        delegate: MenuBarItem {
-            id: menuBarItem
-            contentItem: Text {
-                text: menuBarItem.text
-                font: menuBarItem.font
-                opacity: enabled ? 1.0 : 0.3
-                horizontalAlignment: Text.AlignLeft
-                verticalAlignment: Text.AlignVCenter
-                elide: Text.ElideRight
-            }
-
-            background: Rectangle {
-                implicitWidth: 40
-                implicitHeight: 40
-                opacity: enabled ? 1 : 0.3
-            }
-        }
         Menu {
             title: {
                 qsTr("File")
@@ -91,9 +73,9 @@ ApplicationWindow {
             }
             MenuSeparator {
             }
-            Action {
+            /*Action {
                 text: qsTr("&Switch application language")
-            }
+            }*/
             MenuSeparator {
             }
             Action {
