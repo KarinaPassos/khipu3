@@ -188,6 +188,7 @@ ApplicationWindow {
                 onClicked: {
                     khipuModel.addSpace("2D Space","2D")
                     khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
+                    khipuMenu.visible = true
                 }
             }
             Button {
@@ -209,6 +210,7 @@ ApplicationWindow {
                 onClicked: {
                     khipuModel.addSpace("3D Space","3D")
                     khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
+                    khipuMenu.visible = true
                 }
             }
         }
@@ -232,7 +234,9 @@ ApplicationWindow {
         }
 
         KhipuMenu {
+            id: khipuMenu
             Layout.fillHeight: true
+            visible: false
         }
 
         KhipuScreen {
