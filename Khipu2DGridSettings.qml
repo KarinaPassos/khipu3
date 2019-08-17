@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 1.4
 
 /*
-    This file represents the window that opens when you click on
+    This file represents the window that opens when you click on MenuBar > Settings > Grid Settings
 */
 
 Window {
