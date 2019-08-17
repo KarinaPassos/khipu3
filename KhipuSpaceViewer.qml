@@ -18,7 +18,7 @@ ColumnLayout {
         Layout.fillWidth: true
         placeholderText: qsTr("Search")
         onTextChanged: {
-            khipuModel.searchSpace("text")
+            proxyModel.setFilterRegExp(text)
         }
     }
 

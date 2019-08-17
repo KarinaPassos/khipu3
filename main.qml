@@ -94,9 +94,9 @@ ApplicationWindow {
             }
             /*Action {
                 text: qsTr("&Switch application language")
-            }*/
-            MenuSeparator {
             }
+            MenuSeparator {
+            }*/
             Action {
                 text: qsTr("&About Khipu")
             }
@@ -230,7 +230,7 @@ ApplicationWindow {
             id: mySpace
             Layout.fillHeight: true
             Layout.maximumWidth: 300
-            model: khipuModel
+            model: proxyModel
         }
 
         KhipuMenu {

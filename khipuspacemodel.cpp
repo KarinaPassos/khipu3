@@ -107,16 +107,6 @@ void KhipuSpaceModel::plotDict()
     }
 }
 
-void KhipuSpaceModel::searchSpace(QString text)
-{
-    for (int i = 0; i < m_spaceList.size(); i++) {
-        if (m_spaceList[i]->name().contains(text)){
-            searchResult.append(m_spaceList[i]);
-        }
-    }
-    //falta retornar esse searchresult pro model, mas ainda nao sei como faz
-}
-
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)

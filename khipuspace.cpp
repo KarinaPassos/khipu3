@@ -17,8 +17,8 @@ KhipuSpace::KhipuSpace(const QString& name, const int type) :
 KhipuSpace::KhipuSpace(const QString &name, const int type, Analitza::PlotsModel *model) :
     m_name(name),
     m_type(type),
-    m_vars(new Analitza::Variables),
-    m_model(model)
+    m_model(model),
+    m_vars(new Analitza::Variables)
 {
 }
 
@@ -45,6 +45,7 @@ QString KhipuSpace::strType() const
     else if (m_type == Analitza::Dim3D){
         return "3D";
     }
+    return "";
 }
 
 void KhipuSpace::addPlot(QString expression)

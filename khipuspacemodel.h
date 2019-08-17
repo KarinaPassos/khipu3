@@ -30,7 +30,6 @@ public:
     Q_INVOKABLE void save(QString name) const; //saves the current spacelist in a json file
     Q_INVOKABLE void load(QString path); //loads a given file
     Q_INVOKABLE void plotDict(); //creates two spaces with examples to the user
-    Q_INVOKABLE void searchSpace(QString text); //function to be used by the search bar
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
