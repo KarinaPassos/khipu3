@@ -2,6 +2,10 @@ import QtQuick 2.2
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.13
 
+/*
+    This file represents the menu options that appear on the menu
+*/
+
 ColumnLayout {
     spacing: 30
 
@@ -62,4 +66,15 @@ ColumnLayout {
             onClicked: khipuModel.removeFunction(plotView.currentIndex);
         }
     }
+
+    /* you can put here future dimensional options, like:
+        item2d{
+            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
+            (...)
+        }
+        item3d{
+            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
+            (...)
+        }
+    */
 }

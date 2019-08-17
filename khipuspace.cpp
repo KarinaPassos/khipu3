@@ -39,10 +39,12 @@ int KhipuSpace::type() const
 
 QString KhipuSpace::strType() const
 {
-    if (m_type == Analitza::Dim2D)
+    if (m_type == Analitza::Dim2D){
         return "2D";
-    else if (m_type == Analitza::Dim3D)
+    }
+    else if (m_type == Analitza::Dim3D){
         return "3D";
+    }
 }
 
 void KhipuSpace::addPlot(QString expression)

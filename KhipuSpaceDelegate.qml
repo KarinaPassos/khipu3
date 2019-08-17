@@ -2,6 +2,10 @@ import QtQuick.Controls 2.13
 import QtQuick.Layouts 1.12
 import QtQuick 2.2
 
+/*
+    This file represents the informations that will appear in the list view when you create a space
+*/
+
 Item {
     width: parent.width
     height: 60
@@ -23,19 +27,17 @@ Item {
         ColumnLayout {
             Text {
                 text: '<b>Name:</b> ' + name
-                TextField{
-                    id: renameSpace
-                    visible: false
-                    onAccepted: { khipuModel.rename(renameSpace.text); renameSpace.visible = false }
-                    text: "new space name"
-                    //height: 27
-                }
+                visible: !renameSpace.visible
             }
-            RowLayout{
-                spacing: 10
-                Text {
-                    text: '<b>Type:</b> ' + type
-                }
+            TextField{
+                id: renameSpace
+                height: 25
+                visible: false
+                onAccepted: { khipuModel.rename(renameSpace.text); renameSpace.visible = false }
+                text: "new space name"
+            }
+            Text {
+                text: '<b>Type:</b> ' + type
             }
         }
     }

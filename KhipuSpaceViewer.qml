@@ -3,6 +3,9 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.13
 import QtQuick.Dialogs 1.0
 
+/*
+    This file represents the space manager that will be on the left of the screen
+*/
 
 ColumnLayout {
     id: bg
@@ -31,7 +34,6 @@ ColumnLayout {
         }
 
         delegate: KhipuSpaceDelegate {
-
         }
 
         highlight: Rectangle {
@@ -49,8 +51,9 @@ ColumnLayout {
         }
         onClicked: {
             khipuModel.removeSpace(spacesList.currentIndex)
-            if (currentIndex>0)
+            if (currentIndex>0){
                 currentIndex=currentIndex-1
+            }
         }
     }
 }

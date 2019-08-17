@@ -4,6 +4,7 @@ import QtQuick.Window 2.13
 import QtQuick 2.2
 import QtQuick.Dialogs 1.0
 
+
 ApplicationWindow {
     id: appwindow
     visible: true
@@ -91,9 +92,9 @@ ApplicationWindow {
             }
             MenuSeparator {
             }
-            Action {
+            /*Action {
                 text: qsTr("&Switch application language")
-            }
+            }*/
             MenuSeparator {
             }
             Action {
@@ -187,6 +188,7 @@ ApplicationWindow {
                 onClicked: {
                     khipuModel.addSpace("2D Space","2D")
                     khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
+                    khipuMenu.visible = true
                 }
             }
             Button {
@@ -208,6 +210,7 @@ ApplicationWindow {
                 onClicked: {
                     khipuModel.addSpace("3D Space","3D")
                     khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
+                    khipuMenu.visible = true
                 }
             }
         }
@@ -230,14 +233,10 @@ ApplicationWindow {
             model: khipuModel
         }
 
-        Khipu2DMenu {
+        KhipuMenu {
+            id: khipuMenu
             Layout.fillHeight: true
-            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
-        }
-
-        Khipu3DMenu {
-            Layout.fillHeight: true
-            visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
+            visible: false
         }
 
         KhipuScreen {

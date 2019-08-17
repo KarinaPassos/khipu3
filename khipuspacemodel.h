@@ -20,7 +20,7 @@ public:
 
     KhipuSpaceModel(QObject *parent = nullptr);
 
-    Q_INVOKABLE void addSpace(QString name, QString type); //creates a new space
+    Q_INVOKABLE KhipuSpace *addSpace(QString name, QString type); //creates a new space
     Q_INVOKABLE bool removeSpace(int row); //removes spaces of the list
     Q_INVOKABLE void rename(const QString& name, const int row); //renames current space
     Q_INVOKABLE QString getType(int row) const; //returns current space type

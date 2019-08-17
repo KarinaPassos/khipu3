@@ -4,6 +4,10 @@ import QtQuick.Dialogs 1.0
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 1.4
 
+/*
+    This file represents the window that opens when you click on
+*/
+
 Window {
     minimumHeight: 150
     minimumWidth: 200
