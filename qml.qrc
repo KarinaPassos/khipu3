@@ -8,5 +8,6 @@
         <file>KhipuMenu.qml</file>
         <file>KhipuSpaceDelegate.qml</file>
         <file>Khipu2DGridSettings.qml</file>
+        <file>KhipuEditPlotDialog.qml</file>
     </qresource>
 </RCC>
