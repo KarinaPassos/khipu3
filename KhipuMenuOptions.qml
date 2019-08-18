@@ -40,6 +40,10 @@ ColumnLayout {
                         anchors.fill: parent
                         onClicked: {
                             plotView.currentIndex = index
+                            khipuModel.setPlotCurrentIndex(plotView.currentIndex)
+                        }
+                        onDoubleClicked: {
+                            editExpressionDialog.visible = true
                         }
                     }
                 }
@@ -48,6 +52,9 @@ ColumnLayout {
             highlightFollowsCurrentItem: true
             focus: true
         }
+    }
+    KhipuEditPlotDialog{
+        id: editExpressionDialog
     }
 
     RowLayout {

@@ -6,6 +6,7 @@
 #include <qqml.h>
 #include <khipuspace.h>
 #include <QList>
+#include <QColor>
 
 class KhipuSpaceModel : public QAbstractListModel
 {
@@ -30,6 +31,11 @@ public:
     Q_INVOKABLE void save(QString name) const; //saves the current spacelist in a json file
     Q_INVOKABLE void load(QString path); //loads a given file
     Q_INVOKABLE void plotDict(); //creates two spaces with examples to the user
+    Q_INVOKABLE int getPlotCurrentIndex() const;
+    Q_INVOKABLE void setPlotCurrentIndex(int value);
+    Q_INVOKABLE void setVisibility(const bool visibility);
+    Q_INVOKABLE void setExpression(const QString expression);
+    Q_INVOKABLE void setColor(const QColor color);
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -45,8 +51,8 @@ private:
     QString intCheckDim(int dim) const; //converts the type from int to str to be easier to use in qml
     void addSpace(KhipuSpace* space); //creates a new space
     QList<KhipuSpace*> m_spaceList;
-    QList<KhipuSpace*> searchResult;
     KhipuSpace *m_currentSpace = nullptr;
+    int plotCurrentIndex = 0;
 };
 
 #endif // KHIPUSPACEMODEL_H
