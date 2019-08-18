@@ -62,12 +62,6 @@ ColumnLayout {
         Button{
             Text{
                 anchors.centerIn: parent
-                text: "Edit"
-            }
-        }
-        Button{
-            Text{
-                anchors.centerIn: parent
                 text: "Remove"
             }
             onClicked: khipuModel.removeFunction(plotView.currentIndex);

@@ -4,6 +4,10 @@ import QtQuick.Dialogs 1.0
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 1.4
 
+/*
+    This file represents the dialog window that opens when the user want to edit a plot
+*/
+
 Window {
     title: "Edit your plot"
     minimumHeight: 175
