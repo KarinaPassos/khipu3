@@ -4,7 +4,7 @@ import QtQuick.Controls 2.13
 import QtQuick.Dialogs 1.0
 
 /*
-    This file represents the space manager that will be on the left of the screen
+    This file represents the space manager that will be on the left of the screen+
 */
 
 ColumnLayout {
@@ -18,7 +18,7 @@ ColumnLayout {
         Layout.fillWidth: true
         placeholderText: qsTr("Search")
         onTextChanged: {
-            khipuModel.searchSpace("text")
+            proxyModel.setFilterRegExp(text)
         }
     }
 

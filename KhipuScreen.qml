@@ -2,6 +2,10 @@ import QtQuick 2.2
 import QtQuick.Controls 2.13
 import org.kde.analitza 1.1
 
+/*
+    This file represents the 2d and 3d space visualization, and manages what will appear on the screen
+*/
+
 Rectangle {
     id: plotscreen
     signal changeScreen()

@@ -107,16 +107,6 @@ void KhipuSpaceModel::plotDict()
     }
 }
 
-void KhipuSpaceModel::searchSpace(QString text)
-{
-    for (int i = 0; i < m_spaceList.size(); i++) {
-        if (m_spaceList[i]->name().contains(text)){
-            searchResult.append(m_spaceList[i]);
-        }
-    }
-    //falta retornar esse searchresult pro model, mas ainda nao sei como faz
-}
-
 int KhipuSpaceModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -176,4 +166,30 @@ void KhipuSpaceModel::addSpace(KhipuSpace *space)
     beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size());
     m_spaceList.append(space);
     endInsertRows();
+}
+
+int KhipuSpaceModel::getPlotCurrentIndex() const
+{
+    return plotCurrentIndex;
+}
+
+void KhipuSpaceModel::setPlotCurrentIndex(int value)
+{
+    plotCurrentIndex = value;
+}
+
+void KhipuSpaceModel::setVisibility(const bool visibility)
+{
+    m_currentSpace->model()->setData(index(plotCurrentIndex), visibility, Qt::CheckStateRole);
+}
+
+void KhipuSpaceModel::setExpression(const QString expression)
+{
+    m_currentSpace->model()->setData(index(plotCurrentIndex), expression, Qt::EditRole);
+    qDebug() << m_currentSpace->model()->data(index(plotCurrentIndex-1));
+}
+
+void KhipuSpaceModel::setColor(const QColor color)
+{
+    m_currentSpace->model()->setData(index(plotCurrentIndex), color, Qt::DecorationRole);
 }

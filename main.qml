@@ -4,7 +4,6 @@ import QtQuick.Window 2.13
 import QtQuick 2.2
 import QtQuick.Dialogs 1.0
 
-
 ApplicationWindow {
     id: appwindow
     visible: true
@@ -43,12 +42,12 @@ ApplicationWindow {
             }
             Action {
                 text: qsTr("&Save")
-                onTriggered: khipuModel.save("testejson") //deveria estar abrindo um dialog
+                onTriggered: saveDialogBar.visible = true //deveria estar abrindo um dialog
             }
-            Action {
+            /*Action {
                 text: qsTr("&Save as...")
-                onTriggered: khipuModel.save("testejson2") //deveria estar abrindo um dialog
-            }
+                onTriggered: saveDialogBar.visible = true //deveria estar abrindo um dialog
+            }*/
             MenuSeparator {
             }
             Action {
@@ -94,9 +93,9 @@ ApplicationWindow {
             }
             /*Action {
                 text: qsTr("&Switch application language")
-            }*/
-            MenuSeparator {
             }
+            MenuSeparator {
+            }*/
             Action {
                 text: qsTr("&About Khipu")
             }
@@ -130,14 +129,6 @@ ApplicationWindow {
             fileDialog.close()
         }
     }
-    /*FileDialog {
-        id: saveDialog
-        title: "Please choose a .json file"
-        onAccepted: {
-        }
-        onRejected: {
-        }
-    }*/
     Khipu2DGridSettings {
         id: gridSettings
         visible: false
@@ -220,29 +211,41 @@ ApplicationWindow {
             // ...
         }
     }
-
-    RowLayout {
+    ColumnLayout{
         anchors.fill: parent
-        Rectangle {
-        }
-
-        KhipuSpaceViewer {
-            id: mySpace
-            Layout.fillHeight: true
-            Layout.maximumWidth: 300
-            model: khipuModel
-        }
-
-        KhipuMenu {
-            id: khipuMenu
-            Layout.fillHeight: true
+        TextField{
+            id: saveDialogBar
+            text: "Type file name here"
             visible: false
+            width: parent.width
+            onAccepted: {
+                khipuModel.save(text)
+                text = ""
+                visible = false
+            }
         }
+        RowLayout {
+            Rectangle {
+            }
 
-        KhipuScreen {
-            id: blackscreen
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            KhipuSpaceViewer {
+                id: mySpace
+                Layout.fillHeight: true
+                Layout.maximumWidth: 300
+                model: proxyModel
+            }
+
+            KhipuMenu {
+                id: khipuMenu
+                Layout.fillHeight: true
+                visible: false
+            }
+
+            KhipuScreen {
+                id: blackscreen
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+            }
         }
     }
 }

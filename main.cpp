@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <khipuspacemodel.h>
+#include <QSortFilterProxyModel>
 
 int main(int argc, char *argv[])
 {
@@ -11,9 +12,16 @@ int main(int argc, char *argv[])
     KhipuSpaceModel spaceModel;
     QQmlApplicationEngine engine;
 
+    QSortFilterProxyModel *proxyModel = new QSortFilterProxyModel();
+    proxyModel->setSourceModel(&spaceModel);
+    proxyModel->setFilterRole(KhipuSpaceModel::NameRole);
+    proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+
     qmlRegisterType<KhipuSpace>();
 
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
+    engine.rootContext()->setContextProperty("proxyModel", proxyModel);
+
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

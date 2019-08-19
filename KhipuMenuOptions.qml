@@ -40,6 +40,10 @@ ColumnLayout {
                         anchors.fill: parent
                         onClicked: {
                             plotView.currentIndex = index
+                            khipuModel.setPlotCurrentIndex(plotView.currentIndex)
+                        }
+                        onDoubleClicked: {
+                            editExpressionDialog.visible = true
                         }
                     }
                 }
@@ -49,15 +53,12 @@ ColumnLayout {
             focus: true
         }
     }
+    KhipuEditPlotDialog{
+        id: editExpressionDialog
+    }
 
     RowLayout {
         Layout.alignment : Qt.AlignHCenter
-        Button{
-            Text{
-                anchors.centerIn: parent
-                text: "Edit"
-            }
-        }
         Button{
             Text{
                 anchors.centerIn: parent
