@@ -24,7 +24,7 @@ public:
     int type() const;
     QString strType() const;
 
-    Q_INVOKABLE void addPlot(QString expression);
+    Q_INVOKABLE void addPlot(const QString expression);
 
     Q_INVOKABLE QSharedPointer<Analitza::Variables> variables() const;
     void notifyVariablesChanged() { variablesChanged(); }

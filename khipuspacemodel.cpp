@@ -1,6 +1,7 @@
 #include "khipuspacemodel.h"
 #include "khipudata.h"
 #include <QDebug>
+#include <QFileDialog>
 
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     QAbstractListModel(parent),
@@ -10,7 +11,7 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     qRegisterMetaType<QSharedPointer<Analitza::Variables>>("QSharedPointer<Analitza::Variables>");
 }
 
-KhipuSpace* KhipuSpaceModel::addSpace(QString name, QString type)
+KhipuSpace* KhipuSpaceModel::addSpace(const QString name, const QString type)
 {
     int dim = strCheckDim(type);
     auto space = new KhipuSpace(name, dim);
@@ -20,7 +21,7 @@ KhipuSpace* KhipuSpaceModel::addSpace(QString name, QString type)
     return space;
 }
 
-bool KhipuSpaceModel::removeSpace(int row)
+bool KhipuSpaceModel::removeSpace(const int row)
 {
     if (m_spaceList.size()>1){
         beginRemoveRows(QModelIndex(), row, row);
@@ -37,17 +38,17 @@ void KhipuSpaceModel::rename(const QString &name, const int row)
     dataChanged(index(0),index(row));
 }
 
-QString KhipuSpaceModel::getType(int row) const
+QString KhipuSpaceModel::getType(const int row) const
 {
     return intCheckDim(m_spaceList[row]->type());
 }
 
-KhipuSpace* KhipuSpaceModel::spaceAt(int row) const
+KhipuSpace* KhipuSpaceModel::spaceAt(const int row) const
 {
     return m_spaceList.at(row);
 }
 
-void *KhipuSpaceModel::removeFunction(int row)
+void KhipuSpaceModel::removeFunction(const int row)
 {
     m_currentSpace->model()->removeRow(row);
 }
@@ -69,12 +70,12 @@ QString KhipuSpaceModel::functionFixing(QString str) const
     return str;
 }
 
-void KhipuSpaceModel::save(QString name) const
+void KhipuSpaceModel::save(const QString name) const
 {
     KhipuData::saveData(m_spaceList,name);
 }
 
-void KhipuSpaceModel::load(QString path)
+void KhipuSpaceModel::load(const QString path)
 {
     if (path.contains(".json")){
         QList<KhipuSpace*> newSpaces = KhipuData::loadData("testejson");
@@ -141,7 +142,7 @@ void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
     emit currentSpaceChanged(space);
 }
 
-int KhipuSpaceModel::strCheckDim(QString dim) const
+int KhipuSpaceModel::strCheckDim(const QString dim) const
 {
     if (dim == "2D"){
         return Analitza::Dim2D;
@@ -149,9 +150,10 @@ int KhipuSpaceModel::strCheckDim(QString dim) const
     else if (dim == "3D"){
         return Analitza::Dim3D;
     }
+    return -1;
 }
 
-QString KhipuSpaceModel::intCheckDim(int dim) const
+QString KhipuSpaceModel::intCheckDim(const int dim) const
 {
     if (dim == Analitza::Dim2D){
         return "2D";
@@ -159,6 +161,7 @@ QString KhipuSpaceModel::intCheckDim(int dim) const
     else if (dim == Analitza::Dim3D){
         return "3D";
     }
+    return "";
 }
 
 void KhipuSpaceModel::addSpace(KhipuSpace *space)
@@ -173,7 +176,7 @@ int KhipuSpaceModel::getPlotCurrentIndex() const
     return plotCurrentIndex;
 }
 
-void KhipuSpaceModel::setPlotCurrentIndex(int value)
+void KhipuSpaceModel::setPlotCurrentIndex(const int value)
 {
     plotCurrentIndex = value;
 }

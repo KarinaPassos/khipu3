@@ -48,7 +48,7 @@ QString KhipuSpace::strType() const
     return "";
 }
 
-void KhipuSpace::addPlot(QString expression)
+void KhipuSpace::addPlot(const QString expression)
 {
     if (m_type == Analitza::Dim2D){
         m_model->addFunction(expression, Analitza::Dim2D, m_vars);
