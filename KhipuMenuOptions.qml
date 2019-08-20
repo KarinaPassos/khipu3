@@ -41,6 +41,7 @@ ColumnLayout {
                         onClicked: {
                             plotView.currentIndex = index
                             khipuModel.setPlotCurrentIndex(plotView.currentIndex)
+                            editExpressionDialog.colorChecker = 0
                         }
                         onDoubleClicked: {
                             editExpressionDialog.visible = true

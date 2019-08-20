@@ -35,11 +35,11 @@ Window {
                 Text{ text: "Visibility: " }
                 CheckBox{
                     id: setVisibility
+                    checked: true
                 }
             }
         }
         Button{
-            anchors.horizontalCenter: parent.horizontalCenter
             text: "Send changes"
             onClicked: {
                 khipuModel.setVisibility(setVisibility.checked)

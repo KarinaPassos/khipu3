@@ -9,8 +9,8 @@ import QtQuick.Controls 2.13
 */
 
 Window {
-    minimumHeight: 150
-    minimumWidth: 200
+    minimumHeight: 180
+    minimumWidth: 230
     ColumnLayout{
         spacing: 20
         anchors.centerIn: parent
@@ -30,6 +30,9 @@ Window {
                 text: "select"
                 onClicked: colorDialog.visible = true
             }
+        }
+        Button{
+            text: "Save changes"
         }
     }
     ColorDialog{
