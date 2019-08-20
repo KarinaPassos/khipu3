@@ -213,15 +213,29 @@ ApplicationWindow {
     }
     ColumnLayout{
         anchors.fill: parent
-        TextField{
+        RowLayout {
             id: saveDialogBar
-            text: "Type file name here"
             visible: false
-            width: parent.width
-            onAccepted: {
-                khipuModel.save(text)
-                text = ""
-                visible = false
+            TextField{
+                id: saveInput
+                text: "Type file name here"
+                width: parent.width
+                onAccepted: {
+                    khipuModel.save(text)
+                    text = ""
+                    saveDialogBar.visible = false
+                }
+            }
+            Button{
+                text: "Save"
+                onClicked: {
+                    khipuModel.save(saveInput.text)
+                    saveDialogBar.visible = false
+                }
+            }
+            Button{
+                text: "Cancel"
+                onClicked: saveDialogBar.visible = false
             }
         }
         RowLayout {
