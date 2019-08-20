@@ -7,6 +7,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QCoreApplication::setOrganizationName("KDE");
     QGuiApplication app(argc, argv);
 
     KhipuSpaceModel spaceModel;
@@ -21,7 +22,6 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
     engine.rootContext()->setContextProperty("proxyModel", proxyModel);
-
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

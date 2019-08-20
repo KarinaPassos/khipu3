@@ -22,7 +22,7 @@ public:
     void setName(const QString &name);
 
     int type() const;
-    QString strType() const;
+    Q_INVOKABLE QString strType() const;
 
     Q_INVOKABLE void addPlot(const QString expression);
 
