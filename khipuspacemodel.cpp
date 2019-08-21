@@ -11,7 +11,7 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     qRegisterMetaType<QSharedPointer<Analitza::Variables>>("QSharedPointer<Analitza::Variables>");
 }
 
-KhipuSpace* KhipuSpaceModel::addSpace(const QString name, const QString type)
+KhipuSpace* KhipuSpaceModel::addSpace(const QString& name, const QString& type)
 {
     int dim = strCheckDim(type);
     auto space = new KhipuSpace(name, dim);
@@ -21,7 +21,7 @@ KhipuSpace* KhipuSpaceModel::addSpace(const QString name, const QString type)
     return space;
 }
 
-bool KhipuSpaceModel::removeSpace(const int row)
+bool KhipuSpaceModel::removeSpace(const int& row)
 {
     if (m_spaceList.size()>1){
         beginRemoveRows(QModelIndex(), row, row);
@@ -32,23 +32,23 @@ bool KhipuSpaceModel::removeSpace(const int row)
     return false;
 }
 
-void KhipuSpaceModel::rename(const QString &name, const int row)
+void KhipuSpaceModel::rename(const QString& name, const int& row)
 {
     currentSpace()->setName(name);
     dataChanged(index(0),index(row));
 }
 
-QString KhipuSpaceModel::getType(const int row) const
+QString KhipuSpaceModel::getType(const int& row) const
 {
     return intCheckDim(m_spaceList[row]->type());
 }
 
-KhipuSpace* KhipuSpaceModel::spaceAt(const int row) const
+KhipuSpace* KhipuSpaceModel::spaceAt(const int& row) const
 {
     return m_spaceList.at(row);
 }
 
-void KhipuSpaceModel::removeFunction(const int row)
+void KhipuSpaceModel::removeFunction(const int& row)
 {
     m_currentSpace->model()->removeRow(row);
 }
@@ -70,12 +70,12 @@ QString KhipuSpaceModel::functionFixing(QString str) const
     return str;
 }
 
-void KhipuSpaceModel::save(const QString name) const
+void KhipuSpaceModel::save(const QString& name) const
 {
     KhipuData::saveData(m_spaceList,name);
 }
 
-void KhipuSpaceModel::load(const QString path)
+void KhipuSpaceModel::load(const QString& path)
 {
     if (path.contains(".json")){
         QList<KhipuSpace*> newSpaces = KhipuData::loadData("testejson");
@@ -142,7 +142,7 @@ void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
     emit currentSpaceChanged(space);
 }
 
-int KhipuSpaceModel::strCheckDim(const QString dim) const
+int KhipuSpaceModel::strCheckDim(const QString& dim) const
 {
     if (dim == "2D"){
         return Analitza::Dim2D;
@@ -153,7 +153,7 @@ int KhipuSpaceModel::strCheckDim(const QString dim) const
     return -1;
 }
 
-QString KhipuSpaceModel::intCheckDim(const int dim) const
+QString KhipuSpaceModel::intCheckDim(const int& dim) const
 {
     if (dim == Analitza::Dim2D){
         return "2D";
@@ -176,23 +176,23 @@ int KhipuSpaceModel::getPlotCurrentIndex() const
     return plotCurrentIndex;
 }
 
-void KhipuSpaceModel::setPlotCurrentIndex(const int value)
+void KhipuSpaceModel::setPlotCurrentIndex(const int& value)
 {
     plotCurrentIndex = value;
 }
 
-void KhipuSpaceModel::setVisibility(const bool visibility)
+void KhipuSpaceModel::setVisibility(const bool& visibility)
 {
     m_currentSpace->model()->setData(index(plotCurrentIndex), visibility, Qt::CheckStateRole);
 }
 
-void KhipuSpaceModel::setExpression(const QString expression)
+void KhipuSpaceModel::setExpression(const QString& expression)
 {
     m_currentSpace->model()->setData(index(plotCurrentIndex), expression, Qt::EditRole);
     qDebug() << m_currentSpace->model()->data(index(plotCurrentIndex-1));
 }
 
-void KhipuSpaceModel::setColor(const QColor color)
+void KhipuSpaceModel::setColor(const QColor& color)
 {
     m_currentSpace->model()->setData(index(plotCurrentIndex), color, Qt::DecorationRole);
 }

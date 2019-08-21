@@ -7,14 +7,14 @@ KhipuSpace::KhipuSpace()
 {
 }
 
-KhipuSpace::KhipuSpace(const QString& name, const int type) :
+KhipuSpace::KhipuSpace(const QString& name, const int& type) :
     m_name(name),
     m_type(type),
     m_vars(new Analitza::Variables)
 {
 }
 
-KhipuSpace::KhipuSpace(const QString &name, const int type, Analitza::PlotsModel *model) :
+KhipuSpace::KhipuSpace(const QString &name, const int& type, Analitza::PlotsModel *model) :
     m_name(name),
     m_type(type),
     m_model(model),
@@ -48,7 +48,7 @@ QString KhipuSpace::strType() const
     return "";
 }
 
-void KhipuSpace::addPlot(const QString expression)
+void KhipuSpace::addPlot(const QString& expression)
 {
     if (m_type == Analitza::Dim2D){
         m_model->addFunction(expression, Analitza::Dim2D, m_vars);

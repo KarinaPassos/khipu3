@@ -15,8 +15,8 @@ class KhipuSpace : public QObject
 
 public:
     KhipuSpace();
-    KhipuSpace(const QString& name, const int type);
-    KhipuSpace(const QString& name, const int type, Analitza::PlotsModel* model);
+    KhipuSpace(const QString& name, const int& type);
+    KhipuSpace(const QString& name, const int& type, Analitza::PlotsModel* model);
 
     QString name() const;
     void setName(const QString &name);
@@ -24,7 +24,7 @@ public:
     int type() const;
     Q_INVOKABLE QString strType() const;
 
-    Q_INVOKABLE void addPlot(const QString expression);
+    Q_INVOKABLE void addPlot(const QString& expression);
 
     Q_INVOKABLE QSharedPointer<Analitza::Variables> variables() const;
     void notifyVariablesChanged() { variablesChanged(); }
