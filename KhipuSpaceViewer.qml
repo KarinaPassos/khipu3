@@ -36,10 +36,8 @@ ColumnLayout {
         delegate: KhipuSpaceDelegate {
         }
 
-        highlight: Rectangle {
-        }
-
         highlightFollowsCurrentItem: true
+        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
         //focus: true
     }
 

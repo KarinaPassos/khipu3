@@ -48,8 +48,7 @@ ColumnLayout {
                         }
                     }
                 }
-            highlight: Rectangle {
-            }
+            highlight: Rectangle { color: "lightsteelblue" }
             highlightFollowsCurrentItem: true
             focus: true
         }
