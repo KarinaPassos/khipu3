@@ -78,7 +78,7 @@ void KhipuSpaceModel::save(const QString& name) const
 void KhipuSpaceModel::load(const QString& path)
 {
     if (path.contains(".json")){
-        QList<KhipuSpace*> newSpaces = KhipuData::loadData("testejson");
+        QList<KhipuSpace*> newSpaces = KhipuData::loadData(path);
         beginInsertRows(QModelIndex(), m_spaceList.size(), m_spaceList.size() + newSpaces.size() - 1);
         m_spaceList.append(newSpaces);
         endInsertRows();
@@ -183,16 +183,18 @@ void KhipuSpaceModel::setPlotCurrentIndex(const int& value)
 
 void KhipuSpaceModel::setVisibility(const bool& visibility)
 {
+    qDebug() << "set visib index:" << plotCurrentIndex;
     m_currentSpace->model()->setData(index(plotCurrentIndex), visibility, Qt::CheckStateRole);
 }
 
 void KhipuSpaceModel::setExpression(const QString& expression)
 {
+    qDebug() << "set exp index:" << plotCurrentIndex;
     m_currentSpace->model()->setData(index(plotCurrentIndex), expression, Qt::EditRole);
-    qDebug() << m_currentSpace->model()->data(index(plotCurrentIndex-1));
 }
 
 void KhipuSpaceModel::setColor(const QColor& color)
 {
+    qDebug() << "set color index:" << plotCurrentIndex;
     m_currentSpace->model()->setData(index(plotCurrentIndex), color, Qt::DecorationRole);
 }

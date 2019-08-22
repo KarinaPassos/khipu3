@@ -121,7 +121,7 @@ ApplicationWindow {
         id: fileDialog
         title: "Please choose a .json file"
         onAccepted: {
-            console.log("You chose: " + fileDialog.fileUrl)
+            //console.log("You chose: " + fileDialog.fileUrl)
             khipuModel.load(fileUrl)
         }
         onRejected: {

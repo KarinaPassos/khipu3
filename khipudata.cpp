@@ -55,7 +55,7 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
 
 QList<KhipuSpace*> KhipuData::loadData(QString fileName)
 {
-    fileName = fileName + ".json";
+    qDebug() << fileName;
     QFile file(fileName);
 
     if (!file.open(QIODevice::ReadOnly)) {
