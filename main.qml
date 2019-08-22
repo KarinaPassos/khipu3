@@ -179,6 +179,7 @@ ApplicationWindow {
                 onClicked: {
                     khipuModel.addSpace("2D Space","2D")
                     khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
+                    spaceList.currentIndex = khipuModel.rowCount() - 1
                     khipuMenu.visible = true
                 }
             }
@@ -201,6 +202,7 @@ ApplicationWindow {
                 onClicked: {
                     khipuModel.addSpace("3D Space","3D")
                     khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
+                    spaceList.currentIndex = khipuModel.rowCount() - 1
                     khipuMenu.visible = true
                 }
             }
@@ -243,7 +245,7 @@ ApplicationWindow {
             }
 
             KhipuSpaceViewer {
-                id: mySpace
+                id: spaceList
                 Layout.fillHeight: true
                 Layout.maximumWidth: 300
                 model: proxyModel
