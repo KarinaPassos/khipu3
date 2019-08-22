@@ -21,7 +21,7 @@ KhipuSpace* KhipuSpaceModel::addSpace(const QString& name, const QString& type)
     return space;
 }
 
-bool KhipuSpaceModel::removeSpace(const int& row)
+bool KhipuSpaceModel::removeSpace(const int row)
 {
     if (m_spaceList.size()>1){
         beginRemoveRows(QModelIndex(), row, row);
@@ -32,23 +32,23 @@ bool KhipuSpaceModel::removeSpace(const int& row)
     return false;
 }
 
-void KhipuSpaceModel::rename(const QString& name, const int& row)
+void KhipuSpaceModel::rename(const QString& name, const int row)
 {
     currentSpace()->setName(name);
     dataChanged(index(0),index(row));
 }
 
-QString KhipuSpaceModel::getType(const int& row) const
+QString KhipuSpaceModel::getType(const int row) const
 {
     return intCheckDim(m_spaceList[row]->type());
 }
 
-KhipuSpace* KhipuSpaceModel::spaceAt(const int& row) const
+KhipuSpace* KhipuSpaceModel::spaceAt(const int row) const
 {
     return m_spaceList.at(row);
 }
 
-void KhipuSpaceModel::removeFunction(const int& row)
+void KhipuSpaceModel::removeFunction(const int row)
 {
     m_currentSpace->model()->removeRow(row);
 }
@@ -176,12 +176,12 @@ int KhipuSpaceModel::getPlotCurrentIndex() const
     return plotCurrentIndex;
 }
 
-void KhipuSpaceModel::setPlotCurrentIndex(const int& value)
+void KhipuSpaceModel::setPlotCurrentIndex(const int value)
 {
     plotCurrentIndex = value;
 }
 
-void KhipuSpaceModel::setVisibility(const bool& visibility)
+void KhipuSpaceModel::setVisibility(const bool visibility)
 {
     qDebug() << "set visib index:" << plotCurrentIndex;
     m_currentSpace->model()->setData(index(plotCurrentIndex), visibility, Qt::CheckStateRole);

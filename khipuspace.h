@@ -15,8 +15,8 @@ class KhipuSpace : public QObject
 
 public:
     KhipuSpace();
-    KhipuSpace(const QString& name, const int& type);
-    KhipuSpace(const QString& name, const int& type, Analitza::PlotsModel* model);
+    KhipuSpace(const QString& name, const int type);
+    KhipuSpace(const QString& name, const int type, Analitza::PlotsModel* model);
 
     QString name() const;
     void setName(const QString &name);
