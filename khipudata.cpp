@@ -55,8 +55,7 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
 
 QList<KhipuSpace*> KhipuData::loadData(QString fileName)
 {
-    qDebug() << fileName;
-    QFile file(fileName);
+    QFile file(QUrl(fileName).toLocalFile());
 
     if (!file.open(QIODevice::ReadOnly)) {
         qDebug() << "Não foi possível abrir o arquivo";
