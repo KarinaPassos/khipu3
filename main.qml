@@ -158,6 +158,8 @@ ApplicationWindow {
 
                 onClicked: {
                     khipuModel.plotDict()
+                    spaceList.currentIndex = khipuModel.rowCount() - 2
+                    khipuMenu.visible = true
                 }
             }
             Button {
