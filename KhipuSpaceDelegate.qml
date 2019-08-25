@@ -8,14 +8,14 @@ import QtQuick 2.2
 
 Item {
     width: parent.width
-    height: 60
+    height: 70
     RowLayout {
         anchors.fill: parent
         spacing: 10
 
         Rectangle {
             width: 5
-            height: 60
+            height: 70
         }
 
         Rectangle {
@@ -35,6 +35,7 @@ Item {
                 visible: false
                 onAccepted: { khipuModel.rename(renameSpace.text); renameSpace.visible = false }
                 text: "new space name"
+                focus: true
             }
             Text {
                 text: '<b>Type:</b> ' + type
