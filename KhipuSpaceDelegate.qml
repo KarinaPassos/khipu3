@@ -6,7 +6,7 @@ import QtQuick 2.2
     This file represents the informations that will appear in the list view when you create a space
 */
 
-Item {
+MouseArea {
     width: parent.width
     height: 70
     RowLayout {
@@ -33,7 +33,7 @@ Item {
                 id: renameSpace
                 height: 25
                 visible: false
-                onAccepted: { khipuModel.rename(renameSpace.text); renameSpace.visible = false }
+                onAccepted: { khipuModel.rename(renameSpace.text,spacesList.currentIndex); renameSpace.visible = false }
                 text: "new space name"
                 focus: true
             }
@@ -42,14 +42,11 @@ Item {
             }
         }
     }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            spacesList.currentIndex = index
-        }
-        onDoubleClicked: {
-            renameSpace.visible = true
-        }
+    onClicked: {
+        spacesList.currentIndex = index
+    }
+    onDoubleClicked: {
+        renameSpace.visible = true
     }
 }
 
