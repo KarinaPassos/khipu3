@@ -25,9 +25,16 @@ MouseArea {
         }
 
         ColumnLayout {
-            Text {
-                text: '<b>Name:</b> ' + name
-                visible: !renameSpace.visible
+            RowLayout{
+                Text {
+                    text: 'Name:'
+                    visible: !renameSpace.visible
+                    font.bold: true
+                }
+                Text {
+                    text: name
+                    visible: !renameSpace.visible
+                }
             }
             TextField{
                 id: renameSpace
@@ -37,8 +44,14 @@ MouseArea {
                 text: "new space name"
                 focus: true
             }
-            Text {
-                text: '<b>Type:</b> ' + type
+            RowLayout{
+                Text {
+                    text: 'Type:'
+                    font.bold: true
+                }
+                Text {
+                    text: type
+                }
             }
         }
     }
