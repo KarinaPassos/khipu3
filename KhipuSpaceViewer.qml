@@ -30,7 +30,9 @@ ColumnLayout {
         Layout.fillWidth: true
 
         onCurrentIndexChanged: {
-            khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
+            //khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
+            console.log("currentIndex: " + currentIndex + " mapToSource: " + khipuModel.spaceCurrentIndex(proxyModel,currentIndex))
+            //khipuModel.currentSpace = khipuModel.spaceAt(proxyModel.mapToSource(currentIndex).row())
         }
 
         delegate: KhipuSpaceDelegate {

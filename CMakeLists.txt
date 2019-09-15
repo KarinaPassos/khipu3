@@ -12,6 +12,7 @@ add_executable(khipu3
 	khipudata.cpp  
 	khipuspace.cpp  
 	khipuspacemodel.cpp  
+        khipuplotsmodel.cpp
 	main.cpp
 	qml.qrc
 )

@@ -1,6 +1,7 @@
 #ifndef KHIPUSPACEMODEL_H
 #define KHIPUSPACEMODEL_H
 #include <Analitza5/analitzaplot/plotsmodel.h>
+#include <QSortFilterProxyModel>
 #include <QAbstractListModel>
 #include <QHash>
 #include <qqml.h>
@@ -31,6 +32,7 @@ public:
     Q_INVOKABLE void save(const QString& name) const; //saves the current spacelist in a json file
     Q_INVOKABLE void load(const QString& path); //loads a given file
     Q_INVOKABLE void plotDict(); //creates two spaces with examples to the user
+    Q_INVOKABLE int spaceCurrentIndex(QSortFilterProxyModel* proxyModel, int currentIndex) const;
     Q_INVOKABLE int getPlotCurrentIndex() const;
     Q_INVOKABLE void setPlotCurrentIndex(const int value);
     Q_INVOKABLE void setVisibility(const bool visibility);

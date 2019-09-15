@@ -2,7 +2,6 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <khipuspacemodel.h>
-#include <QSortFilterProxyModel>
 
 int main(int argc, char *argv[])
 {
