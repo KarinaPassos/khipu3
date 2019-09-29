@@ -13,7 +13,7 @@ class KhipuSpaceModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(KhipuSpace* currentSpace READ currentSpace WRITE setCurrentSpace NOTIFY currentSpaceChanged)
-    Q_PROPERTY(QSortFilterProxyModel *filterModel MEMBER m_filterModel)
+    Q_PROPERTY(QSortFilterProxyModel *filterModel MEMBER m_filterModel CONSTANT)
 
 public:
     enum Roles {

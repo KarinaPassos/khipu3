@@ -3,6 +3,15 @@
 #include <QDebug>
 #include <QFileDialog>
 
+/* every single access from the Qml is via the filter model, so we need to convert the Indexes
+*/
+
+namespace {
+    int sourceRow(QSortFilterProxyModel *model, int row) {
+        return model->mapToSource(model->index(row, 0)).row();
+    }
+}
+
 KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
     QAbstractListModel(parent),
     m_currentSpace(nullptr)
@@ -28,9 +37,10 @@ KhipuSpace* KhipuSpaceModel::addSpace(const QString& name, const QString& type)
 
 bool KhipuSpaceModel::removeSpace(const int row)
 {
+    auto sRow = sourceRow(m_filterModel, row);
     if (m_spaceList.size()>1){
-        beginRemoveRows(QModelIndex(), row, row);
-        m_spaceList.removeAt(row);
+        beginRemoveRows(QModelIndex(), sRow, sRow);
+        m_spaceList.removeAt(sRow);
         endRemoveRows();
         return true;
     }
@@ -39,25 +49,35 @@ bool KhipuSpaceModel::removeSpace(const int row)
 
 void KhipuSpaceModel::rename(const QString& name, const int row)
 {
+    auto sRow = sourceRow(m_filterModel, row);
     spaceAt(row)->setName(name);
-    dataChanged(index(0),index(row));
+    dataChanged(index(sRow),index(sRow));
 }
 
 QString KhipuSpaceModel::getType(const int row) const
 {
-    return intCheckDim(m_spaceList[row]->type());
+    auto sRow = sourceRow(m_filterModel, row);
+    return intCheckDim(m_spaceList[sRow]->type());
 }
 
+/* The row is from the filterModel, we need to map to this model. */
 KhipuSpace* KhipuSpaceModel::spaceAt(const int row) const
 {
-    return m_spaceList.at(row);
+    if (row == -1) {
+        return nullptr;
+    }
+
+    int sRow = sourceRow(m_filterModel, row);
+    return m_spaceList.at(sRow);
 }
 
+/* This function should be removed from here and moved to the KhipuPlotsModel */
 void KhipuSpaceModel::removeFunction(const int row)
 {
     m_currentSpace->model()->removeRow(row);
 }
 
+/* move this to some other place, inside Analitza */
 QString KhipuSpaceModel::functionFixing(QString str) const
 {
     if (m_currentSpace->type() == Analitza::Dim3D) {
@@ -147,6 +167,7 @@ void KhipuSpaceModel::setCurrentSpace(KhipuSpace *space) {
     emit currentSpaceChanged(space);
 }
 
+/* Remova essas funcoes strCheckDim / intCheckDim por favor. Voce consegue algo melhor usando um map */
 int KhipuSpaceModel::strCheckDim(const QString& dim) const
 {
     if (dim == "2D"){
@@ -186,6 +207,7 @@ void KhipuSpaceModel::setPlotCurrentIndex(const int value)
     plotCurrentIndex = value;
 }
 
+/* mova essas funcoes que acessam o model do plotsModel para o plotsModel */
 void KhipuSpaceModel::setVisibility(const bool visibility)
 {
     qDebug() << "set visib index:" << plotCurrentIndex;
