@@ -31,12 +31,9 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
         auto *plotsModel = spaceList[i]->model();
 
         for (int j = 0; j < spaceList[i]->model()->rowCount(); j++){
-            QJsonObject plot;
             auto plotIndex = plotsModel->index(j, 0);
             auto data = plotsModel->data(plotIndex, Analitza::PlotsModel::DescriptionRole);
-
-            plot["expression"] = data.toString();
-            plots.append(plot);
+            plots.append(QJsonObject{ {"expression", data.toString()}} );
         }
         space["plots"] = plots;
 
