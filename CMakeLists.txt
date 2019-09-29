@@ -9,21 +9,21 @@ SET(CMAKE_AUTORCC ON)
 SET(CMAKE_AUTOMOC ON)
 
 add_executable(khipu3
-	khipudata.cpp  
-	khipuspace.cpp  
-	khipuspacemodel.cpp  
-        khipuplotsmodel.cpp
+	khipudata.cpp
+	khipuspace.cpp
+	khipuspacemodel.cpp
+    khipuplotsmodel.cpp
 	main.cpp
 	qml.qrc
 )
 
-target_link_libraries(khipu3 
-	Qt5::Core 
-	Qt5::Quick 
-	Qt5::Qml 
-	Qt5::Widgets 
+target_link_libraries(khipu3
+	Qt5::Core
+	Qt5::Quick
+	Qt5::Qml
+	Qt5::Widgets
 	Qt5::Gui
-	KF5::Analitza 
+	KF5::Analitza
 	KF5::AnalitzaPlot
 )
 

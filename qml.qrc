@@ -1,13 +1,13 @@
 <RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>KhipuSpaceViewer.qml</file>
-        <file>KhipuScreen.qml</file>
-        <file>KhipuHideMenuButton.qml</file>
-        <file>KhipuMenuOptions.qml</file>
-        <file>KhipuMenu.qml</file>
-        <file>KhipuSpaceDelegate.qml</file>
-        <file>Khipu2DGridSettings.qml</file>
-        <file>KhipuEditPlotDialog.qml</file>
+    <qresource>
+        <file>qml/main.qml</file>
+        <file>qml/KhipuSpaceViewer.qml</file>
+        <file>qml/KhipuScreen.qml</file>
+        <file>qml/KhipuHideMenuButton.qml</file>
+        <file>qml/KhipuMenuOptions.qml</file>
+        <file>qml/KhipuMenu.qml</file>
+        <file>qml/KhipuSpaceDelegate.qml</file>
+        <file>qml/Khipu2DGridSettings.qml</file>
+        <file>qml/KhipuEditPlotDialog.qml</file>
     </qresource>
 </RCC>
