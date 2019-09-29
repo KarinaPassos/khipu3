@@ -41,7 +41,7 @@ MouseArea {
                 height: 25
                 visible: false
                 onAccepted: { khipuModel.rename(renameSpace.text,spacesList.currentIndex); renameSpace.visible = false }
-                text: "new space name"
+                placeholderText: "new space name"
                 focus: true
             }
             RowLayout{
