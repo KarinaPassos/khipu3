@@ -106,7 +106,6 @@ ApplicationWindow {
     }
     Keys.onPressed: {
         if (event.key === Qt.Key_F1) {
-            console.log("entrou aqui")
             khipuMenuBar.visible = true
         }
     }
