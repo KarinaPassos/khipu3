@@ -22,12 +22,12 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
 
     QJsonArray spaces;
     for (int i = 0; i < spaceList.size(); i++){
-        QJsonObject space;
-        space["name"] = spaceList[i]->name();
-        space["type"] = spaceList[i]->type();
+        auto space = QJsonObject {
+            {"name", spaceList[i]->name()},
+            {"type", spaceList[i]->type()}
+        };
 
         QJsonArray plots;
-
         auto *plotsModel = spaceList[i]->model();
 
         for (int j = 0; j < spaceList[i]->model()->rowCount(); j++){
