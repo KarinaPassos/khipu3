@@ -249,7 +249,7 @@ ApplicationWindow {
                 id: spaceList
                 Layout.fillHeight: true
                 Layout.maximumWidth: 300
-                model: proxyModel
+                model: khipuModel.filterModel
             }
 
             KhipuMenu {

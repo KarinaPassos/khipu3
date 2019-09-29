@@ -9,6 +9,11 @@ KhipuSpaceModel::KhipuSpaceModel(QObject *parent) :
 {
     qmlRegisterType<QAbstractItemModel>();
     qRegisterMetaType<QSharedPointer<Analitza::Variables>>("QSharedPointer<Analitza::Variables>");
+
+    m_filterModel = new QSortFilterProxyModel();
+    m_filterModel->setSourceModel(this);
+    m_filterModel->setFilterRole(KhipuSpaceModel::NameRole);
+    m_filterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
 }
 
 KhipuSpace* KhipuSpaceModel::addSpace(const QString& name, const QString& type)
@@ -34,7 +39,7 @@ bool KhipuSpaceModel::removeSpace(const int row)
 
 void KhipuSpaceModel::rename(const QString& name, const int row)
 {
-    currentSpace()->setName(name);
+    spaceAt(row)->setName(name);
     dataChanged(index(0),index(row));
 }
 

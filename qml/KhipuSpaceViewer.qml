@@ -18,7 +18,7 @@ ColumnLayout {
         Layout.fillWidth: true
         placeholderText: qsTr("Search")
         onTextChanged: {
-            proxyModel.setFilterRegExp(text)
+            khipuModel.filterModel.setFilterRegExp(text)
         }
     }
 
@@ -31,7 +31,9 @@ ColumnLayout {
 
         onCurrentIndexChanged: {
             //khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
-            console.log("currentIndex: " + currentIndex + " mapToSource: " + khipuModel.spaceCurrentIndex(proxyModel,currentIndex))
+            if (currentIndex != -1) {
+                console.log("currentIndex: " + currentIndex + " mapToSource: " + khipuModel.spaceCurrentIndex(khipuModel.filterModel,currentIndex))
+            }
             //khipuModel.currentSpace = khipuModel.spaceAt(proxyModel.mapToSource(currentIndex).row())
         }
 

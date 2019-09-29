@@ -13,6 +13,7 @@ class KhipuSpaceModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(KhipuSpace* currentSpace READ currentSpace WRITE setCurrentSpace NOTIFY currentSpaceChanged)
+    Q_PROPERTY(QSortFilterProxyModel *filterModel MEMBER m_filterModel)
 
 public:
     enum Roles {
@@ -54,6 +55,7 @@ private:
     QList<KhipuSpace*> m_spaceList;
     KhipuSpace *m_currentSpace = nullptr;
     int plotCurrentIndex = 0;
+    QSortFilterProxyModel *m_filterModel;
 };
 
 #endif // KHIPUSPACEMODEL_H
