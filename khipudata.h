@@ -9,8 +9,8 @@
 class KhipuData
 {
 public:
-    static bool saveData(QList<KhipuSpace*> spaceList, QString fileName);
-    static QList<KhipuSpace*> loadData(QString fileName);
+    static bool saveData(const QList<KhipuSpace*>& spaceList,const QString& fileName);
+    static QList<KhipuSpace*> loadData(const QString& fileName);
 
 private:
     KhipuData();

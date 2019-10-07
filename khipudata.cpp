@@ -10,34 +10,32 @@ KhipuData::KhipuData()
 
 }
 
-bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
+bool KhipuData::saveData(const QList<KhipuSpace*>& spaceList, const QString& fileName)
 {
-    fileName = fileName + ".json";
-    QFile file(fileName);
-
+    QFile file(fileName + QStringLiteral(".json"));
     if (!file.open(QIODevice::WriteOnly)) {
-        qDebug() << "Não deu pra salvar o arquivo";
+        qDebug() << "Could not open file for writting, verify your permissions" << file.errorString();
         return false;
     }
 
     QJsonArray spaces;
-    for (int i = 0; i < spaceList.size(); i++){
-        auto space = QJsonObject {
-            {"name", spaceList[i]->name()},
-            {"type", spaceList[i]->type()}
+    for (auto *space : spaceList){
+        auto spaceObj = QJsonObject {
+            {"name", space->name()},
+            {"type", space->type()}
         };
 
         QJsonArray plots;
-        auto *plotsModel = spaceList[i]->model();
+        auto *plotsModel = space->model();
 
-        for (int j = 0; j < spaceList[i]->model()->rowCount(); j++){
-            auto plotIndex = plotsModel->index(j, 0);
-            auto data = plotsModel->data(plotIndex, Analitza::PlotsModel::DescriptionRole);
-            plots.append(QJsonObject{ {"expression", data.toString()}} );
+        for (int j = 0, end = plotsModel->rowCount(); j < end; j++){
+            const QModelIndex plotIndex = plotsModel->index(j, 0);
+            const QString expression = plotsModel->data(plotIndex, Analitza::PlotsModel::DescriptionRole).toString();
+            plots.append(QJsonObject{ {"expression", expression}} );
         }
-        space["plots"] = plots;
+        spaceObj["plots"] = plots;
 
-        spaces.append(space);
+        spaces.append(spaceObj);
     }
 
     QJsonObject document;
@@ -50,7 +48,7 @@ bool KhipuData::saveData(QList<KhipuSpace*> spaceList, QString fileName)
     return true;
 }
 
-QList<KhipuSpace*> KhipuData::loadData(QString fileName)
+QList<KhipuSpace*> KhipuData::loadData(const QString& fileName)
 {
     QFile file(QUrl(fileName).toLocalFile());
 
