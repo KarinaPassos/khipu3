@@ -1,7 +1,7 @@
 project(Khipu)
 cmake_minimum_required(VERSION 2.8)
 
-find_package(Qt5 REQUIRED COMPONENTS Core Quick Qml Widgets Gui)
+find_package(Qt5 REQUIRED COMPONENTS Core Quick Qml Widgets Gui Xml PrintSupport)
 find_package(Analitza5 REQUIRED)
 
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -22,6 +22,8 @@ target_link_libraries(khipu3
 	Qt5::Qml 
 	Qt5::Widgets 
 	Qt5::Gui
+	Qt5::Xml
+	Qt5::PrintSupport
 	KF5::Analitza 
 	KF5::AnalitzaPlot
 )
