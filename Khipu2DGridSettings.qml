@@ -1,8 +1,8 @@
 import QtQuick 2.2
-import QtQuick.Window 2.13
+import QtQuick.Window 2.12
 import QtQuick.Dialogs 1.0
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.13
+import QtQuick.Controls 2.12
 
 /*
     This file represents the window that opens when you click on MenuBar > Settings > Grid Settings

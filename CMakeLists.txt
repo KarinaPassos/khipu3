@@ -26,5 +26,6 @@ target_link_libraries(khipu3
 	Qt5::PrintSupport
 	KF5::Analitza 
 	KF5::AnalitzaPlot
+        KF5::AnalitzaGui
 )
 

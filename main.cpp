@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<KhipuSpace>();
 
-    engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
     engine.rootContext()->setContextProperty("proxyModel", proxyModel);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

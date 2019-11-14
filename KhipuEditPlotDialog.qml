@@ -1,5 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Window 2.13
+import QtQuick.Window 2.12
 import QtQuick.Dialogs 1.0
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 1.4
@@ -42,12 +42,12 @@ Window {
         Button{
             text: "Send changes"
             onClicked: {
-                khipuModel.setVisibility(setVisibility.checked)
+                proxyModel.sourceModel.setVisibility(setVisibility.checked)
                 if (editExpression.text != ""){
-                    khipuModel.setExpression(editExpression.text)
+                    proxyModel.sourceModel.setExpression(editExpression.text)
                 }
                 if (colorChecker === 1){
-                    khipuModel.setColor(plotColorDialog.color)
+                    proxyModel.sourceModel.setColor(plotColorDialog.color)
                 }
             }
         }

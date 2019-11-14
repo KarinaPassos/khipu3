@@ -1,6 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.13
+import QtQuick.Controls 2.12
 import QtQuick.Dialogs 1.0
 
 /*
@@ -30,7 +30,7 @@ ColumnLayout {
         Layout.fillWidth: true
 
         onCurrentIndexChanged: {
-            khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
+            proxyModel.sourceModel.currentSpace = proxyModel.sourceModel.spaceAt(currentIndex)
         }
 
         delegate: KhipuSpaceDelegate {
@@ -47,7 +47,7 @@ ColumnLayout {
             anchors.centerIn: parent
         }
         onClicked: {
-            khipuModel.removeSpace(spacesList.currentIndex)
+            proxyModel.sourceModel.removeSpace(spacesList.currentIndex)
             if (currentIndex>0){
                 currentIndex=currentIndex-1
             }

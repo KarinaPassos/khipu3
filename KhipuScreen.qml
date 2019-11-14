@@ -1,5 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Controls 2.13
+import QtQuick.Controls 2.12
 import org.kde.analitza 1.1
 
 /*
@@ -11,14 +11,14 @@ Rectangle {
     signal changeScreen()
 
     function addFunction(str){
-            khipuModel.currentSpace.addPlot(khipuModel.functionFixing(str))
+            proxyModel.sourceModel.currentSpace.addPlot(proxyModel.sourceModel.functionFixing(str))
     }
 
     Graph2D{
         id: space2d
         anchors.fill: parent
-        model: khipuModel.currentSpace ? khipuModel.currentSpace.model() : null
-        visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "2D" : false
+        model: proxyModel.sourceModel.currentSpace ? proxyModel.sourceModel.currentSpace.model() : null
+        visible: proxyModel.sourceModel.currentSpace ? proxyModel.sourceModel.currentSpace.type === "2D" : false
     }
     Graph3D{
         id: space3d

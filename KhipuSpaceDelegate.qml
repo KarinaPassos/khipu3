@@ -1,4 +1,4 @@
-import QtQuick.Controls 2.13
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtQuick 2.2
 
@@ -33,7 +33,7 @@ MouseArea {
                 id: renameSpace
                 height: 25
                 visible: false
-                onAccepted: { khipuModel.rename(renameSpace.text,spacesList.currentIndex); renameSpace.visible = false }
+                onAccepted: { proxyModel.sourceModel.rename(renameSpace.text,spacesList.currentIndex); renameSpace.visible = false }
                 text: "new space name"
                 focus: true
             }

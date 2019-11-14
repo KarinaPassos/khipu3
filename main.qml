@@ -1,6 +1,6 @@
-import QtQuick.Controls 2.13
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Window 2.13
+import QtQuick.Window 2.12
 import QtQuick 2.2
 import QtQuick.Dialogs 1.0
 
@@ -122,7 +122,7 @@ ApplicationWindow {
         title: "Please choose a .json file"
         onAccepted: {
             //console.log("You chose: " + fileDialog.fileUrl)
-            khipuModel.load(fileUrl)
+            proxyModel.sourceModel.load(fileUrl)
         }
         onRejected: {
             console.log("Canceled")
@@ -157,8 +157,8 @@ ApplicationWindow {
                 }
 
                 onClicked: {
-                    khipuModel.plotDict()
-                    spaceList.currentIndex = khipuModel.rowCount() - 2
+                    proxyModel.sourceModel.plotDict()
+                    spaceList.currentIndex = proxyModel.sourceModel.rowCount() - 2
                     khipuMenu.visible = true
                 }
             }
@@ -179,9 +179,9 @@ ApplicationWindow {
                     height: 40
                 }
                 onClicked: {
-                    khipuModel.addSpace("2D Space","2D")
-                    khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
-                    spaceList.currentIndex = khipuModel.rowCount() - 1
+                    proxyModel.sourceModel.addSpace("2D Space","2D")
+                    proxyModel.sourceModel.currentSpace = proxyModel.sourceModel.spaceAt(proxyModel.sourceModel.rowCount() - 1)
+                    spaceList.currentIndex = proxyModel.sourceModel.rowCount() - 1
                     khipuMenu.visible = true
                 }
             }
@@ -202,9 +202,9 @@ ApplicationWindow {
                     height: 40
                 }
                 onClicked: {
-                    khipuModel.addSpace("3D Space","3D")
-                    khipuModel.currentSpace = khipuModel.spaceAt(khipuModel.rowCount() - 1)
-                    spaceList.currentIndex = khipuModel.rowCount() - 1
+                    proxyModel.sourceModel.addSpace("3D Space","3D")
+                    proxyModel.sourceModel.currentSpace = proxyModel.sourceModel.spaceAt(proxyModel.sourceModel.rowCount() - 1)
+                    spaceList.currentIndex = proxyModel.sourceModel.rowCount() - 1
                     khipuMenu.visible = true
                 }
             }
@@ -225,7 +225,7 @@ ApplicationWindow {
                 text: "Type file name here"
                 width: parent.width
                 onAccepted: {
-                    khipuModel.save(text)
+                    proxyModel.sourceModel.save(text)
                     text = ""
                     saveDialogBar.visible = false
                 }
@@ -233,7 +233,7 @@ ApplicationWindow {
             Button{
                 text: "Save"
                 onClicked: {
-                    khipuModel.save(saveInput.text)
+                    proxyModel.sourceModel.save(saveInput.text)
                     saveDialogBar.visible = false
                 }
             }
