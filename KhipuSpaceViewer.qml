@@ -30,7 +30,8 @@ ColumnLayout {
         Layout.fillWidth: true
 
         onCurrentIndexChanged: {
-            khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
+            //MEXER AQUI AMANHA
+            proxyModel.currentSpace = proxyModel.sourceModel.spaceAt(currentIndex)
         }
 
         delegate: KhipuSpaceDelegate {
@@ -47,7 +48,7 @@ ColumnLayout {
             anchors.centerIn: parent
         }
         onClicked: {
-            khipuModel.removeSpace(spacesList.currentIndex)
+            proxyModel.sourceModel.removeSpace(spacesList.currentIndex)
             if (currentIndex>0){
                 currentIndex=currentIndex-1
             }
