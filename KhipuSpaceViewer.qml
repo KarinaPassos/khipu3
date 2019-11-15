@@ -15,6 +15,7 @@ ColumnLayout {
     property alias model : spacesList.model
 
     TextField {
+        id: searchContent
         Layout.fillWidth: true
         placeholderText: qsTr("Search")
         onTextChanged: {
@@ -30,8 +31,12 @@ ColumnLayout {
         Layout.fillWidth: true
 
         onCurrentIndexChanged: {
-            //MEXER AQUI AMANHA
-            proxyModel.currentSpace = proxyModel.sourceModel.spaceAt(currentIndex)
+            if (searchContent === ""){
+                khipuModel.currentSpace = khipuModel.spaceAt(currentIndex)
+            } else {
+                khipuModel.currentSpace = khipuModel.spaceAt(proxyModel.mapToSource
+                                                             (proxyModel.index(currentIndex,0)).row)
+            }
         }
 
         delegate: KhipuSpaceDelegate {
