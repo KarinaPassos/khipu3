@@ -20,6 +20,10 @@ ColumnLayout {
         placeholderText: qsTr("Search")
         onTextChanged: {
             proxyModel.setFilterRegExp(text)
+            if (proxyModel.rowCount() === 0){
+                text = ""
+                proxyModel.setFilterRegExp(text)
+            }
         }
     }
 
