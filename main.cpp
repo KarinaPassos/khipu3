@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<KhipuSpace>();
 
     engine.rootContext()->setContextProperty("proxyModel", proxyModel);
-    engine.rootContext()->setContextProperty("khipuModel", &spaceModel);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

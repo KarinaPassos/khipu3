@@ -23,8 +23,8 @@ Rectangle {
     Graph3D{
         id: space3d
         anchors.fill: parent
-        model: khipuModel.currentSpace ? khipuModel.currentSpace.model() : null
-        visible: khipuModel.currentSpace ? khipuModel.currentSpace.type === "3D" : false
+        model: proxyModel.sourceModel.currentSpace ? proxyModel.sourceModel.currentSpace.model() : null
+        visible: proxyModel.sourceModel.currentSpace ? proxyModel.sourceModel.currentSpace.type === "3D" : false
         onModelChanged: resetViewport()
     }
 }

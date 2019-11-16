@@ -29,7 +29,7 @@ ColumnLayout {
         ListView{
             id: plotView
             anchors.fill: parent
-            model: khipuModel.currentSpace ? khipuModel.currentSpace.model() : null
+            model: proxyModel.sourceModel.currentSpace ? proxyModel.sourceModel.currentSpace.model() : null
             currentIndex: 0
             delegate:
                 Item{
@@ -40,7 +40,7 @@ ColumnLayout {
                         anchors.fill: parent
                         onClicked: {
                             plotView.currentIndex = index
-                            khipuModel.setPlotCurrentIndex(plotView.currentIndex)
+                            proxyModel.sourceModel.setPlotCurrentIndex(plotView.currentIndex)
                             editExpressionDialog.colorChecker = 0
                         }
                         onDoubleClicked: {
@@ -64,7 +64,7 @@ ColumnLayout {
                 anchors.centerIn: parent
                 text: "Remove"
             }
-            onClicked: khipuModel.removeFunction(plotView.currentIndex);
+            onClicked: proxyModel.sourceModel.removeFunction(plotView.currentIndex);
         }
     }
 
