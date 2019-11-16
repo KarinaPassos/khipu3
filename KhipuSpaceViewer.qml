@@ -59,8 +59,11 @@ ColumnLayout {
         onClicked: {
             proxyModel.sourceModel.removeSpace(proxyModel.mapToSource
                                                (proxyModel.index(spacesList.currentIndex,0)).row)
+            if (proxyModel.rowCount() === 0){
+                searchContent.text = ""
+            }
             if (proxyModel.mapToSource
-                    (proxyModel.index(currentIndex,0)).row>0){
+                    (proxyModel.index(currentIndex,0)).row>0 && proxyModel.rowCount()>0){
                 proxyModel.mapToSource(proxyModel.index(currentIndex,0)).row =
                         proxyModel.mapToSource(proxyModel.index(currentIndex,0)).row-1
             }
