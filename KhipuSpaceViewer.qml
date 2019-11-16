@@ -41,6 +41,7 @@ ColumnLayout {
                 proxyModel.sourceModel.currentSpace = proxyModel.sourceModel.spaceAt(proxyModel.mapToSource
                                                              (proxyModel.index(currentIndex,0)).row)
             }
+            console.log("Oi")
         }
 
         delegate: KhipuSpaceDelegate {
@@ -61,8 +62,9 @@ ColumnLayout {
                                                (proxyModel.index(spacesList.currentIndex,0)).row)
             if (proxyModel.rowCount() === 0){
                 searchContent.text = ""
-                spacesList.currentIndex = 0
             }
+            spacesList.currentIndex = proxyModel.sourceModel.rowCount() - 1
+            proxyModel.sourceModel.currentSpace = proxyModel.sourceModel.spaceAt(currentIndex)
         }
     }
 }
